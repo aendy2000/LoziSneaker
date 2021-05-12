@@ -249,10 +249,34 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\core-style.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\jquery-ui.min.css" />
+    <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\nouislider.css" />
+    <Content Include="Content\css\owl.carousel.css" />
+    <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\css\themify-icons.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\themify.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\AirForce1.jpg" />
+    <Content Include="img\AirJordan.jpg" />
+    <Content Include="img\Logo.png" />
+    <Content Include="img\NikeLD.jpg" />
+    <Content Include="img\NikeWMNS.jpg" />
+    <Content Include="img\Vans.jpg" />
+    <Content Include="img\Yeezy.jpg" />
+    <Content Include="js\active.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery\jquery-2.2.4.min.js" />
+    <Content Include="js\plugins.js" />
+    <Content Include="js\popper.min.js" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -272,6 +296,15 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include=".gitattributes" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\themify.eot" />
+    <Content Include="fonts\themify.ttf" />
+    <Content Include="fonts\themify.woff" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -296,7 +329,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -327,6 +359,8 @@
     <Content Include="Views\AspNetUser\Index.cshtml" />
     <Content Include="Views\AspNetRoleUser\Create.cshtml" />
     <Content Include="Views\AccountNV\Register.cshtml" />
+    <Content Include="Views\Shared\LoziSneaker.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
