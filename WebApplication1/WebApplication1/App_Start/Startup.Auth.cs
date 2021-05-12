@@ -63,7 +63,7 @@ namespace WebApplication1
             //    ClientId = "",
             //    ClientSecret = ""
             //});
-            app.UseVanLangAuthentication("https://fitlogin.vanlanguni.edu.vn/loginManagement");
+            app.UseVanLangAuthentication("https://fitlogin.vanlanguni.edu.vn/LoginManagement");
         }
     }
 }
