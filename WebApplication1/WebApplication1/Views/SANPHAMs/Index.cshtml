@@ -1,0 +1,63 @@
+﻿@model IEnumerable<WebApplication1.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TENSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.THUONGHIEU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYTHEM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CHITIETSP.MAUSAC1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TENSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.THUONGHIEU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MOTA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYTHEM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CHITIETSP.MAUSAC1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MASP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MASP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MASP })
+        </td>
+    </tr>
+}
+
+</table>
