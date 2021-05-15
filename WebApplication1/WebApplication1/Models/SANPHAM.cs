@@ -24,6 +24,8 @@ namespace WebApplication1.Models
         public string TENSP { get; set; }
         public string THUONGHIEU { get; set; }
         public Nullable<int> GIA { get; set; }
+        public string MOTA { get; set; }
+        public Nullable<System.DateTime> NGAYTHEM { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }

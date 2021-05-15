@@ -15,11 +15,30 @@ namespace WebApplication1.Models
     public partial class CHITIETSP
     {
         public string MASP { get; set; }
-        public Nullable<int> SOLUONG { get; set; }
-        public string MAUSAC { get; set; }
-        public Nullable<int> KICHCO { get; set; }
-        public string MOTA { get; set; }
-        public byte[] HINHANH { get; set; }
+        public Nullable<int> SL_TONG { get; set; }
+        public Nullable<int> SL_SIZE36 { get; set; }
+        public Nullable<int> SL_SIZE37 { get; set; }
+        public Nullable<int> SL_SIZE48 { get; set; }
+        public Nullable<int> SL_SIZE49 { get; set; }
+        public Nullable<int> SL_SIZE40 { get; set; }
+        public Nullable<int> SL_SIZE41 { get; set; }
+        public Nullable<int> SL_SIZE42 { get; set; }
+        public Nullable<int> SL_SIZE43 { get; set; }
+        public string MAUSAC1 { get; set; }
+        public string MAUSAC2 { get; set; }
+        public string MAUSAC3 { get; set; }
+        public string MAUSAC4 { get; set; }
+        public string MAUSAC5 { get; set; }
+        public string MAUSAC6 { get; set; }
+        public string MAUSAC7 { get; set; }
+        public string MAUSAC8 { get; set; }
+        public string MAUSAC9 { get; set; }
+        public string MAUSAC10 { get; set; }
+        public byte[] HINHANH1 { get; set; }
+        public byte[] HINHANH2 { get; set; }
+        public byte[] HINHANH3 { get; set; }
+        public byte[] HINHANH4 { get; set; }
+        public byte[] HINHANH5 { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
     }

@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="CT25Team13Model.AspNetUser" Width="1.5" PointX="8" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.DONHANG" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.GIOHANG" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.KHACHHANG" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.NHANVIEN" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.SANPHAM" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.sysdiagram" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
@@ -22,10 +21,7 @@
         <AssociationConnector Association="CT25Team13Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_DONHANG_NHANVIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="CT25Team13Model.FK_KHACHHANG_DONHANG" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETGIOHANG_GIOHANG" ManuallyRouted="false" />
-        <AssociationConnector Association="CT25Team13Model.FK_KHACHHANG_GIOHANG" ManuallyRouted="false" />
-        <AssociationConnector Association="CT25Team13Model.FK_TTCANHAN_KHACHHANG" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_TTCANHAN_NHANVIEN" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETGIOHANG_SANPHAM" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETSP_SANPHAM" ManuallyRouted="false" />

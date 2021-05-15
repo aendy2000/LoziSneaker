@@ -23,7 +23,6 @@ namespace WebApplication1.Models
         public string SDT { get; set; }
         public string MAIL { get; set; }
     
-        public virtual KHACHHANG KHACHHANG { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
     }
 }

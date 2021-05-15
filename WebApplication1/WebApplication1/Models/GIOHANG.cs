@@ -18,7 +18,6 @@ namespace WebApplication1.Models
         public GIOHANG()
         {
             this.CHITIETGIOHANGs = new HashSet<CHITIETGIOHANG>();
-            this.KHACHHANGs = new HashSet<KHACHHANG>();
         }
     
         public string MAGIOHANG { get; set; }
@@ -28,7 +27,5 @@ namespace WebApplication1.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KHACHHANG> KHACHHANGs { get; set; }
     }
 }
