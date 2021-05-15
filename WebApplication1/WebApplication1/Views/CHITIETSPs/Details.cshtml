@@ -1,0 +1,223 @@
+﻿@model WebApplication1.Models.CHITIETSP
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Thông số sản phẩm</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã sản phẩm:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MASANPHAM)
+        </dd>
+        <dt>
+            Tên sản phẩm:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SANPHAM.TENSP)
+        </dd>
+        <hr />
+
+        <dt>
+            Tổng số lượng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_TONG)
+        </dd>
+        <hr />
+        <dt>
+            Số lượng Size 36:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE36)
+        </dd>
+
+        <dt>
+            Số lượng Size 37:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE37)
+        </dd>
+
+        <dt>
+            Số lượng Size 38:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE38)
+        </dd>
+
+        <dt>
+            Số lượng Size 39:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE39)
+        </dd>
+
+        <dt>
+            Số lượng Size 40:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE40)
+        </dd>
+
+        <dt>
+            Số lượng Size 41:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE41)
+        </dd>
+
+        <dt>
+            Số lượng Size 42:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE42)
+        </dd>
+
+        <dt>
+            Số lượng Size 43:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SL_SIZE43)
+        </dd>
+        <hr />
+        <dt>
+            Màu 1:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC1)
+        </dd>
+
+        <dt>
+            Màu 2:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC2)
+        </dd>
+
+        <dt>
+            Màu 3:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC3)
+        </dd>
+
+        <dt>
+            Màu 4:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC4)
+        </dd>
+
+        <dt>
+            Màu 5:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC5)
+        </dd>
+
+        <dt>
+            Màu 6:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC6)
+        </dd>
+
+        <dt>
+            Màu 7:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC7)
+        </dd>
+
+        <dt>
+            Màu 8:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC8)
+        </dd>
+
+        <dt>
+            Màu 9:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC9)
+        </dd>
+
+        <dt>
+            Màu 10:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC10)
+        </dd>
+        <hr />
+        <dt>
+            Hình 1:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH1)
+        </dd>
+
+        <dt>
+            Hình 2:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH2)
+        </dd>
+
+        <dt>
+            Hình 3:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH3)
+        </dd>
+
+        <dt>
+            Hình 4:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH4)
+        </dd>
+
+        <dt>
+            Hình 5:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HINHANH5)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("<< Trở lại", "Index", new { Controller = "SANPHAMs" }) | 
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MASANPHAM })
+</p>

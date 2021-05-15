@@ -14,7 +14,7 @@ namespace WebApplication1.Models
     
     public partial class CHITIETSP
     {
-        public string MASP { get; set; }
+        public string MASANPHAM { get; set; }
         public Nullable<int> SL_TONG { get; set; }
         public Nullable<int> SL_SIZE36 { get; set; }
         public Nullable<int> SL_SIZE37 { get; set; }
@@ -34,11 +34,11 @@ namespace WebApplication1.Models
         public string MAUSAC8 { get; set; }
         public string MAUSAC9 { get; set; }
         public string MAUSAC10 { get; set; }
-        public byte[] HINHANH1 { get; set; }
-        public byte[] HINHANH2 { get; set; }
-        public byte[] HINHANH3 { get; set; }
-        public byte[] HINHANH4 { get; set; }
-        public byte[] HINHANH5 { get; set; }
+        public string HINHANH1 { get; set; }
+        public string HINHANH2 { get; set; }
+        public string HINHANH3 { get; set; }
+        public string HINHANH4 { get; set; }
+        public string HINHANH5 { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
     }
