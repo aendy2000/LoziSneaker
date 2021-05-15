@@ -4,14 +4,21 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết sản phẩm</h2>
 
 <div>
-    <h4>SANPHAM</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TENSP)
+            Mã Sản phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASP)
+        </dd>
+
+        <dt>
+            Tên sản phẩm:
         </dt>
 
         <dd>
@@ -19,7 +26,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.THUONGHIEU)
+            Thương hiệu:
         </dt>
 
         <dd>
@@ -27,7 +34,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GIA)
+            Giá:
         </dt>
 
         <dd>
@@ -35,7 +42,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MOTA)
+            Mô tả:
         </dt>
 
         <dd>
@@ -43,24 +50,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NGAYTHEM)
+            Ngày thêm:
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.NGAYTHEM)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CHITIETSP.MAUSAC1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC1)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MASP }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MASP }) |
+    @Html.ActionLink("Trở lại danh sách", "Index")
 </p>

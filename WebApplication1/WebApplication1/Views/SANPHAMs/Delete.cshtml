@@ -4,15 +4,20 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Xóa sản phẩm</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>SANPHAM</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TENSP)
+            Mã sản phẩm:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASP)
+        </dd>
+        <dt>
+            Tên sản phẩm:
         </dt>
 
         <dd>
@@ -20,7 +25,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.THUONGHIEU)
+            Thương hiệu:
         </dt>
 
         <dd>
@@ -28,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GIA)
+            Giá:
         </dt>
 
         <dd>
@@ -36,7 +41,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MOTA)
+            Mô tả:
         </dt>
 
         <dd>
@@ -44,29 +49,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NGAYTHEM)
+            Ngày thêm:
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.NGAYTHEM)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CHITIETSP.MAUSAC1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC1)
-        </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Xóa" class="btn btn-default" /> |
+    @Html.ActionLink("Trở lại danh sách", "Index")
+</div>
     }
 </div>
