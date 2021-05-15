@@ -55,14 +55,13 @@
         <dd>
             @Html.DisplayFor(model => model.NGAYTHEM)
         </dd>
-
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 <div class="form-actions no-color">
-    <input type="submit" value="Xóa" class="btn btn-default" /> |
-    @Html.ActionLink("Trở lại danh sách", "Index")
+    @Html.ActionLink("<< Trở lại", "Index") |   
+    <input type="submit" value="Xóa" class="btn btn-default" />
 </div>
     }
 </div>

@@ -4,27 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3041f81184c644bcaeacddb97d591a1f" Name="Diagram1">
-        <EntityTypeShape EntityType="CT25Team13Model.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="bb3fcc09687247b4878e2933fe5cc676" Name="Diagram1">
+        <EntityTypeShape EntityType="CT25Team13Model.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.DONHANG" Width="1.5" PointX="8" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.GIOHANG" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.NHANVIEN" Width="1.5" PointX="5.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.CHITIETSP" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.DONHANG" Width="1.5" PointX="10" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.GIOHANG" Width="1.5" PointX="3.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.NHANVIEN" Width="1.5" PointX="7.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.SANPHAM" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.sysdiagram" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.CHITIETGIOHANG" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.CHITIETSP" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.TTCANHAN" Width="1.5" PointX="8" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.sysdiagram" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.CHITIETGIOHANG" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.TTCANHAN" Width="1.5" PointX="10" PointY="4" IsExpanded="true" />
         <AssociationConnector Association="CT25Team13Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CT25Team13Model.FK_CHITIETSP_SANPHAM" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_DONHANG_NHANVIEN" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETGIOHANG_GIOHANG" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_TTCANHAN_NHANVIEN" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETGIOHANG_SANPHAM" ManuallyRouted="false" />
-        <AssociationConnector Association="CT25Team13Model.FK_CHITIETSP_SANPHAM" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

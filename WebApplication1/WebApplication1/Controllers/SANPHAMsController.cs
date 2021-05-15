@@ -25,12 +25,12 @@ namespace WebApplication1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
             SANPHAM sANPHAM = db.SANPHAMs.Find(id);
             if (sANPHAM == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(sANPHAM);
         }
@@ -53,6 +53,10 @@ namespace WebApplication1.Controllers
             {
                 db.SANPHAMs.Add(sANPHAM);
                 db.SaveChanges();
+                CHITIETSP addMaSP = new CHITIETSP();
+                addMaSP.MASANPHAM = sANPHAM.MASP.ToString();
+                db.CHITIETSPs.Add(addMaSP);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -70,7 +74,7 @@ namespace WebApplication1.Controllers
             SANPHAM sANPHAM = db.SANPHAMs.Find(id);
             if (sANPHAM == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP", sANPHAM.MASP);
             return View(sANPHAM);
@@ -98,12 +102,12 @@ namespace WebApplication1.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            SANPHAM sANPHAM = db.SANPHAMs.Where(c => c.MASP == id).First();
             if (sANPHAM == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
             return View(sANPHAM);
         }
@@ -113,8 +117,11 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
-            db.SANPHAMs.Remove(sANPHAM);
+            string ma = id;
+            var XoaSP = db.SANPHAMs.Where(c => c.MASP == ma).First();
+            var XoaTSSP = db.CHITIETSPs.Where(c => c.MASANPHAM == ma).First();
+            db.CHITIETSPs.Remove(XoaTSSP);
+            db.SANPHAMs.Remove(XoaSP);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

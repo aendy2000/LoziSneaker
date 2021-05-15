@@ -27,7 +27,7 @@
             Ngày thêm
         </th>
         <th>
-            Cập nhật thông số
+            Số lượng | Size | Màu sắc
         </th>
     </tr>
 
@@ -49,7 +49,7 @@
         @Html.DisplayFor(modelItem => item.NGAYTHEM)
     </td>
     <td>
-        @Html.ActionLink("Cập nhật thông số sản phẩm +", "Edit", new { id = item.MASP })
+        @Html.ActionLink("Xem | Chỉnh sửa thông số  >>", "Details", new {Controller = "CHITIETSPs", id = item.MASP})
     </td>
     <td>
         @Html.ActionLink("Sửa", "Edit", new { id = item.MASP }) |
