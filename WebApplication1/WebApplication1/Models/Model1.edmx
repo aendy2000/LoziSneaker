@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CT25Team13Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CT25Team13Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -67,6 +67,14 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6013: The table/view 'CT25Team13.dbo.CHITIETDH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="CHITIETDH">
+          <Property Name="MADH" Type="nvarchar" MaxLength="20" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="MASP" Type="nvarchar" MaxLength="20" />
+          <Property Name="GIA" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'CT25Team13.dbo.CHITIETGIOHANG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CHITIETGIOHANG">
           <Key>
@@ -89,8 +97,8 @@ warning 6002: The table/view 'CT25Team13.dbo.CHITIETSP' does not have a primary 
           <Property Name="SL_TONG" Type="int" />
           <Property Name="SL_SIZE36" Type="int" />
           <Property Name="SL_SIZE37" Type="int" />
-          <Property Name="SL_SIZE48" Type="int" />
-          <Property Name="SL_SIZE49" Type="int" />
+          <Property Name="SL_SIZE38" Type="int" />
+          <Property Name="SL_SIZE39" Type="int" />
           <Property Name="SL_SIZE40" Type="int" />
           <Property Name="SL_SIZE41" Type="int" />
           <Property Name="SL_SIZE42" Type="int" />
@@ -176,6 +184,12 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
           <Property Name="SDT" Type="nvarchar" MaxLength="30" />
           <Property Name="MAIL" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_CHITIETDH_DONHANG" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_CHITIETDH_SANPHAM" />-->
         <Association Name="FK_CHITIETGIOHANG_GIOHANG">
           <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
           <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
@@ -319,8 +333,8 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
     [CHITIETSP].[SL_TONG] AS [SL_TONG], 
     [CHITIETSP].[SL_SIZE36] AS [SL_SIZE36], 
     [CHITIETSP].[SL_SIZE37] AS [SL_SIZE37], 
-    [CHITIETSP].[SL_SIZE48] AS [SL_SIZE48], 
-    [CHITIETSP].[SL_SIZE49] AS [SL_SIZE49], 
+    [CHITIETSP].[SL_SIZE38] AS [SL_SIZE38], 
+    [CHITIETSP].[SL_SIZE39] AS [SL_SIZE39], 
     [CHITIETSP].[SL_SIZE40] AS [SL_SIZE40], 
     [CHITIETSP].[SL_SIZE41] AS [SL_SIZE41], 
     [CHITIETSP].[SL_SIZE42] AS [SL_SIZE42], 
@@ -391,7 +405,8 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
             <End Role="TTCANHAN" EntitySet="TTCANHAN" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CT25Team13Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -494,10 +509,10 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
           <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="THUONGHIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GIA" Type="Int32" />
-          <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETGIOHANG" />
-          <NavigationProperty Name="CHITIETSP" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSP" />
           <Property Name="MOTA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="NGAYTHEM" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETGIOHANG" />
+          <NavigationProperty Name="CHITIETSP" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSP" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -527,12 +542,11 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
             <PropertyRef Name="MASP" />
           </Key>
           <Property Name="MASP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="CHITIETSP" ToRole="SANPHAM" />
           <Property Name="SL_TONG" Type="Int32" />
           <Property Name="SL_SIZE36" Type="Int32" />
           <Property Name="SL_SIZE37" Type="Int32" />
-          <Property Name="SL_SIZE48" Type="Int32" />
-          <Property Name="SL_SIZE49" Type="Int32" />
+          <Property Name="SL_SIZE38" Type="Int32" />
+          <Property Name="SL_SIZE39" Type="Int32" />
           <Property Name="SL_SIZE40" Type="Int32" />
           <Property Name="SL_SIZE41" Type="Int32" />
           <Property Name="SL_SIZE42" Type="Int32" />
@@ -552,6 +566,7 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
           <Property Name="HINHANH3" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="HINHANH4" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="HINHANH5" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="CHITIETSP" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="TTCANHAN">
           <Key>
@@ -802,12 +817,12 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
           <EntitySetMapping Name="SANPHAMs">
             <EntityTypeMapping TypeName="CT25Team13Model.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
-                <ScalarProperty Name="NGAYTHEM" ColumnName="NGAYTHEM" />
-                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="TENSP" ColumnName="TENSP" />
                 <ScalarProperty Name="THUONGHIEU" ColumnName="THUONGHIEU" />
                 <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="NGAYTHEM" ColumnName="NGAYTHEM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -836,32 +851,32 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
           <EntitySetMapping Name="CHITIETSPs">
             <EntityTypeMapping TypeName="CT25Team13Model.CHITIETSP">
               <MappingFragment StoreEntitySet="CHITIETSP">
-                <ScalarProperty Name="HINHANH5" ColumnName="HINHANH5" />
-                <ScalarProperty Name="HINHANH4" ColumnName="HINHANH4" />
-                <ScalarProperty Name="HINHANH3" ColumnName="HINHANH3" />
-                <ScalarProperty Name="HINHANH2" ColumnName="HINHANH2" />
-                <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
-                <ScalarProperty Name="MAUSAC10" ColumnName="MAUSAC10" />
-                <ScalarProperty Name="MAUSAC9" ColumnName="MAUSAC9" />
-                <ScalarProperty Name="MAUSAC8" ColumnName="MAUSAC8" />
-                <ScalarProperty Name="MAUSAC7" ColumnName="MAUSAC7" />
-                <ScalarProperty Name="MAUSAC6" ColumnName="MAUSAC6" />
-                <ScalarProperty Name="MAUSAC5" ColumnName="MAUSAC5" />
-                <ScalarProperty Name="MAUSAC4" ColumnName="MAUSAC4" />
-                <ScalarProperty Name="MAUSAC3" ColumnName="MAUSAC3" />
-                <ScalarProperty Name="MAUSAC2" ColumnName="MAUSAC2" />
-                <ScalarProperty Name="MAUSAC1" ColumnName="MAUSAC1" />
-                <ScalarProperty Name="SL_SIZE43" ColumnName="SL_SIZE43" />
-                <ScalarProperty Name="SL_SIZE42" ColumnName="SL_SIZE42" />
-                <ScalarProperty Name="SL_SIZE41" ColumnName="SL_SIZE41" />
-                <ScalarProperty Name="SL_SIZE40" ColumnName="SL_SIZE40" />
-                <ScalarProperty Name="SL_SIZE49" ColumnName="SL_SIZE49" />
-                <ScalarProperty Name="SL_SIZE48" ColumnName="SL_SIZE48" />
-                <ScalarProperty Name="SL_SIZE37" ColumnName="SL_SIZE37" />
-                <ScalarProperty Name="SL_SIZE36" ColumnName="SL_SIZE36" />
-                <ScalarProperty Name="SL_TONG" ColumnName="SL_TONG" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
-                </MappingFragment>
+                <ScalarProperty Name="SL_TONG" ColumnName="SL_TONG" />
+                <ScalarProperty Name="SL_SIZE36" ColumnName="SL_SIZE36" />
+                <ScalarProperty Name="SL_SIZE37" ColumnName="SL_SIZE37" />
+                <ScalarProperty Name="SL_SIZE38" ColumnName="SL_SIZE38" />
+                <ScalarProperty Name="SL_SIZE39" ColumnName="SL_SIZE39" />
+                <ScalarProperty Name="SL_SIZE40" ColumnName="SL_SIZE40" />
+                <ScalarProperty Name="SL_SIZE41" ColumnName="SL_SIZE41" />
+                <ScalarProperty Name="SL_SIZE42" ColumnName="SL_SIZE42" />
+                <ScalarProperty Name="SL_SIZE43" ColumnName="SL_SIZE43" />
+                <ScalarProperty Name="MAUSAC1" ColumnName="MAUSAC1" />
+                <ScalarProperty Name="MAUSAC2" ColumnName="MAUSAC2" />
+                <ScalarProperty Name="MAUSAC3" ColumnName="MAUSAC3" />
+                <ScalarProperty Name="MAUSAC4" ColumnName="MAUSAC4" />
+                <ScalarProperty Name="MAUSAC5" ColumnName="MAUSAC5" />
+                <ScalarProperty Name="MAUSAC6" ColumnName="MAUSAC6" />
+                <ScalarProperty Name="MAUSAC7" ColumnName="MAUSAC7" />
+                <ScalarProperty Name="MAUSAC8" ColumnName="MAUSAC8" />
+                <ScalarProperty Name="MAUSAC9" ColumnName="MAUSAC9" />
+                <ScalarProperty Name="MAUSAC10" ColumnName="MAUSAC10" />
+                <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
+                <ScalarProperty Name="HINHANH2" ColumnName="HINHANH2" />
+                <ScalarProperty Name="HINHANH3" ColumnName="HINHANH3" />
+                <ScalarProperty Name="HINHANH4" ColumnName="HINHANH4" />
+                <ScalarProperty Name="HINHANH5" ColumnName="HINHANH5" />
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TTCANHANs">

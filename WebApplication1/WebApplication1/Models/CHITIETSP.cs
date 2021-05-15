@@ -18,8 +18,8 @@ namespace WebApplication1.Models
         public Nullable<int> SL_TONG { get; set; }
         public Nullable<int> SL_SIZE36 { get; set; }
         public Nullable<int> SL_SIZE37 { get; set; }
-        public Nullable<int> SL_SIZE48 { get; set; }
-        public Nullable<int> SL_SIZE49 { get; set; }
+        public Nullable<int> SL_SIZE38 { get; set; }
+        public Nullable<int> SL_SIZE39 { get; set; }
         public Nullable<int> SL_SIZE40 { get; set; }
         public Nullable<int> SL_SIZE41 { get; set; }
         public Nullable<int> SL_SIZE42 { get; set; }
