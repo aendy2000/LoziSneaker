@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CT25Team13Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CT25Team13Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -67,14 +67,6 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'CT25Team13.dbo.CHITIETDH' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="CHITIETDH">
-          <Property Name="MADH" Type="nvarchar" MaxLength="20" />
-          <Property Name="SOLUONG" Type="int" />
-          <Property Name="MASP" Type="nvarchar" MaxLength="20" />
-          <Property Name="GIA" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
 warning 6002: The table/view 'CT25Team13.dbo.CHITIETGIOHANG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CHITIETGIOHANG">
           <Key>
@@ -94,11 +86,30 @@ warning 6002: The table/view 'CT25Team13.dbo.CHITIETSP' does not have a primary 
             <PropertyRef Name="MASP" />
           </Key>
           <Property Name="MASP" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="SOLUONG" Type="int" />
-          <Property Name="MAUSAC" Type="nvarchar" MaxLength="10" />
-          <Property Name="KICHCO" Type="int" />
-          <Property Name="MOTA" Type="nvarchar" MaxLength="300" />
-          <Property Name="HINHANH" Type="image" />
+          <Property Name="SL_TONG" Type="int" />
+          <Property Name="SL_SIZE36" Type="int" />
+          <Property Name="SL_SIZE37" Type="int" />
+          <Property Name="SL_SIZE48" Type="int" />
+          <Property Name="SL_SIZE49" Type="int" />
+          <Property Name="SL_SIZE40" Type="int" />
+          <Property Name="SL_SIZE41" Type="int" />
+          <Property Name="SL_SIZE42" Type="int" />
+          <Property Name="SL_SIZE43" Type="int" />
+          <Property Name="MAUSAC1" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC2" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC3" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC4" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC5" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC6" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC7" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC8" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC9" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAUSAC10" Type="nvarchar" MaxLength="50" />
+          <Property Name="HINHANH1" Type="image" />
+          <Property Name="HINHANH2" Type="image" />
+          <Property Name="HINHANH3" Type="image" />
+          <Property Name="HINHANH4" Type="image" />
+          <Property Name="HINHANH5" Type="image" />
         </EntityType>
         <EntityType Name="DONHANG">
           <Key>
@@ -119,14 +130,6 @@ warning 6002: The table/view 'CT25Team13.dbo.CHITIETSP' does not have a primary 
           <Property Name="TONGTIEN" Type="int" />
           <Property Name="TKKH" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="KHACHHANG">
-          <Key>
-            <PropertyRef Name="TKKH" />
-          </Key>
-          <Property Name="TKKH" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="MAGIOHANG" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="MAHOADON" Type="nvarchar" MaxLength="20" Nullable="false" />
-        </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
             <PropertyRef Name="TKNV" />
@@ -144,6 +147,8 @@ warning 6002: The table/view 'CT25Team13.dbo.CHITIETSP' does not have a primary 
           <Property Name="TENSP" Type="nvarchar" MaxLength="50" />
           <Property Name="THUONGHIEU" Type="nvarchar" MaxLength="50" />
           <Property Name="GIA" Type="int" />
+          <Property Name="MOTA" Type="nvarchar" MaxLength="300" />
+          <Property Name="NGAYTHEM" Type="date" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -171,12 +176,6 @@ warning 6002: The table/view 'CT25Team13.dbo.TTCANHAN' does not have a primary k
           <Property Name="SDT" Type="nvarchar" MaxLength="30" />
           <Property Name="MAIL" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <!--Errors Found During Generation:
-error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_CHITIETDH_DONHANG" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship, but cannot be found.
-        <Association Name="FK_CHITIETDH_SANPHAM" />-->
         <Association Name="FK_CHITIETGIOHANG_GIOHANG">
           <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
           <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
@@ -281,42 +280,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_KHACHHANG_DONHANG">
-          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DONHANG">
-              <PropertyRef Name="MADH" />
-            </Principal>
-            <Dependent Role="KHACHHANG">
-              <PropertyRef Name="MAHOADON" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KHACHHANG_GIOHANG">
-          <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GIOHANG">
-              <PropertyRef Name="MAGIOHANG" />
-            </Principal>
-            <Dependent Role="KHACHHANG">
-              <PropertyRef Name="MAGIOHANG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TTCANHAN_KHACHHANG">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-          <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="TKKH" />
-            </Principal>
-            <Dependent Role="TTCANHAN">
-              <PropertyRef Name="TENTK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TTCANHAN_NHANVIEN">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
           <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="*" />
@@ -338,7 +301,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GIOHANG" EntityType="Self.GIOHANG" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -354,11 +316,30 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <EntitySet Name="CHITIETSP" EntityType="Self.CHITIETSP" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CHITIETSP].[MASP] AS [MASP], 
-    [CHITIETSP].[SOLUONG] AS [SOLUONG], 
-    [CHITIETSP].[MAUSAC] AS [MAUSAC], 
-    [CHITIETSP].[KICHCO] AS [KICHCO], 
-    [CHITIETSP].[MOTA] AS [MOTA], 
-    [CHITIETSP].[HINHANH] AS [HINHANH]
+    [CHITIETSP].[SL_TONG] AS [SL_TONG], 
+    [CHITIETSP].[SL_SIZE36] AS [SL_SIZE36], 
+    [CHITIETSP].[SL_SIZE37] AS [SL_SIZE37], 
+    [CHITIETSP].[SL_SIZE48] AS [SL_SIZE48], 
+    [CHITIETSP].[SL_SIZE49] AS [SL_SIZE49], 
+    [CHITIETSP].[SL_SIZE40] AS [SL_SIZE40], 
+    [CHITIETSP].[SL_SIZE41] AS [SL_SIZE41], 
+    [CHITIETSP].[SL_SIZE42] AS [SL_SIZE42], 
+    [CHITIETSP].[SL_SIZE43] AS [SL_SIZE43], 
+    [CHITIETSP].[MAUSAC1] AS [MAUSAC1], 
+    [CHITIETSP].[MAUSAC2] AS [MAUSAC2], 
+    [CHITIETSP].[MAUSAC3] AS [MAUSAC3], 
+    [CHITIETSP].[MAUSAC4] AS [MAUSAC4], 
+    [CHITIETSP].[MAUSAC5] AS [MAUSAC5], 
+    [CHITIETSP].[MAUSAC6] AS [MAUSAC6], 
+    [CHITIETSP].[MAUSAC7] AS [MAUSAC7], 
+    [CHITIETSP].[MAUSAC8] AS [MAUSAC8], 
+    [CHITIETSP].[MAUSAC9] AS [MAUSAC9], 
+    [CHITIETSP].[MAUSAC10] AS [MAUSAC10], 
+    [CHITIETSP].[HINHANH1] AS [HINHANH1], 
+    [CHITIETSP].[HINHANH2] AS [HINHANH2], 
+    [CHITIETSP].[HINHANH3] AS [HINHANH3], 
+    [CHITIETSP].[HINHANH4] AS [HINHANH4], 
+    [CHITIETSP].[HINHANH5] AS [HINHANH5]
     FROM [dbo].[CHITIETSP] AS [CHITIETSP]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="TTCANHAN" EntityType="Self.TTCANHAN" store:Type="Tables" store:Schema="dbo">
@@ -405,25 +386,12 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="DONHANG" EntitySet="DONHANG" />
           </AssociationSet>
-          <AssociationSet Name="FK_KHACHHANG_DONHANG" Association="Self.FK_KHACHHANG_DONHANG">
-            <End Role="DONHANG" EntitySet="DONHANG" />
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KHACHHANG_GIOHANG" Association="Self.FK_KHACHHANG_GIOHANG">
-            <End Role="GIOHANG" EntitySet="GIOHANG" />
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TTCANHAN_KHACHHANG" Association="Self.FK_TTCANHAN_KHACHHANG">
-            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
-            <End Role="TTCANHAN" EntitySet="TTCANHAN" />
-          </AssociationSet>
           <AssociationSet Name="FK_TTCANHAN_NHANVIEN" Association="Self.FK_TTCANHAN_NHANVIEN">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="TTCANHAN" EntitySet="TTCANHAN" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CT25Team13Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -496,7 +464,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <Property Name="NGAYLAPDH" Type="DateTime" Precision="0" />
           <Property Name="TONGTIEN" Type="Int32" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_DONHANG_NHANVIEN" FromRole="DONHANG" ToRole="NHANVIEN" />
-          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK_KHACHHANG_DONHANG" FromRole="DONHANG" ToRole="KHACHHANG" />
         </EntityType>
         <EntityType Name="GIOHANG">
           <Key>
@@ -507,18 +474,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <Property Name="TONGTIEN" Type="Int32" />
           <Property Name="TKKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="GIOHANG" ToRole="CHITIETGIOHANG" />
-          <NavigationProperty Name="KHACHHANGs" Relationship="Self.FK_KHACHHANG_GIOHANG" FromRole="GIOHANG" ToRole="KHACHHANG" />
-        </EntityType>
-        <EntityType Name="KHACHHANG">
-          <Key>
-            <PropertyRef Name="TKKH" />
-          </Key>
-          <Property Name="TKKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MAGIOHANG" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MAHOADON" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DONHANG" Relationship="Self.FK_KHACHHANG_DONHANG" FromRole="KHACHHANG" ToRole="DONHANG" />
-          <NavigationProperty Name="GIOHANG" Relationship="Self.FK_KHACHHANG_GIOHANG" FromRole="KHACHHANG" ToRole="GIOHANG" />
-          <NavigationProperty Name="TTCANHANs" Relationship="Self.FK_TTCANHAN_KHACHHANG" FromRole="KHACHHANG" ToRole="TTCANHAN" />
         </EntityType>
         <EntityType Name="NHANVIEN">
           <Key>
@@ -541,6 +496,8 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <Property Name="GIA" Type="Int32" />
           <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETGIOHANG" />
           <NavigationProperty Name="CHITIETSP" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSP" />
+          <Property Name="MOTA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYTHEM" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -570,12 +527,31 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
             <PropertyRef Name="MASP" />
           </Key>
           <Property Name="MASP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SOLUONG" Type="Int32" />
-          <Property Name="MAUSAC" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="KICHCO" Type="Int32" />
-          <Property Name="MOTA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="HINHANH" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="CHITIETSP" ToRole="SANPHAM" />
+          <Property Name="SL_TONG" Type="Int32" />
+          <Property Name="SL_SIZE36" Type="Int32" />
+          <Property Name="SL_SIZE37" Type="Int32" />
+          <Property Name="SL_SIZE48" Type="Int32" />
+          <Property Name="SL_SIZE49" Type="Int32" />
+          <Property Name="SL_SIZE40" Type="Int32" />
+          <Property Name="SL_SIZE41" Type="Int32" />
+          <Property Name="SL_SIZE42" Type="Int32" />
+          <Property Name="SL_SIZE43" Type="Int32" />
+          <Property Name="MAUSAC1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HINHANH1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HINHANH2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HINHANH3" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HINHANH4" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="HINHANH5" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TTCANHAN">
           <Key>
@@ -590,7 +566,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="KHACHHANG" Relationship="Self.FK_TTCANHAN_KHACHHANG" FromRole="TTCANHAN" ToRole="KHACHHANG" />
           <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_TTCANHAN_NHANVIEN" FromRole="TTCANHAN" ToRole="NHANVIEN" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -633,18 +608,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_KHACHHANG_DONHANG">
-          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DONHANG">
-              <PropertyRef Name="MADH" />
-            </Principal>
-            <Dependent Role="KHACHHANG">
-              <PropertyRef Name="MAHOADON" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CHITIETGIOHANG_GIOHANG">
           <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
           <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
@@ -654,30 +617,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
             </Principal>
             <Dependent Role="CHITIETGIOHANG">
               <PropertyRef Name="MAGIOHG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_KHACHHANG_GIOHANG">
-          <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="GIOHANG">
-              <PropertyRef Name="MAGIOHANG" />
-            </Principal>
-            <Dependent Role="KHACHHANG">
-              <PropertyRef Name="MAGIOHANG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TTCANHAN_KHACHHANG">
-          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-          <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHACHHANG">
-              <PropertyRef Name="TKKH" />
-            </Principal>
-            <Dependent Role="TTCANHAN">
-              <PropertyRef Name="TENTK" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -729,7 +668,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="DONHANGs" EntityType="Self.DONHANG" />
           <EntitySet Name="GIOHANGs" EntityType="Self.GIOHANG" />
-          <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
           <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -748,21 +686,9 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="DONHANG" EntitySet="DONHANGs" />
           </AssociationSet>
-          <AssociationSet Name="FK_KHACHHANG_DONHANG" Association="Self.FK_KHACHHANG_DONHANG">
-            <End Role="DONHANG" EntitySet="DONHANGs" />
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-          </AssociationSet>
           <AssociationSet Name="FK_CHITIETGIOHANG_GIOHANG" Association="Self.FK_CHITIETGIOHANG_GIOHANG">
             <End Role="GIOHANG" EntitySet="GIOHANGs" />
             <End Role="CHITIETGIOHANG" EntitySet="CHITIETGIOHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_KHACHHANG_GIOHANG" Association="Self.FK_KHACHHANG_GIOHANG">
-            <End Role="GIOHANG" EntitySet="GIOHANGs" />
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TTCANHAN_KHACHHANG" Association="Self.FK_TTCANHAN_KHACHHANG">
-            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
-            <End Role="TTCANHAN" EntitySet="TTCANHANs" />
           </AssociationSet>
           <AssociationSet Name="FK_TTCANHAN_NHANVIEN" Association="Self.FK_TTCANHAN_NHANVIEN">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
@@ -863,15 +789,6 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KHACHHANGs">
-            <EntityTypeMapping TypeName="CT25Team13Model.KHACHHANG">
-              <MappingFragment StoreEntitySet="KHACHHANG">
-                <ScalarProperty Name="TKKH" ColumnName="TKKH" />
-                <ScalarProperty Name="MAGIOHANG" ColumnName="MAGIOHANG" />
-                <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="NHANVIENs">
             <EntityTypeMapping TypeName="CT25Team13Model.NHANVIEN">
               <MappingFragment StoreEntitySet="NHANVIEN">
@@ -885,6 +802,8 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <EntitySetMapping Name="SANPHAMs">
             <EntityTypeMapping TypeName="CT25Team13Model.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
+                <ScalarProperty Name="NGAYTHEM" ColumnName="NGAYTHEM" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="TENSP" ColumnName="TENSP" />
                 <ScalarProperty Name="THUONGHIEU" ColumnName="THUONGHIEU" />
@@ -917,13 +836,32 @@ error 6004: The table 'CT25Team13.dbo.CHITIETDH' is referenced by a relationship
           <EntitySetMapping Name="CHITIETSPs">
             <EntityTypeMapping TypeName="CT25Team13Model.CHITIETSP">
               <MappingFragment StoreEntitySet="CHITIETSP">
+                <ScalarProperty Name="HINHANH5" ColumnName="HINHANH5" />
+                <ScalarProperty Name="HINHANH4" ColumnName="HINHANH4" />
+                <ScalarProperty Name="HINHANH3" ColumnName="HINHANH3" />
+                <ScalarProperty Name="HINHANH2" ColumnName="HINHANH2" />
+                <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
+                <ScalarProperty Name="MAUSAC10" ColumnName="MAUSAC10" />
+                <ScalarProperty Name="MAUSAC9" ColumnName="MAUSAC9" />
+                <ScalarProperty Name="MAUSAC8" ColumnName="MAUSAC8" />
+                <ScalarProperty Name="MAUSAC7" ColumnName="MAUSAC7" />
+                <ScalarProperty Name="MAUSAC6" ColumnName="MAUSAC6" />
+                <ScalarProperty Name="MAUSAC5" ColumnName="MAUSAC5" />
+                <ScalarProperty Name="MAUSAC4" ColumnName="MAUSAC4" />
+                <ScalarProperty Name="MAUSAC3" ColumnName="MAUSAC3" />
+                <ScalarProperty Name="MAUSAC2" ColumnName="MAUSAC2" />
+                <ScalarProperty Name="MAUSAC1" ColumnName="MAUSAC1" />
+                <ScalarProperty Name="SL_SIZE43" ColumnName="SL_SIZE43" />
+                <ScalarProperty Name="SL_SIZE42" ColumnName="SL_SIZE42" />
+                <ScalarProperty Name="SL_SIZE41" ColumnName="SL_SIZE41" />
+                <ScalarProperty Name="SL_SIZE40" ColumnName="SL_SIZE40" />
+                <ScalarProperty Name="SL_SIZE49" ColumnName="SL_SIZE49" />
+                <ScalarProperty Name="SL_SIZE48" ColumnName="SL_SIZE48" />
+                <ScalarProperty Name="SL_SIZE37" ColumnName="SL_SIZE37" />
+                <ScalarProperty Name="SL_SIZE36" ColumnName="SL_SIZE36" />
+                <ScalarProperty Name="SL_TONG" ColumnName="SL_TONG" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
-                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
-                <ScalarProperty Name="MAUSAC" ColumnName="MAUSAC" />
-                <ScalarProperty Name="KICHCO" ColumnName="KICHCO" />
-                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
-                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TTCANHANs">
