@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -35,42 +36,17 @@ namespace WebApplication1.Controllers
             return View(cHITIETSP);
         }
 
-        // GET: CHITIETSPs/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP");
-        //    return View();
-        //}
-
-        //// POST: CHITIETSPs/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "MASANPHAM,SL_TONG,SL_SIZE36,SL_SIZE37,SL_SIZE38,SL_SIZE39,SL_SIZE40,SL_SIZE41,SL_SIZE42,SL_SIZE43,MAUSAC1,MAUSAC2,MAUSAC3,MAUSAC4,MAUSAC5,MAUSAC6,MAUSAC7,MAUSAC8,MAUSAC9,MAUSAC10,HINHANH1,HINHANH2,HINHANH3,HINHANH4,HINHANH5")] CHITIETSP cHITIETSP)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        dbo.CHITIETSPs.Add(cHITIETSP);
-        //        dbo.SaveChanges();
-        //        return RedirectToAction("Index", "SANPHAMs");
-        //    }
-
-        //    ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
-        //    return View(cHITIETSP);
-        //}
-
         // GET: CHITIETSPs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
-                return RedirectToAction("Index", "SANPHAMs");
+                return RedirectToAction("Details");
             }
             CHITIETSP cHITIETSP = dbo.CHITIETSPs.Find(id);
             if (cHITIETSP == null)
             {
-                return RedirectToAction("Index", "SANPHAMs");
+                return RedirectToAction("Details");
             }
             ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
             return View(cHITIETSP);
@@ -81,42 +57,64 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MASANPHAM,SL_TONG,SL_SIZE36,SL_SIZE37,SL_SIZE38,SL_SIZE39,SL_SIZE40,SL_SIZE41,SL_SIZE42,SL_SIZE43,MAUSAC1,MAUSAC2,MAUSAC3,MAUSAC4,MAUSAC5,MAUSAC6,MAUSAC7,MAUSAC8,MAUSAC9,MAUSAC10,HINHANH1,HINHANH2,HINHANH3,HINHANH4,HINHANH5")] CHITIETSP cHITIETSP)
+        public ActionResult Edit(CHITIETSP cHITIETSP)
         {
-            if (ModelState.IsValid)
+            try
             {
-                dbo.Entry(cHITIETSP).State = EntityState.Modified;
-                dbo.SaveChanges();
-                return RedirectToAction("Index");
+                if(cHITIETSP.ImageUpload != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(cHITIETSP.ImageUpload.FileName).ToString();
+                    string extension = Path.GetExtension(cHITIETSP.ImageUpload.FileName);
+                    filename = filename + extension;
+                    cHITIETSP.HINHANH1 = "~/img/imgProduct/" + filename;
+                    cHITIETSP.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename));
+                }
+                if (cHITIETSP.ImageUpload2 != null)
+                {
+                    string filename2 = Path.GetFileNameWithoutExtension(cHITIETSP.ImageUpload2.FileName).ToString();
+                    string extension2 = Path.GetExtension(cHITIETSP.ImageUpload2.FileName);
+                    filename2 = filename2 + extension2;
+                    cHITIETSP.HINHANH2 = "~/img/imgProduct/" + filename2;
+                    cHITIETSP.ImageUpload2.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename2));
+                }
+                if (cHITIETSP.ImageUpload3 != null)
+                    {
+                        string filename3 = Path.GetFileNameWithoutExtension(cHITIETSP.ImageUpload3.FileName).ToString();
+                        string extension3 = Path.GetExtension(cHITIETSP.ImageUpload3.FileName);
+                        filename3 = filename3 + extension3;
+                        cHITIETSP.HINHANH3 = "~/img/imgProduct/" + filename3;
+                        cHITIETSP.ImageUpload3.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename3));
+                    }
+                    if (cHITIETSP.ImageUpload4 != null)
+                    {
+                        string filename4 = Path.GetFileNameWithoutExtension(cHITIETSP.ImageUpload4.FileName).ToString();
+                        string extension4 = Path.GetExtension(cHITIETSP.ImageUpload4.FileName);
+                        filename4 = filename4 + extension4;
+                        cHITIETSP.HINHANH4 = "~/img/imgProduct/" + filename4;
+                        cHITIETSP.ImageUpload4.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename4));
+                    }
+                    if (cHITIETSP.ImageUpload5 != null)
+                    {
+                        string filename5 = Path.GetFileNameWithoutExtension(cHITIETSP.ImageUpload5.FileName).ToString();
+                        string extension5 = Path.GetExtension(cHITIETSP.ImageUpload5.FileName);
+                        filename5 = filename5 + extension5;
+                        cHITIETSP.HINHANH5 = "~/img/imgProduct/" + filename5;
+                        cHITIETSP.ImageUpload5.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename5));
+                    }
+                if (ModelState.IsValid)
+                    {
+                        dbo.Entry(cHITIETSP).State = EntityState.Modified;
+                        dbo.SaveChanges();
+                        return RedirectToAction("Details");
+                    }
+                    ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
             }
-            ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
+            catch
+            {
+                return RedirectToAction("Details");
+            }
             return View(cHITIETSP);
-        }
 
-        // GET: CHITIETSPs/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("Index", "SANPHAMs");
-            }
-            CHITIETSP cHITIETSP = dbo.CHITIETSPs.Find(id);
-            if (cHITIETSP == null)
-            {
-                return RedirectToAction("Index", "SANPHAMs");
-            }
-            return View(cHITIETSP);
-        }
-
-        // POST: CHITIETSPs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            CHITIETSP cHITIETSP = dbo.CHITIETSPs.Find(id);
-            dbo.CHITIETSPs.Remove(cHITIETSP);
-            dbo.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

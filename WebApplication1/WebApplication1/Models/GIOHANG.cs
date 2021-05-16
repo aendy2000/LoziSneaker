@@ -14,18 +14,11 @@ namespace WebApplication1.Models
     
     public partial class GIOHANG
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public GIOHANG()
-        {
-            this.CHITIETGIOHANGs = new HashSet<CHITIETGIOHANG>();
-        }
-    
         public string MAGIOHANG { get; set; }
         public string SOLUONG { get; set; }
         public Nullable<int> TONGTIEN { get; set; }
         public string TKKH { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
+        public virtual CHITIETGIOHANG CHITIETGIOHANG { get; set; }
     }
 }

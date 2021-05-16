@@ -10,19 +10,12 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            Mã sản phẩm:
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MASANPHAM)
-        </dd>
-        <dt>
             Tên sản phẩm:
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SANPHAM.TENSP)
         </dd>
         <hr />
-
         <dt>
             Tổng số lượng:
         </dt>
@@ -176,43 +169,28 @@
         </dd>
         <hr />
         <dt>
-            Hình 1:
+            Hình ảnh:
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.HINHANH1)
-        </dd>
+            <img src="@Url.Content(Model.HINHANH1 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dt>
-            Hình 2:
-        </dt>
+            <img src="@Url.Content(Model.HINHANH2 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dd>
-            @Html.DisplayFor(model => model.HINHANH2)
-        </dd>
+            <img src="@Url.Content(Model.HINHANH3 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dt>
-            Hình 3:
-        </dt>
+            <img src="@Url.Content(Model.HINHANH4 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dd>
-            @Html.DisplayFor(model => model.HINHANH3)
-        </dd>
-
-        <dt>
-            Hình 4:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HINHANH4)
-        </dd>
-
-        <dt>
-            Hình 5:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HINHANH5)
+            <img src="@Url.Content(Model.HINHANH5 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
         </dd>
         <hr />
     </dl>

@@ -11,9 +11,34 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
     public partial class CHITIETSP
     {
+        //public CHITIETSP()
+        //{
+        //    //if (HINHANH1.Equals("~/img/imgProduct/") || HINHANH1.Equals(""))
+        //    //    HINHANH1 = "~/img/imgProduct/";
+        //    //else
+        //    //    HINHANH1 = HINHANH1;
+        //    //if (HINHANH2 == "~/img/imgProduct/" || HINHANH2.Length == 0)
+        //    //    HINHANH2 = "~/img/imgProduct/";
+        //    //else
+        //    //    HINHANH2 = HINHANH2;
+        //    //if (HINHANH3 == "~/img/imgProduct/" || HINHANH3.Length == 0)
+        //    //    HINHANH3 = "~/img/imgProduct/";
+        //    //else
+        //    //    HINHANH3 = HINHANH3;
+        //    //if (HINHANH4 == "~/img/imgProduct/" || HINHANH4.Length == 0)
+        //    //    HINHANH4 = "~/img/imgProduct/";
+        //    //else
+        //    //    HINHANH4 = HINHANH4;
+        //    //if (HINHANH5 == "~/img/imgProduct/" || HINHANH5.Length == 0)
+        //    //    HINHANH5 = "~/img/imgProduct/";
+        //    //else
+        //    //    HINHANH5 = HINHANH5;
+        //}
         public string MASANPHAM { get; set; }
         public Nullable<int> SL_TONG { get; set; }
         public Nullable<int> SL_SIZE36 { get; set; }
@@ -41,5 +66,15 @@ namespace WebApplication1.Models
         public string HINHANH5 { get; set; }
     
         public virtual SANPHAM SANPHAM { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload2 { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload3 { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload4 { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload5 { get; set; }
     }
 }
