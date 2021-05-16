@@ -196,6 +196,9 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CHITIETDH.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CHITIETGIOHANG.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -266,6 +269,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="img\AirForce1.jpg" />
     <Content Include="img\AirJordan.jpg" />
+    <Content Include="img\imgProduct\AirForce1.jpg" />
+    <Content Include="img\imgProduct\AirJordan.jpg" />
+    <Content Include="img\imgProduct\Logo.png" />
+    <Content Include="img\imgProduct\NikeLD.jpg" />
+    <Content Include="img\imgProduct\NikeWMNS.jpg" />
+    <Content Include="img\imgProduct\Vans.jpg" />
+    <Content Include="img\imgProduct\Yeezy.jpg" />
     <Content Include="img\Logo.png" />
     <Content Include="img\NikeLD.jpg" />
     <Content Include="img\NikeWMNS.jpg" />
@@ -315,6 +325,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ScriptUploadImageProduct.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

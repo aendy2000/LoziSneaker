@@ -18,7 +18,6 @@ namespace WebApplication1.Models
         public NHANVIEN()
         {
             this.DONHANGs = new HashSet<DONHANG>();
-            this.TTCANHANs = new HashSet<TTCANHAN>();
         }
     
         public string TKNV { get; set; }
@@ -28,7 +27,6 @@ namespace WebApplication1.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DONHANG> DONHANGs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TTCANHAN> TTCANHANs { get; set; }
+        public virtual TTCANHAN TTCANHAN { get; set; }
     }
 }

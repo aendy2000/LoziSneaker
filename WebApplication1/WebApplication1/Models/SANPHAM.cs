@@ -17,6 +17,7 @@ namespace WebApplication1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
         {
+            this.CHITIETDHs = new HashSet<CHITIETDH>();
             this.CHITIETGIOHANGs = new HashSet<CHITIETGIOHANG>();
         }
     
@@ -27,8 +28,10 @@ namespace WebApplication1.Models
         public string MOTA { get; set; }
         public Nullable<System.DateTime> NGAYTHEM { get; set; }
     
-        public virtual CHITIETSP CHITIETSP { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHITIETDH> CHITIETDHs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
+        public virtual CHITIETSP CHITIETSP { get; set; }
     }
 }

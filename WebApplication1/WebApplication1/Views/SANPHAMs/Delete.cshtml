@@ -55,13 +55,47 @@
         <dd>
             @Html.DisplayFor(model => model.NGAYTHEM)
         </dd>
-    </dl>
+        <dt>
+            Số lượng:
+        </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-<div class="form-actions no-color">
-    @Html.ActionLink("<< Trở lại", "Index") |   
-    <input type="submit" value="Xóa" class="btn btn-default" />
-</div>
-    }
+        <dd>
+            @Html.DisplayFor(model => model.CHITIETSP.SL_TONG)
+        </dd>
+        <dt>
+            Hình ảnh:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH1 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
+
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH2 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
+
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH3 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
+
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH4 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
+
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH5 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
+            <br>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Xóa" class="btn btn-default" />
+                </div>
+            }
+        </dd>
+    </dl>
+    <hr />
+    @Html.ActionLink("<< Trở lại", "Index")
 </div>

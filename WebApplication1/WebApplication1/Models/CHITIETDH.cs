@@ -12,15 +12,14 @@ namespace WebApplication1.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DONHANG
+    public partial class CHITIETDH
     {
         public string MADH { get; set; }
-        public string TKNV { get; set; }
-        public string TKKH { get; set; }
-        public Nullable<System.DateTime> NGAYLAPDH { get; set; }
-        public Nullable<int> TONGTIEN { get; set; }
+        public Nullable<int> SOLUONG { get; set; }
+        public string MASP { get; set; }
+        public Nullable<int> GIA { get; set; }
     
-        public virtual CHITIETDH CHITIETDH { get; set; }
-        public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual DONHANG DONHANG { get; set; }
+        public virtual SANPHAM SANPHAM { get; set; }
     }
 }

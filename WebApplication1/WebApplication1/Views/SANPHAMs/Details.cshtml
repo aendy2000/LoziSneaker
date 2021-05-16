@@ -209,48 +209,36 @@
         </dd>
         <hr />
         <dt>
-            Hình 1:
+            Hình ảnh:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.HINHANH1)
-        </dd>
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH1 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dt>
-            Hình 2:
-        </dt>
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH2 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.HINHANH2)
-        </dd>
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH3 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dt>
-            Hình 3:
-        </dt>
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH4 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
 
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.HINHANH3)
-        </dd>
-
-        <dt>
-            Hình 4:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.HINHANH4)
-        </dd>
-
-        <dt>
-            Hình 5:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.HINHANH5)
+            <img src="@Url.Content(Model.CHITIETSP.HINHANH5 + " ")" style="        height: 150px;
+        width: auto;
+        margin: 10px;" />
         </dd>
         <hr />
     </dl>
 </div>
 <p>
-    @Html.ActionLink("<< Trở lại", "Index") | 
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MASP })
+    @Html.ActionLink("<< Trở lại", "Index") |
+    @Html.ActionLink("Sửa sửa thông tin", "Edit", new { id = Model.MASP }) | 
+    @Html.ActionLink("Set Số lượng - Màu - Hình ảnh >>", "Edit", new { Controller = "CHITIETSPs", id = Model.MASP })
+
 </p>
