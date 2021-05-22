@@ -23,7 +23,6 @@
     <script src="~/Scripts/ScriptUploadImageProduct.js"></script>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 
 <body>
@@ -121,7 +120,6 @@
                         </td>
                         <td>
                             <div>
-  
                                 @Html.Partial("_LoginPartial")
                             </div>
                         </td>
@@ -177,7 +175,11 @@
         <!-- ****** Header Area End ****** -->
 
         <main>
-            @RenderBody();
+            <section class="new_arrivals_area section_padding_100_0 clearfix">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </section>
         </main>
 
         <!-- ****** Footer Area Start ****** -->

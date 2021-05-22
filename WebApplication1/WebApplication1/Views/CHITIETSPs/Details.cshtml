@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Thông số sản phẩm</h2>
+<h2>Số lượng sản phẩm</h2>
 
 <div>
     <hr />
@@ -25,7 +25,7 @@
         </dd>
         <hr />
         <dt>
-            Số lượng Size 36:
+            Size 36:
         </dt>
 
         <dd>
@@ -33,7 +33,7 @@
         </dd>
 
         <dt>
-            Số lượng Size 37:
+            Size 37:
         </dt>
 
         <dd>
@@ -41,7 +41,7 @@
         </dd>
 
         <dt>
-            Số lượng Size 38:
+            Size 38:
         </dt>
 
         <dd>
@@ -49,7 +49,7 @@
         </dd>
 
         <dt>
-            Số lượng Size 39:
+            Size 39:
         </dt>
 
         <dd>
@@ -57,7 +57,7 @@
         </dd>
 
         <dt>
-            Số lượng Size 40:
+            Size 40:
         </dt>
 
         <dd>
@@ -65,7 +65,7 @@
         </dd>
 
         <dt>
-            Số lượng Size 41:
+            Size 41:
         </dt>
 
         <dd>
@@ -73,7 +73,7 @@
         </dd>
 
         <dt>
-            Số lượng Size 42:
+            Size 42:
         </dt>
 
         <dd>
@@ -81,121 +81,19 @@
         </dd>
 
         <dt>
-            Số lượng Size 43:
+            Size 43:
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.SL_SIZE43)
         </dd>
+
         <hr />
-        <dt>
-            Màu 1:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC1)
-        </dd>
-
-        <dt>
-            Màu 2:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC2)
-        </dd>
-
-        <dt>
-            Màu 3:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC3)
-        </dd>
-
-        <dt>
-            Màu 4:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC4)
-        </dd>
-
-        <dt>
-            Màu 5:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC5)
-        </dd>
-
-        <dt>
-            Màu 6:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC6)
-        </dd>
-
-        <dt>
-            Màu 7:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC7)
-        </dd>
-
-        <dt>
-            Màu 8:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC8)
-        </dd>
-
-        <dt>
-            Màu 9:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC9)
-        </dd>
-
-        <dt>
-            Màu 10:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MAUSAC10)
-        </dd>
-        <hr />
-        <dt>
-            Hình ảnh:
-        </dt>
-        <dd>
-            <img src="@Url.Content(Model.HINHANH1 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.HINHANH2 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.HINHANH3 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.HINHANH4 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.HINHANH5 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-        </dd>
-        <hr />
+    
     </dl>
 </div>
 <p>
-    @Html.ActionLink("<< Trở lại", "Index", new { Controller = "SANPHAMs" }) | 
+    @Html.ActionLink("<< Trở lại danh sách", "Index", new { Controller = "SANPHAMs" }) | 
     @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MASANPHAM })
 </p>
+<br>
