@@ -15,7 +15,6 @@ namespace WebApplication1.Models
     using System.Web;
     public partial class SANPHAM
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
         {
             this.CHITIETDHs = new HashSet<CHITIETDH>();
