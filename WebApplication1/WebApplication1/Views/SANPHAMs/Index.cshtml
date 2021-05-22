@@ -21,13 +21,16 @@
             Giá
         </th>
         <th>
-            Mô tả
+            Màu sắc
         </th>
         <th>
             Ngày thêm
         </th>
         <th>
-            Số lượng | Size | Màu sắc
+            Mô tả
+        </th>
+        <th>
+            Số lượng | Size
         </th>
     </tr>
 
@@ -43,13 +46,16 @@
         @Html.DisplayFor(modelItem => item.GIA)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.MOTA)
+        @Html.DisplayFor(modelItem => item.MAUSAC)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.NGAYTHEM)
     </td>
     <td>
-        @Html.ActionLink("Xem - Chỉnh sửa  >>", "Details", new {Controller = "CHITIETSPs", id = item.MASP})
+        @Html.DisplayFor(modelItem => item.MOTA)
+    </td>
+    <td>
+        @Html.ActionLink("| Cập nhật số lượng |", "Details", new { Controller = "CHITIETSPs", id = item.MASP })
     </td>
     <td>
         @Html.ActionLink("Sửa", "Edit", new { id = item.MASP }) |

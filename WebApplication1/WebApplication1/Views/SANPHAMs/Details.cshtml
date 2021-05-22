@@ -17,6 +17,8 @@
             @Html.DisplayFor(model => model.MASP)
         </dd>
 
+        <hr />
+
         <dt>
             Tên sản phẩm:
         </dt>
@@ -24,6 +26,8 @@
         <dd>
             @Html.DisplayFor(model => model.TENSP)
         </dd>
+
+        <hr />
 
         <dt>
             Thương hiệu:
@@ -33,6 +37,8 @@
             @Html.DisplayFor(model => model.THUONGHIEU)
         </dd>
 
+        <hr />
+
         <dt>
             Giá:
         </dt>
@@ -40,6 +46,28 @@
         <dd>
             @Html.DisplayFor(model => model.GIA)
         </dd>
+
+        <hr />
+
+        <dt>
+            Số lượng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CHITIETSP.SL_TONG)
+        </dd>
+
+        <hr />
+
+        <dt>
+            Màu sắc:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAUSAC)
+        </dd>
+
+        <hr />
 
         <dt>
             Mô tả:
@@ -49,6 +77,8 @@
             @Html.DisplayFor(model => model.MOTA)
         </dd>
 
+        <hr>
+
         <dt>
             Ngày thêm:
         </dt>
@@ -56,189 +86,19 @@
         <dd>
             @Html.DisplayFor(model => model.NGAYTHEM)
         </dd>
-        <dt>
-            Tổng số lượng:
-        </dt>
+
+        <hr>
 
         <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_TONG)
-        </dd>
-        <hr />
-        <dt>
-            Số lượng Size 36:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE36)
+            <img src="@Url.Content(Model.HINHANH + " ")" style="height: 200px; width:auto; margin: 10px;" />
         </dd>
 
-        <dt>
-            Số lượng Size 37:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE37)
-        </dd>
-
-        <dt>
-            Số lượng Size 38:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE38)
-        </dd>
-
-        <dt>
-            Số lượng Size 39:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE39)
-        </dd>
-
-        <dt>
-            Số lượng Size 40:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE40)
-        </dd>
-
-        <dt>
-            Số lượng Size 41:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE41)
-        </dd>
-
-        <dt>
-            Số lượng Size 42:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE42)
-        </dd>
-
-        <dt>
-            Số lượng Size 43:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.SL_SIZE43)
-        </dd>
-        <hr />
-        <dt>
-            Màu 1:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC1)
-        </dd>
-
-        <dt>
-            Màu 2:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC2)
-        </dd>
-
-        <dt>
-            Màu 3:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC3)
-        </dd>
-
-        <dt>
-            Màu 4:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC4)
-        </dd>
-
-        <dt>
-            Màu 5:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC5)
-        </dd>
-
-        <dt>
-            Màu 6:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC6)
-        </dd>
-
-        <dt>
-            Màu 7:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC7)
-        </dd>
-
-        <dt>
-            Màu 8:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC8)
-        </dd>
-
-        <dt>
-            Màu 9:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC9)
-        </dd>
-
-        <dt>
-            Màu 10:
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CHITIETSP.MAUSAC10)
-        </dd>
-        <hr />
-        <dt>
-            Hình ảnh:
-        </dt>
-
-        <dd>
-            <img src="@Url.Content(Model.CHITIETSP.HINHANH1 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.CHITIETSP.HINHANH2 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.CHITIETSP.HINHANH3 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.CHITIETSP.HINHANH4 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-
-            <img src="@Url.Content(Model.CHITIETSP.HINHANH5 + " ")" style="        height: 150px;
-        width: auto;
-        margin: 10px;" />
-        </dd>
-        <hr />
+        <hr>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("<< Trở lại", "Index") |
-    @Html.ActionLink("Sửa sửa thông tin", "Edit", new { id = Model.MASP }) | 
-    @Html.ActionLink("Set Số lượng - Màu - Hình ảnh >>", "Edit", new { Controller = "CHITIETSPs", id = Model.MASP })
-
+        @Html.ActionLink("<< Trở lại", "Index") |
+        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MASP }) |
+        @Html.ActionLink("Cập nhật số lượng >>", "Edit", new { Controller = "CHITIETSPs", id = Model.MASP })
 </p>
+<br>

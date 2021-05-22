@@ -270,6 +270,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="img\AirForce1.jpg" />
     <Content Include="img\AirJordan.jpg" />
+    <Content Include="img\imgIcon\Back.png" />
     <Content Include="img\imgProduct\AirForce1.jpg" />
     <Content Include="img\imgProduct\AirJordan.jpg" />
     <Content Include="img\imgProduct\Logo.png" />
@@ -367,10 +368,8 @@
     <Content Include="Views\AccountNV\Register.cshtml" />
     <Content Include="Views\Shared\LoziSneaker.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\SANPHAMs\Create.cshtml" />
     <Content Include="Views\SANPHAMs\Delete.cshtml" />
     <Content Include="Views\SANPHAMs\Details.cshtml" />
-    <Content Include="Views\SANPHAMs\Edit.cshtml" />
     <Content Include="Views\SANPHAMs\Index.cshtml" />
     <Content Include="Views\CHITIETSPs\Details.cshtml" />
     <Content Include="Views\CHITIETSPs\Edit.cshtml" />
