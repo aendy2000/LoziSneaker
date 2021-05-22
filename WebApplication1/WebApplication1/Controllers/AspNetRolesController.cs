@@ -9,9 +9,9 @@ using System.Web.Mvc;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
-{
+{   [Authorize (Roles ="Admin")]
     public class AspNetRolesController : Controller
-    {
+    {    
         private CT25Team13Entities db = new CT25Team13Entities();
 
         // GET: AspNetRoles
