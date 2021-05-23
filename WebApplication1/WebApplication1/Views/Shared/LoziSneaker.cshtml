@@ -46,7 +46,7 @@
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
                                     <div class="cart">
-                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">0</span> <i class="ti-bag"></i> Your Bag 0</a>
+                                        <a href="#" id="header-cart-btn" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Your Bag 0</a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
                                             <li>
@@ -84,7 +84,7 @@
             <div class="main_header_area">
                 <div class="container h-100">
                     <div class="row h-100">
-                        <div class="col-12 d-md-flex justify-content-between">
+                        <div class="col-12 d-md-flex" style=" justify-content: center;">
                             <!-- Header Social Area -->
                             <div class="header-social-area">
 
@@ -92,7 +92,7 @@
                             <!-- Menu Area -->
                             <div class="main-menu-area">
                                 <nav class="navbar navbar-expand-lg align-items-start">
-
+                                  
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
 
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
@@ -104,12 +104,14 @@
                                     </div>
                                 </nav>
                             </div>
+                        </div>
                             <!-- Help Line -->
+                        <div class="col-12 d-md-flex" style="position: absolute; justify-content: flex-end; right: 10px;">                            
                             <div class="help-line">
                                 @Html.Partial("_LoginPartial")
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </header>
