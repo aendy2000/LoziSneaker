@@ -83,7 +83,6 @@
           <Property Name="MASP" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="GIA" Type="int" />
-          <Property Name="NGAYTHEM" Type="date" />
         </EntityType>
         <EntityType Name="CHITIETSP">
           <Key>
@@ -99,21 +98,6 @@
           <Property Name="SL_SIZE41" Type="int" />
           <Property Name="SL_SIZE42" Type="int" />
           <Property Name="SL_SIZE43" Type="int" />
-          <Property Name="MAUSAC1" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC2" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC3" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC4" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC5" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC6" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC7" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC8" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC9" Type="nvarchar" MaxLength="50" />
-          <Property Name="MAUSAC10" Type="nvarchar" MaxLength="50" />
-          <Property Name="HINHANH1" Type="nvarchar" MaxLength="256" />
-          <Property Name="HINHANH2" Type="nvarchar" MaxLength="256" />
-          <Property Name="HINHANH3" Type="nvarchar" MaxLength="256" />
-          <Property Name="HINHANH4" Type="nvarchar" MaxLength="256" />
-          <Property Name="HINHANH5" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="DONHANG">
           <Key>
@@ -153,6 +137,8 @@
           <Property Name="GIA" Type="int" />
           <Property Name="MOTA" Type="nvarchar" MaxLength="300" />
           <Property Name="NGAYTHEM" Type="date" />
+          <Property Name="HINHANH" Type="nvarchar(max)" />
+          <Property Name="MAUSAC" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -464,7 +450,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <Property Name="MASP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="GIA" Type="Int32" />
-          <Property Name="NGAYTHEM" Type="DateTime" Precision="0" />
           <NavigationProperty Name="GIOHANG" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="CHITIETGIOHANG" ToRole="GIOHANG" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIETGIOHANG_SANPHAM" FromRole="CHITIETGIOHANG" ToRole="SANPHAM" />
         </EntityType>
@@ -482,21 +467,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <Property Name="SL_SIZE41" Type="Int32" />
           <Property Name="SL_SIZE42" Type="Int32" />
           <Property Name="SL_SIZE43" Type="Int32" />
-          <Property Name="MAUSAC1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MAUSAC10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HINHANH1" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="HINHANH2" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="HINHANH3" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="HINHANH4" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="HINHANH5" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="CHITIETSP" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="DONHANG">
@@ -542,6 +512,8 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <Property Name="GIA" Type="Int32" />
           <Property Name="MOTA" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="NGAYTHEM" Type="DateTime" Precision="0" />
+          <Property Name="HINHANH" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MAUSAC" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHITIETDHs" Relationship="Self.FK_CHITIETDH_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETDH" />
           <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETGIOHANG" />
           <NavigationProperty Name="CHITIETSP" Relationship="Self.FK_CHITIETSP_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSP" />
@@ -820,7 +792,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="GIA" ColumnName="GIA" />
-                <ScalarProperty Name="NGAYTHEM" ColumnName="NGAYTHEM" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -837,21 +808,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
                 <ScalarProperty Name="SL_SIZE41" ColumnName="SL_SIZE41" />
                 <ScalarProperty Name="SL_SIZE42" ColumnName="SL_SIZE42" />
                 <ScalarProperty Name="SL_SIZE43" ColumnName="SL_SIZE43" />
-                <ScalarProperty Name="MAUSAC1" ColumnName="MAUSAC1" />
-                <ScalarProperty Name="MAUSAC2" ColumnName="MAUSAC2" />
-                <ScalarProperty Name="MAUSAC3" ColumnName="MAUSAC3" />
-                <ScalarProperty Name="MAUSAC4" ColumnName="MAUSAC4" />
-                <ScalarProperty Name="MAUSAC5" ColumnName="MAUSAC5" />
-                <ScalarProperty Name="MAUSAC6" ColumnName="MAUSAC6" />
-                <ScalarProperty Name="MAUSAC7" ColumnName="MAUSAC7" />
-                <ScalarProperty Name="MAUSAC8" ColumnName="MAUSAC8" />
-                <ScalarProperty Name="MAUSAC9" ColumnName="MAUSAC9" />
-                <ScalarProperty Name="MAUSAC10" ColumnName="MAUSAC10" />
-                <ScalarProperty Name="HINHANH1" ColumnName="HINHANH1" />
-                <ScalarProperty Name="HINHANH2" ColumnName="HINHANH2" />
-                <ScalarProperty Name="HINHANH3" ColumnName="HINHANH3" />
-                <ScalarProperty Name="HINHANH4" ColumnName="HINHANH4" />
-                <ScalarProperty Name="HINHANH5" ColumnName="HINHANH5" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -895,6 +851,8 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
                 <ScalarProperty Name="GIA" ColumnName="GIA" />
                 <ScalarProperty Name="MOTA" ColumnName="MOTA" />
                 <ScalarProperty Name="NGAYTHEM" ColumnName="NGAYTHEM" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="MAUSAC" ColumnName="MAUSAC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
