@@ -12,9 +12,11 @@ using System.Threading.Tasks;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
-{
+{ 
+    [Authorize (Roles ="Admin")]
     public class AspNetUsersController : Controller
     {
+        
         private CT25Team13Entities db = new CT25Team13Entities();
 
         
@@ -59,11 +61,17 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
+        public ActionResult Edit(AspNetUser aspNetUser, string id)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(aspNetUser).State = EntityState.Modified;
+                var user = db.AspNetUsers.Find(id);
+                user.PhoneNumber = aspNetUser.PhoneNumber;
+                user.UserName = aspNetUser.UserName;
+                user.LockoutEnabled = aspNetUser.LockoutEnabled;
+                user.LockoutEndDateUtc = aspNetUser.LockoutEndDateUtc;
+                user.Email = aspNetUser.Email;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

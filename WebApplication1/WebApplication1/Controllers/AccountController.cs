@@ -77,7 +77,9 @@ namespace WebApplication1.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //model.Email = "toan";
+            var user = UserManager.FindByEmail(model.Email);
+            var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -149,12 +151,12 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model,string UserName)
         {
             if (ModelState.IsValid)
             {
               
-                var user = new ApplicationUser { UserName =model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName =UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 var role = db.AspNetRoles.SqlQuery("select * from AspNetRoles where Name = @p0", "Customer").First();// db.AspNetRoles.Find("9e2d4613-691e-4e9e-8480-c564b8005bdc");
