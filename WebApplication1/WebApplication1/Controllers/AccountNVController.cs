@@ -110,12 +110,12 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string UserName, string PhoneNumer)
         {
             if (ModelState.IsValid)
             {
               
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = UserName, Email = model.Email,PhoneNumber = PhoneNumer };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 var role = db.AspNetRoles.SqlQuery("select * from AspNetRoles where Name = @p0", "Nhân viên").First();// db.AspNetRoles.Find("9e2d4613-691e-4e9e-8480-c564b8005bdc");

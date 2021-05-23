@@ -6,6 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -14,6 +17,7 @@ namespace WebApplication1.Controllers
     {
         private CT25Team13Entities db = new CT25Team13Entities();
 
+        
         // GET: AspNetUsers
         public ActionResult Index()
         {
@@ -32,29 +36,6 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-            return View(aspNetUser);
-        }
-
-        // GET: AspNetUsers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: AspNetUsers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
-        {
-            if (ModelState.IsValid)
-            {
-                db.AspNetUsers.Add(aspNetUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
             return View(aspNetUser);
         }
 
@@ -122,6 +103,13 @@ namespace WebApplication1.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }
