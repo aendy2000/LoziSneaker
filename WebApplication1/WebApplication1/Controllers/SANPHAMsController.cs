@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,9 +16,16 @@ namespace WebApplication1.Controllers
         private CT25Team13Entities db = new CT25Team13Entities();
 
         // GET: SANPHAMs
+        
         public ActionResult Index()
         {
             return View(db.SANPHAMs.ToList());
+        }
+        [AllowAnonymous]
+        public ActionResult Index2()
+        {
+            var model = db.SANPHAMs.ToList();
+            return View(model);
         }
 
         // GET: SANPHAMs/Details/5
@@ -38,8 +46,8 @@ namespace WebApplication1.Controllers
         // GET: SANPHAMs/Create
         public ActionResult Create()
         {
-            ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP");
-            return View();
+            SANPHAM sp = new SANPHAM();
+            return View(sp);
         }
 
         // POST: SANPHAMs/Create
@@ -47,10 +55,18 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MASP,TENSP,THUONGHIEU,GIA,MOTA,NGAYTHEM")] SANPHAM sANPHAM)
+        public ActionResult Create(SANPHAM sANPHAM)
         {
             if (ModelState.IsValid)
             {
+                if (sANPHAM.ImageUpload != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(sANPHAM.ImageUpload.FileName).ToString();
+                    string extension = Path.GetExtension(sANPHAM.ImageUpload.FileName);
+                    filename = filename + extension;
+                    sANPHAM.HINHANH = "~/img/imgProduct/" + filename;
+                    sANPHAM.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename));
+                }
                 db.SANPHAMs.Add(sANPHAM);
                 db.SaveChanges();
                 CHITIETSP addMaSP = new CHITIETSP();
@@ -85,10 +101,18 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MASP,TENSP,THUONGHIEU,GIA,MOTA,NGAYTHEM")] SANPHAM sANPHAM)
+        public ActionResult Edit(SANPHAM sANPHAM)
         {
             if (ModelState.IsValid)
             {
+                if (sANPHAM.ImageUpload != null)
+                {
+                    string filename = Path.GetFileNameWithoutExtension(sANPHAM.ImageUpload.FileName).ToString();
+                    string extension = Path.GetExtension(sANPHAM.ImageUpload.FileName);
+                    filename = filename + extension;
+                    sANPHAM.HINHANH = "~/img/imgProduct/" + filename;
+                    sANPHAM.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename));
+                }
                 db.Entry(sANPHAM).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -104,7 +128,7 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index");
             }
-            SANPHAM sANPHAM = db.SANPHAMs.Where(c => c.MASP == id).First();
+            SANPHAM sANPHAM = db.SANPHAMs.Find(id); ;
             if (sANPHAM == null)
             {
                 return RedirectToAction("Index");
@@ -117,9 +141,8 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            string ma = id;
-            var XoaSP = db.SANPHAMs.Where(c => c.MASP == ma).First();
-            var XoaTSSP = db.CHITIETSPs.Where(c => c.MASANPHAM == ma).First();
+            var XoaSP = db.SANPHAMs.Find(id);
+            var XoaTSSP = db.CHITIETSPs.Find(id);
             db.CHITIETSPs.Remove(XoaTSSP);
             db.SANPHAMs.Remove(XoaSP);
             db.SaveChanges();

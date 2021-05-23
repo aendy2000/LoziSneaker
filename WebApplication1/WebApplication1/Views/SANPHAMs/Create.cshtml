@@ -4,10 +4,9 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Thêm mới sản phẩm</h2>
+<h2>Thêm sản phẩm</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "SANPHAMs", FormMethod.Post, new { enctype="multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -21,7 +20,7 @@
             @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <hr />
     <div class="form-group">
         @Html.LabelFor(model => model.TENSP, "Tên sản phẩm:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -29,7 +28,7 @@
             @Html.ValidationMessageFor(model => model.TENSP, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <hr />
     <div class="form-group">
         @Html.LabelFor(model => model.THUONGHIEU, "Thương hiệu:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -37,7 +36,7 @@
             @Html.ValidationMessageFor(model => model.THUONGHIEU, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <hr />
     <div class="form-group">
         @Html.LabelFor(model => model.GIA, "Giá:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -45,7 +44,24 @@
             @Html.ValidationMessageFor(model => model.GIA, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.HINHANH, "Hình ảnh:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <img src="@Url.Content(Model.HINHANH+" ")" style=" height: 150px; width: auto; margin: 10px;" id="previewImage" />
+            <input type="file" name="ImageUpload" onchange="ShowImageProduct(this, document.getElementById('previewImage'))" />
+            @Html.ValidationMessageFor(model => model.HINHANH, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.MAUSAC, "Màu sắc:", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MAUSAC, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MAUSAC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
     <div class="form-group">
         @Html.LabelFor(model => model.MOTA, "Mô tả:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -53,7 +69,7 @@
             @Html.ValidationMessageFor(model => model.MOTA, "", new { @class = "text-danger" })
         </div>
     </div>
-
+    <hr />
     <div class="form-group">
         @Html.LabelFor(model => model.NGAYTHEM, "Ngày thêm:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -61,12 +77,7 @@
             @Html.ValidationMessageFor(model => model.NGAYTHEM, "", new { @class = "text-danger" })
         </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.ActionLink("Cập nhật thông số SP", "Index")
-        </div>
-    </div>
+    <hr />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
@@ -75,9 +86,10 @@
 </div>
 }
 
-<div>
-    @Html.ActionLink("<< Trở lại", "Index")
-</div>
+<p>
+    @Html.ActionLink("<< Trở lại danh sách", "Index")
+</p>
+<br />
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

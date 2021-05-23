@@ -11,10 +11,10 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
     public partial class SANPHAM
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SANPHAM()
         {
             this.CHITIETDHs = new HashSet<CHITIETDH>();
@@ -27,11 +27,15 @@ namespace WebApplication1.Models
         public Nullable<int> GIA { get; set; }
         public string MOTA { get; set; }
         public Nullable<System.DateTime> NGAYTHEM { get; set; }
+        public string HINHANH { get; set; }
+        public string MAUSAC { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDH> CHITIETDHs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
         public virtual CHITIETSP CHITIETSP { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

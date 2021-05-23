@@ -18,7 +18,6 @@ namespace WebApplication1.Models
         public string MASP { get; set; }
         public Nullable<int> SOLUONG { get; set; }
         public Nullable<int> GIA { get; set; }
-        public Nullable<System.DateTime> NGAYTHEM { get; set; }
     
         public virtual GIOHANG GIOHANG { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
