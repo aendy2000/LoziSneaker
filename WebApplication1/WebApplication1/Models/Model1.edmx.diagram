@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fa1bb53549974155b3014471f332e918" Name="Diagram1">
+      <Diagram DiagramId="3160ec59a32d4409b20f1465a797c363" Name="Diagram1">
         <EntityTypeShape EntityType="CT25Team13Model.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.AspNetRole" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.AspNetUserClaim" Width="1.5" PointX="10.25" PointY="1" IsExpanded="true" />
@@ -15,10 +15,9 @@
         <EntityTypeShape EntityType="CT25Team13Model.CHITIETSP" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.DONHANG" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.GIOHANG" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.NHANVIEN" Width="1.5" PointX="1.5" PointY="14.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.SANPHAM" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CT25Team13Model.sysdiagram" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CT25Team13Model.TTCANHAN" Width="1.5" PointX="3.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CT25Team13Model.TTCANHAN" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
         <AssociationConnector Association="CT25Team13Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETDH_DONHANG" ManuallyRouted="false" />
@@ -26,8 +25,6 @@
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETGIOHANG_GIOHANG" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETGIOHANG_SANPHAM" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.FK_CHITIETSP_SANPHAM" ManuallyRouted="false" />
-        <AssociationConnector Association="CT25Team13Model.FK_DONHANG_NHANVIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="CT25Team13Model.FK_TTCANHAN_NHANVIEN" ManuallyRouted="false" />
         <AssociationConnector Association="CT25Team13Model.AspNetUserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

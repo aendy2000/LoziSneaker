@@ -35,7 +35,6 @@ namespace WebApplication1.Models
         public virtual DbSet<CHITIETSP> CHITIETSPs { get; set; }
         public virtual DbSet<DONHANG> DONHANGs { get; set; }
         public virtual DbSet<GIOHANG> GIOHANGs { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TTCANHAN> TTCANHANs { get; set; }
