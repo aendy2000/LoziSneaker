@@ -12,26 +12,35 @@
     <h4>Create a new account.</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
+<div class="form-group">
+    <div class="col-md-6">
+        @Html.Label("Email", new { @class = "col-md-3 control-label" })
+        @Html.TextBox("Email", "", new { @class = " form-control" })
+    </div>
+    <div class="col-md-6">
+        @Html.Label("User Name", new { @class = "col-md-3 control-label" })
+        @Html.TextBox("UserName", "", new { @class = "form-control" })
+    </div>
+</div>
+<div class="form-group">
+    <div class="col-md-6">
+        @Html.Label("Password", new { @class = "col-md-3 control-label" })
+        @Html.Password("Password", "", new { @class = "form-control" })
+    </div>
+    <div class="col-md-6">
+        @Html.Label("PhoneNumber", new { @class = "col-md-3 control-label" })
+        @Html.TextBox("PhoneNumber", "", new { @class = "form-control" })
+    </div>
+</div>
     <div class="form-group">
-        @Html.Label("Email", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBox("Email")
+        <div class="col-md-6">
+        @Html.Label("ConfirmPassword", new { @class = "col-md-3 control-label" })
+            @Html.Password("ConfirmPassword", "", new { @class = "form-control" })
         </div>
     </div>
+
     <div class="form-group">
-        @Html.Label("Password", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.Password("Password")
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.Label("ConfirmPassword", new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.Password("ConfirmPassword")
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-1 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>

@@ -4,29 +4,32 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Quản lí tài khoản</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add Acount Nhân Viên", "Register","AccountNV")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
+        <th>Email</th>
+        <th>User Name</th>
+        <th>Role</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
+            @item.Email
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserName)
+            @item.UserName
+        </td>
+        <td>
+            @foreach( var role in item.AspNetRoles)
+            {
+               @role.Name
+            }
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
