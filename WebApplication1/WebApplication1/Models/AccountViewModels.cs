@@ -50,12 +50,16 @@ namespace WebApplication1.Models
     {
         [Required]
         [Display(Name = "Email")]
+        [StringLength(30, ErrorMessage = "Email quá 30 ký tự")]
+        [MinLength(5, ErrorMessage = "Email ít hơn 5 kí tự")]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
+        [StringLength(30, ErrorMessage = "Mật khẩu quá 30 ký tự")]
+        [MinLength(5,ErrorMessage ="Mật Khẩu ít hơn 5 kí tự")]
         public string Password { get; set; }
 
         [Display(Name = "Remember me?")]
