@@ -27,6 +27,22 @@ namespace WebApplication1.Controllers
             var model = db.SANPHAMs.ToList();
             return View(model);
         }
+        [AllowAnonymous]
+
+        public ActionResult Productdetails(string id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(sANPHAM);
+        }
+
 
         // GET: SANPHAMs/Details/5
         public ActionResult Details(string id)
