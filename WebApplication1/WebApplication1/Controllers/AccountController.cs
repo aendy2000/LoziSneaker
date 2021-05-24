@@ -74,25 +74,35 @@ namespace WebApplication1.Controllers
             {
                 return View(model);
             }
-
+            
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+             var user = UserManager.FindByEmail(model.Email);
+            if (user == null )
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                ModelState.AddModelError("", "Email sai");
             }
-        }
+            else
+            {
+                var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    default:
+                        ModelState.AddModelError("", "Mật khẩu sai");
 
+                        return View(model);
+                }
+            }
+            return View(model);
+            
+            
+        }
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -149,12 +159,12 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model,string UserName)
         {
             if (ModelState.IsValid)
             {
               
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName =UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 var role = db.AspNetRoles.SqlQuery("select * from AspNetRoles where Name = @p0", "Customer").First();// db.AspNetRoles.Find("9e2d4613-691e-4e9e-8480-c564b8005bdc");
@@ -358,41 +368,6 @@ namespace WebApplication1.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Manage");
-            }
-
-            if (ModelState.IsValid)
-            {
-                // Get the information about the user from the external login provider
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
-                {
-                    return View("ExternalLoginFailure");
-                }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
-                    if (result.Succeeded)
-                    {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
-                    }
-                }
-                AddErrors(result);
-            }
-
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
-        }
 
         //
         // POST: /Account/LogOff

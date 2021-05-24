@@ -55,7 +55,7 @@
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
                                     <div class="cart">
-                                        <a href="#" id="header-cart-btn" target="_blank"><span class="cart_quantity">0</span> <i class="ti-bag"></i> Your Bag 0</a>
+                                        <a href="#" id="header-cart-btn" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Your Bag 0</a>
                                         <!-- Cart List Area Start -->
                                         <ul class="cart-list">
                                             <li>
@@ -93,7 +93,7 @@
             <div class="main_header_area">
                 <div class="container h-100">
                     <div class="row h-100">
-                        <div class="col-12 d-md-flex justify-content-between">
+                        <div class="col-12 d-md-flex" style=" justify-content: center;">
                             <!-- Header Social Area -->
                             <div class="header-social-area">
 
@@ -109,16 +109,25 @@
                                             <li class="nav-item active"><a class="nav-link" href="@Url.Content("~/Home/Index")">Home</a></li>
                                             <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/About")">About</a></li>
                                             <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/Contact")">Contact</a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                if (User.IsInRole("Admin"))
+                                                {
+                                                    <li class="nav-item"><a class="nav-link" href="@Url.Content("~/AspNetUsers/index")">Quản lí tài khoản</a></li>
+                                                }
+                                            }
                                         </ul>
                                     </div>
                                 </nav>
                             </div>
-                            <!-- Help Line -->
+                        </div>
+                        <!-- Help Line -->
+                        <div class="col-12 d-md-flex" style="position: absolute; justify-content: flex-end; right: 10px;">
                             <div class="help-line">
                                 @Html.Partial("_LoginPartial")
                             </div>
                         </div>
-                        </div>
+                    </div>
                 </div>
             </div>
         </header>

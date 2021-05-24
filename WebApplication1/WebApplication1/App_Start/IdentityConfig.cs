@@ -55,13 +55,13 @@ namespace WebApplication1
             {
                 RequiredLength = 6,
                 RequireNonLetterOrDigit = false,
-                RequireDigit = false,
-                RequireLowercase = false,
-                RequireUppercase = false,
+                RequireDigit = true,
+                RequireLowercase = true,
+                RequireUppercase = true,
             };
 
             // Configure user lockout defaults
-            manager.UserLockoutEnabledByDefault = true;
+            manager.UserLockoutEnabledByDefault = false;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
 
@@ -86,6 +86,7 @@ namespace WebApplication1
             }
             return manager;
         }
+
     }
 
     // Configure the application sign-in manager which is used in this application.

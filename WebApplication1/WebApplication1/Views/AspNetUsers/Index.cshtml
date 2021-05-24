@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebApplication1.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quản lí tài khoản</h2>
+
+<p>
+    @Html.ActionLink("Thêm tài khoản Nhân Viên", "Register","AccountNV") || 
+    @Html.ActionLink("Phân quyền tài khoản","Index","AspNetRoles")
+</p>
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>User Name</th>
+        <th>Role</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @item.Email
+        </td>
+        <td>
+            @item.UserName
+        </td>
+        <td>
+            @foreach( var role in item.AspNetRoles)
+            {
+               @role.Name
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

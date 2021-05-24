@@ -176,6 +176,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AspNetRolesController.cs" />
     <Compile Include="Controllers\AspNetRoleUserController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\CHITIETSPsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -346,11 +347,6 @@
     <Content Include="Views\AspNetRoles\Create.cshtml" />
     <Content Include="Views\AspNetRoles\Edit.cshtml" />
     <Content Include="Views\AspNetRoles\Index.cshtml" />
-    <Content Include="Views\AspNetUser\Create.cshtml" />
-    <Content Include="Views\AspNetUser\Delete.cshtml" />
-    <Content Include="Views\AspNetUser\Details.cshtml" />
-    <Content Include="Views\AspNetUser\Edit.cshtml" />
-    <Content Include="Views\AspNetUser\Index.cshtml" />
     <Content Include="Views\AspNetRoleUser\Create.cshtml" />
     <Content Include="Views\AccountNV\Register.cshtml" />
     <Content Include="Views\Shared\LoziSneaker.cshtml" />
