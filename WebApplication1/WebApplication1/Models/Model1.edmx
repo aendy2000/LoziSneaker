@@ -118,15 +118,6 @@
           <Property Name="TONGTIEN" Type="int" />
           <Property Name="TKKH" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="NHANVIEN">
-          <Key>
-            <PropertyRef Name="TKNV" />
-          </Key>
-          <Property Name="TKNV" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="NGAYVAOLAM" Type="datetime" />
-          <Property Name="CHUCVU" Type="nvarchar" MaxLength="50" />
-          <Property Name="LUONG" Type="int" />
-        </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
             <PropertyRef Name="MASP" />
@@ -152,16 +143,15 @@
         </EntityType>
         <EntityType Name="TTCANHAN">
           <Key>
-            <PropertyRef Name="TENTK" />
+            <PropertyRef Name="EMAIL" />
           </Key>
-          <Property Name="ID" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="TENTK" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="TEN" Type="nvarchar" MaxLength="50" />
           <Property Name="NGAYSINH" Type="date" />
           <Property Name="DIACHI" Type="nvarchar" MaxLength="50" />
           <Property Name="GIOITINH" Type="nvarchar" MaxLength="3" />
           <Property Name="SDT" Type="nvarchar" MaxLength="30" />
-          <Property Name="MAIL" Type="nvarchar" MaxLength="50" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="FK_CHITIETDH_DONHANG">
           <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
@@ -279,33 +269,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DONHANG_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="TKNV" />
-            </Principal>
-            <Dependent Role="DONHANG">
-              <PropertyRef Name="TKNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <!--Errors Found During Generation:
-warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
-        <Association Name="FK_NHANVIEN_spNetUsers" />-->
-        <Association Name="FK_TTCANHAN_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="TKNV" />
-            </Principal>
-            <Dependent Role="TTCANHAN">
-              <PropertyRef Name="TENTK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="CT25Team13ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -318,7 +281,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <EntitySet Name="CHITIETSP" EntityType="Self.CHITIETSP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DONHANG" EntityType="Self.DONHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GIOHANG" EntityType="Self.GIOHANG" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TTCANHAN" EntityType="Self.TTCANHAN" Schema="dbo" store:Type="Tables" />
@@ -357,14 +319,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DONHANG_NHANVIEN" Association="Self.FK_DONHANG_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="DONHANG" EntitySet="DONHANG" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TTCANHAN_NHANVIEN" Association="Self.FK_TTCANHAN_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
-            <End Role="TTCANHAN" EntitySet="TTCANHAN" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -479,7 +433,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <Property Name="NGAYLAPDH" Type="DateTime" Precision="0" />
           <Property Name="TONGTIEN" Type="Int32" />
           <NavigationProperty Name="CHITIETDH" Relationship="Self.FK_CHITIETDH_DONHANG" FromRole="DONHANG" ToRole="CHITIETDH" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_DONHANG_NHANVIEN" FromRole="DONHANG" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="GIOHANG">
           <Key>
@@ -490,17 +443,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <Property Name="TONGTIEN" Type="Int32" />
           <Property Name="TKKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHITIETGIOHANG" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="GIOHANG" ToRole="CHITIETGIOHANG" />
-        </EntityType>
-        <EntityType Name="NHANVIEN">
-          <Key>
-            <PropertyRef Name="TKNV" />
-          </Key>
-          <Property Name="TKNV" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NGAYVAOLAM" Type="DateTime" Precision="3" />
-          <Property Name="CHUCVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LUONG" Type="Int32" />
-          <NavigationProperty Name="DONHANGs" Relationship="Self.FK_DONHANG_NHANVIEN" FromRole="NHANVIEN" ToRole="DONHANG" />
-          <NavigationProperty Name="TTCANHAN" Relationship="Self.FK_TTCANHAN_NHANVIEN" FromRole="NHANVIEN" ToRole="TTCANHAN" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
@@ -530,17 +472,15 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
         </EntityType>
         <EntityType Name="TTCANHAN">
           <Key>
-            <PropertyRef Name="TENTK" />
+            <PropertyRef Name="EMAIL" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TENTK" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
           <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="MAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NHANVIEN" Relationship="Self.FK_TTCANHAN_NHANVIEN" FromRole="TTCANHAN" ToRole="NHANVIEN" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -630,30 +570,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DONHANG_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="TKNV" />
-            </Principal>
-            <Dependent Role="DONHANG">
-              <PropertyRef Name="TKNV" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TTCANHAN_NHANVIEN">
-          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
-          <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="NHANVIEN">
-              <PropertyRef Name="TKNV" />
-            </Principal>
-            <Dependent Role="TTCANHAN">
-              <PropertyRef Name="TENTK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="AspNetUserRoles">
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
@@ -669,7 +585,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <EntitySet Name="CHITIETSPs" EntityType="Self.CHITIETSP" />
           <EntitySet Name="DONHANGs" EntityType="Self.DONHANG" />
           <EntitySet Name="GIOHANGs" EntityType="Self.GIOHANG" />
-          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TTCANHANs" EntityType="Self.TTCANHAN" />
@@ -700,14 +615,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <AssociationSet Name="FK_CHITIETSP_SANPHAM" Association="Self.FK_CHITIETSP_SANPHAM">
             <End Role="SANPHAM" EntitySet="SANPHAMs" />
             <End Role="CHITIETSP" EntitySet="CHITIETSPs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DONHANG_NHANVIEN" Association="Self.FK_DONHANG_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-            <End Role="DONHANG" EntitySet="DONHANGs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TTCANHAN_NHANVIEN" Association="Self.FK_TTCANHAN_NHANVIEN">
-            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
-            <End Role="TTCANHAN" EntitySet="TTCANHANs" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
@@ -832,16 +739,6 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NHANVIENs">
-            <EntityTypeMapping TypeName="CT25Team13Model.NHANVIEN">
-              <MappingFragment StoreEntitySet="NHANVIEN">
-                <ScalarProperty Name="TKNV" ColumnName="TKNV" />
-                <ScalarProperty Name="NGAYVAOLAM" ColumnName="NGAYVAOLAM" />
-                <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
-                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SANPHAMs">
             <EntityTypeMapping TypeName="CT25Team13Model.SANPHAM">
               <MappingFragment StoreEntitySet="SANPHAM">
@@ -870,14 +767,13 @@ warning 6035: The relationship 'FK_NHANVIEN_spNetUsers' has columns that are not
           <EntitySetMapping Name="TTCANHANs">
             <EntityTypeMapping TypeName="CT25Team13Model.TTCANHAN">
               <MappingFragment StoreEntitySet="TTCANHAN">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TENTK" ColumnName="TENTK" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="TEN" ColumnName="TEN" />
                 <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
-                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

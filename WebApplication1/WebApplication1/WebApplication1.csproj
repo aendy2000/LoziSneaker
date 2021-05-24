@@ -231,9 +231,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\NHANVIEN.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SANPHAM.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -267,21 +264,7 @@
     <Content Include="fonts\themify.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\AirForce1.jpg" />
-    <Content Include="img\AirJordan.jpg" />
-    <Content Include="img\imgIcon\Back.png" />
-    <Content Include="img\imgProduct\AirForce1.jpg" />
-    <Content Include="img\imgProduct\AirJordan.jpg" />
-    <Content Include="img\imgProduct\Logo.png" />
-    <Content Include="img\imgProduct\NikeLD.jpg" />
-    <Content Include="img\imgProduct\NikeWMNS.jpg" />
-    <Content Include="img\imgProduct\Vans.jpg" />
-    <Content Include="img\imgProduct\Yeezy.jpg" />
     <Content Include="img\Logo.png" />
-    <Content Include="img\NikeLD.jpg" />
-    <Content Include="img\NikeWMNS.jpg" />
-    <Content Include="img\Vans.jpg" />
-    <Content Include="img\Yeezy.jpg" />
     <Content Include="js\active.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\jquery\jquery-2.2.4.min.js" />
@@ -380,9 +363,12 @@
     <Content Include="Views\SANPHAMs\Index2.cshtml" />
     <Content Include="Views\SANPHAMs\Create.cshtml" />
     <Content Include="Views\SANPHAMs\Edit.cshtml" />
+    <Content Include="Views\SANPHAMs\Productdetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\imgIcon\" />
+    <Folder Include="img\imgProduct\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

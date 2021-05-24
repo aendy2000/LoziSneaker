@@ -21,6 +21,5 @@ namespace WebApplication1.Models
         public Nullable<int> TONGTIEN { get; set; }
     
         public virtual CHITIETDH CHITIETDH { get; set; }
-        public virtual NHANVIEN NHANVIEN { get; set; }
     }
 }
