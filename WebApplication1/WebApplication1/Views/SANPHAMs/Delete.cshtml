@@ -90,7 +90,7 @@
         <hr />
 
         <dd>
-            <img src="@Url.Content(Model.HINHANH + " ")" style="height: 200px; width: auto; margin: 10px;" />
+            <img src="@Url.Content(Model.HINHANH + " ")" style="height: 350px; width: auto; margin: 10px;" />
             <br>
         </dd>
         <hr />
@@ -99,14 +99,16 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-                <div class="form-actions no-color">
-                    <input type="submit" value="Xóa" class="btn btn-default" />
-                </div>
+            <div class="form-actions no-color">
+                <a style="border: 1px solid darkgray;" href="@Url.Action("Index")" class="btn btn-outline-primary">
+                    <i class="fas fa-arrow-left"></i> Trở lại danh sách
+                </a>
+                &emsp; <a style="color:lightgray;">|</a> &emsp;
+                <input border="1" style="border-color:darkgray;" type="submit" value="Xóa Sản Phẩm" class="btn btn-outline-primary" />
+            </div>
             }
         </dd>
     </dl>
-    <p>
-        @Html.ActionLink("<< Trở lại danh sách", "Index")
-    </p>
+ 
     <br>
 </div>

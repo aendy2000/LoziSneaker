@@ -98,15 +98,16 @@
     <hr/>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Lưu" class="btn btn-default" />
+            <a style="border: 1px solid darkgray;" href="@Url.Action("Index", "SANPHAMs")" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left"></i> Trở lại danh sách
+            </a>
+            &emsp; <a style="color:lightgray;">|</a>&emsp;
+            <input style="border: 1px solid darkgray;" type="submit" value="Lưu thay đổi" class="btn btn-outline-primary" />
+
         </div>
     </div>
 </div>
 }
-
-<p>
-    @Html.ActionLink("<< Trở lại chi tiết", "Details", new { id = Model.MASANPHAM})
-</p>
 <br>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
