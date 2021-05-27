@@ -49,7 +49,7 @@ namespace WebApplication1.Controllers
                 return RedirectToAction("Details");
             }
             ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
-            return View(cHITIETSP);
+            return RedirectToAction("Details");
         }
 
         // POST: CHITIETSPs/Edit/5

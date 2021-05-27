@@ -93,7 +93,11 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("<< Trở lại danh sách", "Index", new { Controller = "SANPHAMs" }) | 
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MASANPHAM })
+    <a style="border: 1px solid darkgray;" href="@Url.Action("Index", "SANPHAMs")" class="btn btn-outline-primary">
+        <i class="fas fa-arrow-left"></i> Trở lại danh sách
+    </a>
+    &emsp; <a style="color:lightgray;">|</a>&emsp;
+    <a style="border: 1px solid darkgray;" href="@Url.Action("Edit", new { id = Model.MASANPHAM})" class="btn btn-outline-primary">
+       Chỉnh sửa &ensp;<i class="fas fa-edit"></i></a>
 </p>
 <br>

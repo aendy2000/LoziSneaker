@@ -74,23 +74,24 @@
         @Html.LabelFor(model => model.HINHANH, "Hình ảnh:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.HINHANH, new { htmlAttributes = new { @hidden = "hidden" } })
-            <img src="@Url.Content(Model.HINHANH + " ")" style=" height: 150px; width: auto; margin: 10px;" id="previewImage" />
-            <input type="file" name="ImageUpload" onchange="ShowImageProduct(this, document.getElementById('previewImage'))" />
+            <img src="@Url.Content(Model.HINHANH + " ")" style=" height: 350px; width: auto; margin: 10px;" id="previewImage" />
+            <input class="btn btn-outline-secondary" accept="image/*" type="file" name="ImageUpload" onchange="ShowImageProduct(this, document.getElementById('previewImage'))" />
             @Html.ValidationMessageFor(model => model.HINHANH, "", new { @class = "text-danger" })
         </div>
     </div>
     <hr />
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <a style="border: 1px solid darkgray;" href="@Url.Action("Index")" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left"></i> Trở lại danh sách
+            </a>
+            &emsp; <a style="color:lightgray;">|</a> &emsp;
+            <input border="1" style="border-color:darkgray;" type="submit" value="Lưu thay đổi" class="btn btn-outline-primary" />
         </div>
     </div>
 </div>
 }
 
-<p>
-    @Html.ActionLink("<< Trở lại danh sách", "Index")
-</p>
 <br>
 
 @section Scripts {

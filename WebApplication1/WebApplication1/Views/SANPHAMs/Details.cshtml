@@ -90,15 +90,23 @@
         <hr>
 
         <dd>
-            <img src="@Url.Content(Model.HINHANH + " ")" style="height: 200px; width:auto; margin: 10px;" />
+            <img src="@Url.Content(Model.HINHANH + " ")" style="height: 350px; width:auto; margin: 10px;" />
         </dd>
 
         <hr>
     </dl>
 </div>
 <p>
-        @Html.ActionLink("<< Trở lại", "Index") |
-        @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MASP }) |
-        @Html.ActionLink("Cập nhật số lượng >>", "Edit", new { Controller = "CHITIETSPs", id = Model.MASP })
+    <a style="border: 1px solid darkgray;" href="@Url.Action("Index")" class="btn btn-outline-primary">
+        <i class="fas fa-arrow-left"></i> Trở lại
+    </a>
+    &emsp; <a style="color:lightgray;">|</a> &emsp;
+           <a style="border: 1px solid darkgray;" href="@Url.Action("Edit", new { id = Model.MASP})" class="btn btn-outline-primary">
+               Chỉnh sửa &ensp;<i class="fas fa-edit"></i>
+           </a>
+    &emsp; <a style="color:lightgray;">|</a> &emsp;
+           <a style="border: 1px solid darkgray;" href="@Url.Action("Edit", "CHITIETSPs",new { id = Model.MASP})" class="btn btn-outline-primary">
+               Cập nhật số lượng &ensp;<i class="fas fa-edit"></i>
+           </a>
 </p>
 <br>
