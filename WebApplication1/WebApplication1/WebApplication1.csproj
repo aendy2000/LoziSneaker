@@ -381,6 +381,7 @@
     <Content Include="Views\TTCANHANs\Details.cshtml" />
     <Content Include="Views\TTCANHANs\Edit.cshtml" />
     <Content Include="Views\TTCANHANs\Index.cshtml" />
+    <Content Include="Views\TTCANHANs\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

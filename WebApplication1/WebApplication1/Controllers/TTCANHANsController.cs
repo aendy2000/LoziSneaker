@@ -20,6 +20,24 @@ namespace WebApplication1.Controllers
             return View(db.TTCANHANs.ToList());
         }
 
+        public ActionResult Index2(string id)
+        {
+            var user = db.TTCANHANs.Find(id);
+
+            return View(user);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index2([Bind(Include = "EMAIL,TEN,NGAYSINH,DIACHI,GIOITINH,SDT,id")] TTCANHAN tTCANHAN)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(tTCANHAN).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index2");
+            }
+            return View(tTCANHAN);
+        }
         // GET: TTCANHANs/Details/5
         public ActionResult Details(string id)
         {
@@ -37,20 +55,17 @@ namespace WebApplication1.Controllers
         // GET: TTCANHANs/Edit/5
         public ActionResult Edit(string id)
         {
+            var ttcanhan = db.TTCANHANs.Find(id);
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TTCANHAN tTCANHAN = db.TTCANHANs.Find(id);
-            if (tTCANHAN == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tTCANHAN);
+
+            return View(ttcanhan);
         }
 
         // POST: TTCANHANs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
