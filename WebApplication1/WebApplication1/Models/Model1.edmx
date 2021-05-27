@@ -143,7 +143,7 @@
         </EntityType>
         <EntityType Name="TTCANHAN">
           <Key>
-            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="EMAIL" Type="nvarchar" MaxLength="256" Nullable="false" />
           <Property Name="TEN" Type="nvarchar" MaxLength="50" />
@@ -151,7 +151,7 @@
           <Property Name="DIACHI" Type="nvarchar" MaxLength="50" />
           <Property Name="GIOITINH" Type="nvarchar" MaxLength="3" />
           <Property Name="SDT" Type="nvarchar" MaxLength="30" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <Association Name="FK_CHITIETDH_DONHANG">
           <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
@@ -269,6 +269,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TTCANHAN_AspNetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TTCANHAN">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CT25Team13ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -319,6 +331,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTCANHAN_AspNetUser" Association="Self.FK_TTCANHAN_AspNetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TTCANHAN" EntitySet="TTCANHAN" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -383,6 +399,7 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="TTCANHAN" Relationship="Self.FK_TTCANHAN_AspNetUser" FromRole="AspNetUsers" ToRole="TTCANHAN" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
         <EntityType Name="CHITIETDH">
@@ -472,7 +489,7 @@
         </EntityType>
         <EntityType Name="TTCANHAN">
           <Key>
-            <PropertyRef Name="EMAIL" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="EMAIL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -480,7 +497,8 @@
           <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
           <Property Name="SDT" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_TTCANHAN_AspNetUser" FromRole="TTCANHAN" ToRole="AspNetUsers" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -507,6 +525,18 @@
             </Principal>
             <Dependent Role="AspNetUserLogins">
               <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TTCANHAN_AspNetUser">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TTCANHAN">
+              <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -595,6 +625,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TTCANHAN_AspNetUser" Association="Self.FK_TTCANHAN_AspNetUser">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="TTCANHAN" EntitySet="TTCANHANs" />
           </AssociationSet>
           <AssociationSet Name="FK_CHITIETDH_DONHANG" Association="Self.FK_CHITIETDH_DONHANG">
             <End Role="DONHANG" EntitySet="DONHANGs" />

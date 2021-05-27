@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication1.Models.TTCANHAN>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Quản lí thông tin khách hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYSINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DIACHI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIOITINH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SDT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        
+        @Html.DisplayFor(modelItem => item.EMAIL)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TEN)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NGAYSINH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DIACHI)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GIOITINH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SDT)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+    </td>
+</tr>
+}
+
+</table>

@@ -20,6 +20,8 @@ namespace WebApplication1.Models
         public string DIACHI { get; set; }
         public string GIOITINH { get; set; }
         public string SDT { get; set; }
-        public int id { get; set; }
+        public string id { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
