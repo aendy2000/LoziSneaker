@@ -59,7 +59,6 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CHITIETSP cHITIETSP)
         {
-
                 if (ModelState.IsValid)
                     {
                         dbo.Entry(cHITIETSP).State = EntityState.Modified;
