@@ -265,7 +265,12 @@
     <Content Include="fonts\themify.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\DangThiMinhNgoc.jpg" />
+    <Content Include="img\DangVanTuan.jpg" />
     <Content Include="img\Logo.png" />
+    <Content Include="img\MaKhonTuyen.jpg" />
+    <Content Include="img\NguyenTranKhuong.jpg" />
+    <Content Include="img\VoNhatMinh.jpg" />
     <Content Include="js\active.js" />
     <Content Include="js\all.js" />
     <Content Include="js\bootstrap.min.js" />

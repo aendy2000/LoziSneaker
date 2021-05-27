@@ -27,6 +27,15 @@ namespace WebApplication1.Controllers
             var model = db.SANPHAMs.ToList();
             return View(model);
         }
+        [AllowAnonymous]
+        public ActionResult Search(string keyword)
+        {
+            var model = db.SANPHAMs.ToList();
+            model = model.Where(S => S.TENSP.ToLower().Contains(keyword)).ToList();
+            ViewBag.Keywork = keyword;
+            return View("Index2", model);
+
+        }
 
         [AllowAnonymous]
         public ActionResult Productdetails(string id)
