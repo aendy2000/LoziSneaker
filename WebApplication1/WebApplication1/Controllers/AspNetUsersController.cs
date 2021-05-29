@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using WebApplication1.Models;
+using System.Text.RegularExpressions;
 
 namespace WebApplication1.Controllers
 { 
@@ -61,21 +62,59 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(AspNetUser aspNetUser, string id)
+        public ActionResult Edit(AspNetUser aspNetUser, string id, TTCANHAN tTCANHAN)
         {
+            checktextbox(aspNetUser);
             if (ModelState.IsValid)
             {
-                var user = db.AspNetUsers.Find(id);
-                user.PhoneNumber = aspNetUser.PhoneNumber;
-                user.UserName = aspNetUser.UserName;
-                user.LockoutEnabled = aspNetUser.LockoutEnabled;
-                user.LockoutEndDateUtc = aspNetUser.LockoutEndDateUtc;
-                user.Email = aspNetUser.Email;
+                var idKH = db.TTCANHANs.Find(id);
+                if (idKH != null)
+                {
+                    var user = db.AspNetUsers.Find(id);
+                    user.PhoneNumber = aspNetUser.PhoneNumber;
+                    user.UserName = aspNetUser.UserName;
+                    user.LockoutEnabled = aspNetUser.LockoutEnabled;
+                    user.LockoutEndDateUtc = aspNetUser.LockoutEndDateUtc;
+                    user.Email = aspNetUser.Email;
+                    var updateprofile = db.TTCANHANs.Find(id);
+                    updateprofile.EMAIL = aspNetUser.Email;
+                    updateprofile.SDT = aspNetUser.PhoneNumber;
+                    db.SaveChanges();
+                }
+                else
+                {
+                    var user = db.AspNetUsers.Find(id);
+                    user.PhoneNumber = aspNetUser.PhoneNumber;
+                    user.UserName = aspNetUser.UserName;
+                    user.LockoutEnabled = aspNetUser.LockoutEnabled;
+                    user.LockoutEndDateUtc = aspNetUser.LockoutEndDateUtc;
+                    user.Email = aspNetUser.Email;
+                    db.SaveChanges();
 
-                db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             return View(aspNetUser);
+        }
+        public void checktextbox(AspNetUser aspNetUser)
+        {
+            var Phone = new Regex("^[0-9]*$");
+            if ( aspNetUser.PhoneNumber == null || aspNetUser.Email == null || aspNetUser.UserName == null)
+            {
+                ModelState.AddModelError("", "Thông tin chưa nhập đầy đủ");
+            }
+            else if (aspNetUser.PhoneNumber.Trim().Length == 0)
+            {
+                ModelState.AddModelError("", "Số điện thoại chỉ chứa khoảng trắng");
+            }
+            else if (Phone.IsMatch(aspNetUser.PhoneNumber) == false)
+            {
+                ModelState.AddModelError("", "Số diện thoại có chứa chữ và ký tự đặc biệt");
+            }
+            else if (aspNetUser.PhoneNumber.Length < 10 || aspNetUser.PhoneNumber.Length > 10)
+            {
+                ModelState.AddModelError("", "Số điện thoại không phù hợp");
+            }
         }
 
         // GET: AspNetUsers/Delete/5
@@ -99,8 +138,17 @@ namespace WebApplication1.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             AspNetUser aspNetUser = db.AspNetUsers.Find(id);
-            db.AspNetUsers.Remove(aspNetUser);
-            db.SaveChanges();
+            var idKH = db.TTCANHANs.Find(id);
+            if (idKH != null)
+            {
+                db.AspNetUsers.Remove(aspNetUser);
+                db.TTCANHANs.Remove(idKH);
+                db.SaveChanges();
+            }else
+            {
+                db.AspNetUsers.Remove(aspNetUser);
+                db.SaveChanges();
+            }
             return RedirectToAction("Index");
         }
 
