@@ -15,12 +15,6 @@ namespace WebApplication1.Controllers
     {
         private CT25Team13Entities dbo = new CT25Team13Entities();
 
-        // GET: CHITIETSPs
-        public ActionResult Index()
-        {
-            return RedirectToAction("Index", "SANPHAMs");
-        }
-
         // GET: CHITIETSPs/Details/5
         public ActionResult Details(string id)
         {
@@ -48,8 +42,8 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Details");
             }
-            ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
-            return RedirectToAction("Details");
+            ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", cHITIETSP.MASANPHAM);
+            return View(cHITIETSP);
         }
 
         // POST: CHITIETSPs/Edit/5
@@ -59,14 +53,14 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CHITIETSP cHITIETSP)
         {
-
-                if (ModelState.IsValid)
-                    {
-                        dbo.Entry(cHITIETSP).State = EntityState.Modified;
-                        dbo.SaveChanges();
-                        return RedirectToAction("Details");
-                    }
-                    ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
+            if (ModelState.IsValid)
+            {
+                dbo.Entry(cHITIETSP).State = EntityState.Modified;
+                dbo.SaveChanges();
+                return RedirectToAction("Details");
+            }
+                    
+            ViewBag.MASANPHAM = new SelectList(dbo.SANPHAMs, "MASP", "TENSP", cHITIETSP.MASANPHAM);
             return View(cHITIETSP);
 
         }
