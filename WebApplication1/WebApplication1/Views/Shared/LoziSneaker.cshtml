@@ -38,6 +38,25 @@
 </head>
 
 <body>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <div class="main-menu-area">
+                <nav class="navbar navbar-expand-lg align-items-start">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+                    <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                        <ul class="nav navbar-nav navbar-right" id="nav">
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/AspNetUsers/index")">Quản lí tài khoản</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/SANPHAMs/index")">Quản lí sản phẩm</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/")">Quản lí thông tin khách hàng</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/")">Quản lí giỏ hàng</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        }
+    }
     <div id="wrapper">
 
         <!-- ****** Header Area Start ****** -->
