@@ -12,28 +12,36 @@
         display: block;
     }
 </style>
-
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="section_heading text-center">
+                <div class="col-12 col-lg-9">
+                    <div class="single_footer_area">
+                        <div class="subscribtion_form">
+                            <form action="@Url.Action("Search", "SANPHAMs")" method="get">
+                                <input style="font-size:15px;" type="text" name="Keyword" class="mail" placeholder="Tên sản phẩm bạn muốn tìm kiếm" value="@ViewBag.Keywork">
+                                <button class="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- ****** New Arrivals Area Start ****** -->
 <section class="new_arrivals_area section_padding_100_0 clearfix">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="section_heading text-center">
-                    <h2>Products</h2>
+                    <h2>@((ViewBag.Keywork == "" || ViewBag.Keywork == null) ? "Products" : (Model.Count() != 0) ? "Kết quả tìm kiếm" : "Không tìm thấy kết quả cho: " + ViewBag.Keywork)</h2>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="karl-projects-menu mb-100">
-        <div class="text-center portfolio-menu">
-            <button class="btn active" data-filter="*">ALL</button>
-            <button class="btn" data-filter=".NIKE">NIKE</button>
-            <button class="btn" data-filter=".ADIDAS">ADIDAS</button>
-            <button class="btn" data-filter=".VANS">VANS</button>
-            <button class="btn" data-filter=".CONVERSE">CONVERSE</button>
-        </div>
-    </div>
+    <hr />
     <div class="container">
         <div class="row karl-new-arrivals">
             @foreach (var sanpham in Model)
@@ -64,7 +72,7 @@
     </div>
 </section>
 <!-- ****** New Arrivals Area End ****** -->
-
+<hr />
 <!-- ****** Popular Brands Area Start ****** -->
 <section class="karl-testimonials-area section_padding_100">
     <div class="container">
@@ -83,14 +91,16 @@
                     <!-- Single Testimonial Area -->
                     <div class="single-testimonial-area text-center">
                         <span class="quote">"</span>
-                        <h6>Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. </h6>
+                        <h6 style="font-size:15px;">
+                            Giao hàng hanh hơn dự kiến. Sản phẩm về chất lượng thì cũng gọi là tốt 90/100 giống với hình ảnh nhưng. Đóng gói cẩn thận và có túi nilon bơm hơi chống mất form đầy đủ đồ như quảng cáo và có phiếu cảm ơn, tóm lại là 5 sao!
+                        </h6>
                         <div class="testimonial-info d-flex align-items-center justify-content-center">
                             <div class="tes-thumbnail">
-                                <img src="img/bg-img/tes-1.jpg" alt="">
+                                <img src="@Url.Content("~/img/DangVanTuan.jpg")" alt="">
                             </div>
                             <div class="testi-data">
-                                <p>Michelle Williams</p>
-                                <span>Client, Los Angeles</span>
+                                <p style="font-size:18px;">Đặng Văn Tuấn</p>
+                                <span style="font-size:14px;">Client, Bình Phước</span>
                             </div>
                         </div>
                     </div>
@@ -98,14 +108,14 @@
                     <!-- Single Testimonial Area -->
                     <div class="single-testimonial-area text-center">
                         <span class="quote">"</span>
-                        <h6>Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. </h6>
+                        <h6 style="font-size:15px;">Trời ơi đặt đôi giày mà mở hàng đẹp muốn xỉu luôn á, sẽ ủng hộ shop dài dài hehee, mới đặt qua nay có rồi giao hàng bao nhanh luôn. </h6>
                         <div class="testimonial-info d-flex align-items-center justify-content-center">
                             <div class="tes-thumbnail">
-                                <img src="img/bg-img/tes-1.jpg" alt="">
+                                <img src="@Url.Content("~/img/VoNhatMinh.jpg")" alt="">
                             </div>
                             <div class="testi-data">
-                                <p>Michelle Williams</p>
-                                <span>Client, Los Angeles</span>
+                                <p style="font-size:18px;">Võ Nhật Minh</p>
+                                <span style="font-size:14px;">Client, Đà Lạt</span>
                             </div>
                         </div>
                     </div>
@@ -113,18 +123,45 @@
                     <!-- Single Testimonial Area -->
                     <div class="single-testimonial-area text-center">
                         <span class="quote">"</span>
-                        <h6>Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. </h6>
+                        <h6 style="font-size:15px;">Xinh đẹp tẹt zời :3 shopp nhiệt tình đáng yêuuuuuuuuuuu. Không mua tiếc lắm nhá :3 ngon bổ rẻ :3 :333333333333333 giao hàng nhanhhhh ơi là nhanhhhhhhh. </h6>
                         <div class="testimonial-info d-flex align-items-center justify-content-center">
                             <div class="tes-thumbnail">
-                                <img src="img/bg-img/tes-1.jpg" alt="">
+                                <img src="@Url.Content("~/img/DangThiMinhNgoc.jpg")" alt="">
                             </div>
                             <div class="testi-data">
-                                <p>Michelle Williams</p>
-                                <span>Client, Los Angeles</span>
+                                <p style="font-size:18px;">Đặng Thị Minh Ngọc</p>
+                                <span style="font-size:14px;">Client, TP. Hồ Chí Minh</span>
                             </div>
                         </div>
                     </div>
-
+                    <!-- Single Testimonial Area -->
+                    <div class="single-testimonial-area text-center">
+                        <span class="quote">"</span>
+                        <h6 style="font-size:15px;">Giày đẹp lắm mọi người, mua lần thứ 2 ở shop này rồi á ưng lắm luôn shop uy tín nhé, shop phục vụ tốt gói sản phẩm chắc chắn giao hàng nhanh. Nên mua nhaaaaa. </h6>
+                        <div class="testimonial-info d-flex align-items-center justify-content-center">
+                            <div class="tes-thumbnail">
+                                <img src="@Url.Content("~/img/MaKhonTuyen.jpg")" alt="">
+                            </div>
+                            <div class="testi-data">
+                                <p style="font-size:18px;">Mã Khôn Tuyền</p>
+                                <span style="font-size:14px;">Client, TP. Hồ Chí Minh</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Testimonial Area -->
+                    <div class="single-testimonial-area text-center">
+                        <span class="quote">"</span>
+                        <h6 style="font-size:15px;">Giày đẹp đi vào khác hẳn, giao hàng nhanh, hôm trước đặt hôm sau có hàng rồi mọi người nên mua. Sản phẩm giống với hình ảnh shop đăng, đóng gói hàng kỹ. Sẽ tiếp tục ủng hộ shop </h6>
+                        <div class="testimonial-info d-flex align-items-center justify-content-center">
+                            <div class="tes-thumbnail">
+                                <img src="@Url.Content("~/img/NguyenTranKhuong.jpg")" alt="">
+                            </div>
+                            <div class="testi-data">
+                                <p style="font-size:18px;">Nguyễn Trần Khương</p>
+                                <span style="font-size:14px;">Client, TP. Hồ Chí Minh</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

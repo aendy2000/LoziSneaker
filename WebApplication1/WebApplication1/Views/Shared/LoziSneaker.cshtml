@@ -33,9 +33,30 @@
     <script src="~/js/plugins.js"></script>
     <!-- Active js -->
     <script src="~/js/active.js"></script>
+    <script src="~/js/all.js"></script>
+    <link href="~/Content/css/all.css" rel="stylesheet" />
 </head>
 
 <body>
+    @if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            <div class="main-menu-area">
+                <nav class="navbar navbar-expand-lg align-items-start">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+                    <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                        <ul class="nav navbar-nav navbar-right" id="nav">
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/AspNetUsers/index")">Quản lí tài khoản</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/SANPHAMs/index")">Quản lí sản phẩm</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/")">Quản lí thông tin khách hàng</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/")">Quản lí giỏ hàng</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        }
+    }
     <div id="wrapper">
 
         <!-- ****** Header Area Start ****** -->
@@ -49,7 +70,7 @@
                             <div class="top_single_area d-flex align-items-center">
                                 <!-- Logo Area -->
                                 <div class="top_logo">
-                                    <a href="@Url.Content("~/Home/Index")"><img src="@Url.Content("~/img/Logo.png")" alt=""></a>
+                                    <a href="@Url.Content("~/SANPHAMs/Index2")"><img src="@Url.Content("~/img/Logo.png")" alt=""></a>
                                 </div>
                                 <!-- Cart & Menu Area -->
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
@@ -106,7 +127,7 @@
 
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
-                                            <li class="nav-item active"><a class="nav-link" href="@Url.Content("~/Home/Index")">Home</a></li>
+                                            <li class="nav-item active"><a class="nav-link" href="@Url.Content("~/SANPHAMs/Index2")">Home</a></li>
                                             <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/About")">About</a></li>
                                             <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/Contact")">Contact</a></li>
                                             @if (User.Identity.IsAuthenticated)
@@ -148,6 +169,7 @@
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="single_footer_area">
                             <div class="footer-logo">
+
                                 <img src="@Url.Content("~/img/Logo.png")" alt="">
                             </div>
                             <div class="copywrite_text d-flex align-items-center">
