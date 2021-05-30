@@ -98,10 +98,23 @@ namespace WebApplication1.Controllers
         }
         public void checktextbox(AspNetUser aspNetUser)
         {
+            Regex mail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             var Phone = new Regex("^[0-9]*$");
             if ( aspNetUser.PhoneNumber == null || aspNetUser.Email == null || aspNetUser.UserName == null)
             {
                 ModelState.AddModelError("", "Thông tin chưa nhập đầy đủ");
+            }
+            else if (aspNetUser.Email.Trim().Length == 0)
+            {
+                ModelState.AddModelError("","Email chỉ chứa kí tự khoảng trắng");
+            }
+            else if (mail.IsMatch(aspNetUser.Email)== false)
+            {
+                ModelState.AddModelError("","Email không hợp lệ");
+            }
+            else if (aspNetUser.UserName.Trim().Length == 0)
+            {
+                ModelState.AddModelError("","Tên người dùng chỉ chứa kí tự khoảng trắng");
             }
             else if (aspNetUser.PhoneNumber.Trim().Length == 0)
             {
