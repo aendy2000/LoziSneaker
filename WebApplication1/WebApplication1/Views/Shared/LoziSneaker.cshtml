@@ -47,10 +47,25 @@
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                         <ul class="nav navbar-nav navbar-right" id="nav">
-                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/AspNetUsers/index")">Quản lí tài khoản</a></li>
-                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/SANPHAMs/index")">Quản lí sản phẩm</a></li>
-                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/TTCANHANs/index")">Quản lí thông tin khách hàng</a></li>
-                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/")">Quản lí giỏ hàng</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/AspNetUsers/Index")">Quản lí tài khoản</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/SANPHAMs/Index")">Quản lí sản phẩm</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/TTCANHANs/Index")">Quản lí thông tin khách hàng</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/GIOHANGs/Index")">Quản lí giỏ hàng</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        }
+        else if (User.IsInRole("Nhân viên"))
+        {
+            <div class="main-menu-area">
+                <nav class="navbar navbar-expand-lg align-items-start">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#karl-navbar" aria-controls="karl-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"><i class="ti-menu"></i></span></button>
+                    <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
+                        <ul class="nav navbar-nav navbar-right" id="nav">
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/SANPHAMs/Index")">Quản lí sản phẩm</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/TTCANHANs/Index")">Quản lí thông tin khách hàng</a></li>
+                            <li class="btn-outline-secondary"><a class="nav-link" href="@Url.Content("~/GIOHANGs/Index")">Quản lí giỏ hàng</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -76,31 +91,22 @@
                                 <div class="header-cart-menu d-flex align-items-center ml-auto">
                                     <!-- Cart Area -->
                                     <div class="cart">
-                                        <a href="#" id="header-cart-btn" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Your Bag 0</a>
-                                        <!-- Cart List Area Start -->
-                                        <ul class="cart-list">
-                                            <li>
-                                                <a href="#" class="image"><img src="#" class="cart-thumb" alt=""></a>
-                                                <div class="cart-item-desc">
-                                                    <h6><a href="#"></a></h6>
-                                                    <p><span class="price"></span></p>
-                                                </div>
-                                                <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="image"><img src="#" class="cart-thumb" alt=""></a>
-                                                <div class="cart-item-desc">
-                                                    <h6><a href="#"></a></h6>
-                                                    <p><span class="price"></span></p>
-                                                </div>
-                                                <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
-                                            </li>
-                                            <li class="total">
-                                                <span class="pull-right">Total: 0</span>
-                                                <a href="cart.html" class="btn btn-sm btn-cart">Cart</a>
-                                                <a href="checkout-1.html" class="btn btn-sm btn-checkout">Checkout</a>
-                                            </li>
-                                        </ul>
+
+                                        @if (Session["Cart"] != null)
+                                        {
+                                            <a style="font-size:20px" href="@Url.Action("ShowToCart", "ShoppingCart")" id="header-cart-btn">
+                                                Giỏ hàng <span class="fa fa-shopping-cart" aria-hidden="true">
+                                                </span> @Html.Action("BagCart", "ShoppingCart")
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a style="font-size:20px" href="@Url.Action("ShowToCart", "ShoppingCart")" id="header-cart-btn">
+                                                Giỏ hàng <span class="fa fa-shopping-cart" aria-hidden="true">
+                                                </span> 00
+                                            </a>
+                                        }
+
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +238,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
 </body>
 
 </html>

@@ -77,12 +77,14 @@
         </EntityType>
         <EntityType Name="CHITIETGIOHANG">
           <Key>
-            <PropertyRef Name="MAGIOHG" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="MAGIOHG" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MAGIOHG" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="MASP" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="GIA" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CHITIETSP">
           <Key>
@@ -113,10 +115,10 @@
           <Key>
             <PropertyRef Name="MAGIOHANG" />
           </Key>
-          <Property Name="MAGIOHANG" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MAGIOHANG" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="SOLUONG" Type="nvarchar" MaxLength="20" />
           <Property Name="TONGTIEN" Type="int" />
-          <Property Name="TKKH" Type="nvarchar" MaxLength="20" />
+          <Property Name="TKKH" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
@@ -179,7 +181,7 @@
         </Association>
         <Association Name="FK_CHITIETGIOHANG_GIOHANG">
           <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
-          <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="0..1" />
+          <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GIOHANG">
               <PropertyRef Name="MAGIOHANG" />
@@ -269,6 +271,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GIOHANG_ASPNETUSER">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GIOHANG">
+              <PropertyRef Name="MAGIOHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TTCANHAN_AspNetUser">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="0..1" />
@@ -331,6 +345,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIOHANG_ASPNETUSER" Association="Self.FK_GIOHANG_ASPNETUSER">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GIOHANG" EntitySet="GIOHANG" />
           </AssociationSet>
           <AssociationSet Name="FK_TTCANHAN_AspNetUser" Association="Self.FK_TTCANHAN_AspNetUser">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -399,6 +417,7 @@
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="GIOHANG" Relationship="Self.FK_GIOHANG_ASPNETUSER" FromRole="AspNetUsers" ToRole="GIOHANG" />
           <NavigationProperty Name="TTCANHAN" Relationship="Self.FK_TTCANHAN_AspNetUser" FromRole="AspNetUsers" ToRole="TTCANHAN" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
@@ -415,12 +434,14 @@
         </EntityType>
         <EntityType Name="CHITIETGIOHANG">
           <Key>
-            <PropertyRef Name="MAGIOHG" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="MAGIOHG" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MAGIOHG" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MASP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="GIA" Type="Int32" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Size" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="GIOHANG" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="CHITIETGIOHANG" ToRole="GIOHANG" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIETGIOHANG_SANPHAM" FromRole="CHITIETGIOHANG" ToRole="SANPHAM" />
         </EntityType>
@@ -455,11 +476,12 @@
           <Key>
             <PropertyRef Name="MAGIOHANG" />
           </Key>
-          <Property Name="MAGIOHANG" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MAGIOHANG" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SOLUONG" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TONGTIEN" Type="Int32" />
-          <Property Name="TKKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CHITIETGIOHANG" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="GIOHANG" ToRole="CHITIETGIOHANG" />
+          <Property Name="TKKH" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_GIOHANG_ASPNETUSER" FromRole="GIOHANG" ToRole="AspNetUsers" />
+          <NavigationProperty Name="CHITIETGIOHANGs" Relationship="Self.FK_CHITIETGIOHANG_GIOHANG" FromRole="GIOHANG" ToRole="CHITIETGIOHANG" />
         </EntityType>
         <EntityType Name="SANPHAM">
           <Key>
@@ -528,6 +550,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GIOHANG_ASPNETUSER">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GIOHANG">
+              <PropertyRef Name="MAGIOHANG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TTCANHAN_AspNetUser">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
           <End Role="TTCANHAN" Type="Self.TTCANHAN" Multiplicity="0..1" />
@@ -566,7 +600,7 @@
         </Association>
         <Association Name="FK_CHITIETGIOHANG_GIOHANG">
           <End Role="GIOHANG" Type="Self.GIOHANG" Multiplicity="1" />
-          <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="0..1" />
+          <End Role="CHITIETGIOHANG" Type="Self.CHITIETGIOHANG" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="GIOHANG">
               <PropertyRef Name="MAGIOHANG" />
@@ -625,6 +659,10 @@
           <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GIOHANG_ASPNETUSER" Association="Self.FK_GIOHANG_ASPNETUSER">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GIOHANG" EntitySet="GIOHANGs" />
           </AssociationSet>
           <AssociationSet Name="FK_TTCANHAN_AspNetUser" Association="Self.FK_TTCANHAN_AspNetUser">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -733,6 +771,8 @@
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

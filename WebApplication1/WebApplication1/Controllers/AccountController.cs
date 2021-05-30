@@ -166,14 +166,23 @@ namespace WebApplication1.Controllers
               
                 var user = new ApplicationUser { UserName =UserName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                var NewProfile = new TTCANHAN { EMAIL= user.Email, id = user.Id};
                 var role = db.AspNetRoles.SqlQuery("select * from AspNetRoles where Name = @p0", "Customer").First();// db.AspNetRoles.Find("9e2d4613-691e-4e9e-8480-c564b8005bdc");
                 var useradd = db.AspNetUsers.Find(user.Id);
+
+                //Add profile User
+                var NewProfile = new TTCANHAN { EMAIL = user.Email, id = user.Id };
+                //Add cart user
+                var NewCart = new GIOHANG { TKKH = user.Email, MAGIOHANG = user.Id };
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     role.AspNetUsers.Add(useradd);
+
+                    //Add Profile and Cart User
                     db.TTCANHANs.Add(NewProfile);
+                    db.GIOHANGs.Add(NewCart);
+
                     db.SaveChanges();
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
