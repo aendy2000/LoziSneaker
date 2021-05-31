@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace WebApplication1.Models
 {
@@ -12,6 +14,7 @@ namespace WebApplication1.Models
     }
     public class Cart
     {
+        CT25Team13Entities db = new CT25Team13Entities();
         List<CartItem> items = new List<CartItem>();
         public IEnumerable<CartItem> Items
         {
@@ -36,9 +39,17 @@ namespace WebApplication1.Models
         public void Update_Quantity_Shopping(string id, int _quantity)
         {
             var item = items.Find(s => s._shopping_product.MASP == id);
+            CHITIETGIOHANG sanphamtronggiohang = db.CHITIETGIOHANGs.FirstOrDefault(c => c.MASP == id);
+            
             if(item != null)
             {
-                item._shopping_quantity = _quantity;
+                if(sanphamtronggiohang.MASP != null)
+                {
+                    sanphamtronggiohang.SOLUONG = _quantity;
+                    item._shopping_quantity = _quantity;
+                    db.Entry(sanphamtronggiohang).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
         }
         public double Total_Money()

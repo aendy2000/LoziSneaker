@@ -41,7 +41,6 @@ namespace WebApplication1.Controllers
                         db.CHITIETGIOHANGs.Add(cHITIETGIOHANG);
                         db.SaveChanges();
                     }
-
                 }
                 GetCart().Add(pro);
             }
@@ -69,30 +68,31 @@ namespace WebApplication1.Controllers
                                 GetCart().Add(pro);
                             }
                         }
-                        View(cart);
                     }
-                }
-            }
-
-            else
-            {
-                if (cart == null || cart.Items.Count() == 0 || Session["Cart"] == null)
-                {
-                    GetCart();
-                    if (User.Identity.IsAuthenticated)
+                    else
                     {
-                        if (User.IsInRole("Customer"))
+                        GetCart();
+                        cart.ClearCart();
+                        if (model.Count() != 0)
                         {
-                            var chitetgh = db.CHITIETGIOHANGs.Find(User.Identity.GetUserId());
-
+                            for (int i = 0; i < model.Count(); i++)
+                            {
+                                string masp = model[i].MASP.ToString();
+                                SANPHAM pro = db.SANPHAMs.SingleOrDefault(s => s.MASP == masp);
+                                GetCart().Add(pro);
+                            }
                         }
                     }
                 }
             }
-            return RedirectToAction("ShowToCart", "ShoppingCart");
+
+            GetCart();
+            Cart cart1 = Session["Cart"] as Cart;
+            return View(cart1);
         }
         public ActionResult Update_Quantity_Cart(FormCollection form)
         {
+
             Cart cart = Session["Cart"] as Cart;
             string id_pro = form["ID_Product"];
             int quantity = int.Parse(form["Quantity"]);
@@ -124,6 +124,7 @@ namespace WebApplication1.Controllers
         public ActionResult Clear_Cart()
         {
             Cart cart = Session["Cart"] as Cart;
+            GetCart();
             if (cart != null)
             {
                 cart.ClearCart();
