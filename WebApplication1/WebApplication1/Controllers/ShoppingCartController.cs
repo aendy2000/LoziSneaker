@@ -51,14 +51,13 @@ namespace WebApplication1.Controllers
         public ActionResult ShowToCart()
         {
             Cart cart = Session["Cart"] as Cart;
-
             if (User.Identity.IsAuthenticated)
             {
                 if (User.IsInRole("Customer"))
                 {
                     var model = db.CHITIETGIOHANGs.ToList();
                     model = model.Where(c => c.MAGIOHG == User.Identity.GetUserId()).ToList();
-                    if (cart == null)
+                    if (cart == null || cart.Items.Count() == 0 || Session["Cart"] == null)
                     {
                         GetCart();
                         if (model.Count() != 0)
@@ -70,15 +69,16 @@ namespace WebApplication1.Controllers
                                 GetCart().Add(pro);
                             }
                         }
-
+                        View(cart);
                     }
                 }
             }
 
             else
             {
-                if (Session["Cart"] == null)
+                if (cart == null || cart.Items.Count() == 0 || Session["Cart"] == null)
                 {
+                    GetCart();
                     if (User.Identity.IsAuthenticated)
                     {
                         if (User.IsInRole("Customer"))
@@ -87,11 +87,9 @@ namespace WebApplication1.Controllers
 
                         }
                     }
-                    GetCart();
-                    return RedirectToAction("ShowToCart", "ShoppingCart");
                 }
             }
-            return View(cart);
+            return RedirectToAction("ShowToCart", "ShoppingCart");
         }
         public ActionResult Update_Quantity_Cart(FormCollection form)
         {
