@@ -10,6 +10,7 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+    [Authorize(Roles ="Admin,Nhân viên")]
     public class GIOHANGsController : Controller
     {
         private CT25Team13Entities db = new CT25Team13Entities();
