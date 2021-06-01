@@ -64,17 +64,11 @@
                                     <div class="widget-desc">
                                         <ul id="TheSize">
                                             <li>
-                                                <label for="Rd0">
-                                                    <input type="radio" name="Size" id="Rd0" value="NonCheckSize" />
-                                                </label>
-                                            </li>
-                                            <li>
                                                 <label for="Rd1">
-                                                    <input type="radio" name="Size" id="Rd1" value="36" />
+                                                    <input type="radio" name="Size" id="Rd1" value="36" required/>
                                                     <img src="@Url.Content("~/img/imgRadioSize/36.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
                                                 </label>
                                             </li>
-
                                             <li>
                                                 <label for="Rd2" style="margin-left:5px;">
                                                     <input type="radio" name="Size" id="Rd2" value="37" />
@@ -125,25 +119,17 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <script>
-                                    var bien = document.getElementById("TheSize");
-
-                                    function click_dong_nao(e) {
-                                        var doi_tuong = e.target;
-                                        alert("Hiển thị: " + doi_tuong.innerHTML);
-                                    }
-                                </script>
-
                                 <!-- Add to Cart Form -->
                                 <input type="hidden" value="@Model.MASP" name="ID_Product" />
                                 <input type="hidden" value="@Model.GIA" name="Gia" />
-
-                                <div class="quantity">
-                                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &lt; 100 ) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="100" name="quantity" value="1">
-                                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                <div class="cart clearfix mb-50 d-flex">
+                                    <div class="quantity">
+                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &lt; 100 ) effect.value++;return false;"><i style="margin-top:4px;" class="fa fa-plus" aria-hidden="true"></i></span>
+                                        <input style="font-size:16px;" type="number" class="qty-text" id="qty" step="1" min="1" max="100" name="quantity" value="1">
+                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &gt; 1 ) effect.value--;return false;"><i style="margin-top:4px;" class="fa fa-minus" aria-hidden="true"></i></span>
+                                    </div>
+                                    <button style=" margin-left:30px;" type="submit" class="add-to-cart-btn"><img src="@Url.Content("~/img/AddToCart.jpg")" style="width:148px;" /></button>
                                 </div>
-                                <button type="submit" class="add-to-cart-btn"> Thêm vào giỏ hàng </button>
                             </form>
 
                             <div id="accordion" role="tablist">

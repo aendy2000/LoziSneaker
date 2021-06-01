@@ -65,9 +65,12 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            @Html.ActionLink("Back to List", "Index", new { id = Model.MAGIOHG }) |
-            <input type="submit" value="Delete" class="btn btn-default" />
-        </div>
+<div class="form-actions no-color">
+    <a href="@Url.Action("Index", new { id = Model.MAGIOHG })" style="background-color:cornflowerblue" class="btn btn-outline-light">
+        <i class="fas fa-arrow-left"></i> Trở lại danh sách
+    </a> |
+    <input type="submit" value="Delete" style="background-color:cornflowerblue" class="btn btn-outline-light" />
+</div>
     }
+    <br />
 </div>

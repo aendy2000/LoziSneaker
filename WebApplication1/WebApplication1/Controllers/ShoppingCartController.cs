@@ -57,7 +57,7 @@ namespace WebApplication1.Controllers
             Cart cart = Session["Cart"] as Cart;
             if (User.Identity.IsAuthenticated)
             {
-                if (User.IsInRole("Customer"))
+                if (User.IsInRole("Customer") || User.IsInRole("Admin") || User.IsInRole("Nhân viên"))
                 {
                     var model = db.CHITIETGIOHANGs.ToList();
                     model = model.Where(c => c.MAGIOHG == User.Identity.GetUserId()).ToList();
