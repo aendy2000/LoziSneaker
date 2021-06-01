@@ -6,55 +6,58 @@
 <h2>Quản lí sản phẩm</h2>
 <hr />
 <div style="margin-bottom:15px;">
-    <a style="font-size: 18px;" href="@Url.Action("Create")" class="btn btn-outline-primary">
+    <a style="font-size: 18px; background-color:cornflowerblue" href="@Url.Action("Create")" class="btn btn-outline-light">
         Thêm sản phẩm <i class="fas fa-plus-circle"></i>
     </a>
 </div>
-<table class="table">
-    <tr>
-        <th>
+<table class="table" border="1" style="text-align:center;">
+    <tr class="alert-dark" style="text-align:center;">
+        <th style="text-align:center;">
             Tên sản phẩm
         </th>
-        <th>
+        <th style="text-align:center;">
             Thương hiệu
         </th>
-        <th>
+        <th style="text-align:center;">
             Giá
         </th>
-        <th>
+        <th style="text-align:center;">
             Màu sắc
         </th>
-        <th>
+        <th style="text-align:center;">
             Hình ảnh
         </th>
-        <th>
+        <th style="text-align:center;">
             Số lượng | Size
+        </th>
+        <th style="text-align:center;">
+            Sửa | Xóa
         </th>
     </tr>
 
 @foreach (var item in Model) {
 <tr>
-    <td>
-       <a style="color: black;" href="@Url.Action("Details", new { id = item.MASP })">@item.TENSP</a>
+    <td style="padding-top:40px;">
+        <a style="color: black;" href="@Url.Action("Details", new { id = item.MASP })">@item.TENSP</a>
     </td>
-    <td>
+    <td style="padding-top:40px">
        @item.THUONGHIEU
     </td>
-    <td>
+    <td style="padding-top:40px">
         @item.GIA
     </td>
-    <td>
+    <td style="padding-top:40px">
         @item.MAUSAC
     </td>
     <td>
-        <img src="@Url.Content(item.HINHANH)" style="width:50px; height:auto; margin:auto;" />
+        <img src="@Url.Content(item.HINHANH)" style="width:80px; height:auto; margin:auto;" />
     </td>
-    <td>
-        <a href="@Url.Action("Details", "CHITIETSPs", new {id = item.MASP})" class="btn btn-outline-primary"> 
+    <td style="padding-top:30px">
+        <a href="@Url.Action("Details", "CHITIETSPs", new {id = item.MASP})" style="background-color:cornflowerblue" class="btn btn-outline-light">
             Cập nhật Số Lượng <i class="far fa-arrow-alt-circle-right"></i>
         </a>
     </td>
-    <td style="font-size: 22px;" >
+    <td style="font-size: 22px; padding-top: 30px;" >
         <a href="@Url.Action("Edit", new { id = item.MASP })">
             <i class="fas fa-edit"></i>
         </a> |
