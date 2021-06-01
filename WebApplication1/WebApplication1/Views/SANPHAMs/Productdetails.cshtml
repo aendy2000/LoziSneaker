@@ -3,7 +3,26 @@
 @{
     ViewBag.Title = "Productdetails";
 }
+<style>
+    /* HIDE RADIO */
+    [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 3.5px solid #b1154a;
+            outline-offset: 1px;
+        }
+</style>
 
 <body>
     <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
@@ -11,7 +30,7 @@
         <div class="container">
             <div class="row">
                 <!-- <<<<<<<<<<<<<<<<<<<< Image Product >>>>>>>>>>>>>>>>>>>>>>>>> -->
-                <div class="col-12 col-md-6" >
+                <div class="col-12 col-md-6">
                     <div class="single_product_thumb">
                         <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner" style="display:table-cell; vertical-align:middle; text-align:center; width: auto; height: 560px;">
@@ -28,56 +47,119 @@
 
                 <div class="col-12 col-md-6">
                     <div class="single_product_desc">
+                        @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
+                        {
+                            <form class="cart clearfix mb-50 d-flex" method="post">
+                                <h4 class="title" style="font-size: 34px; font-weight: bold; color: brown;">@Model.TENSP</h4>
+                                <hr />
 
-                        <h4 class="title" style="font-size: 34px; font-weight: bold; color: brown;">@Model.TENSP</h4>
-                        <hr />
+                                <h4> Giá: <a style="color:black; font-weight: bold">@Model.GIA</a> $</h4>
 
-                        <h4> Giá: <a style="color:black; font-weight: bold">@Model.GIA $</a></h4>
+                                <h4> Thương hiệu: <a style="color:black; font-weight: bold">@Model.THUONGHIEU </a></h4>
 
-                        <h4> Thương hiệu: <a style="color:black; font-weight: bold">@Model.THUONGHIEU </a></h4>
+                                <h4>Màu sắc: <a style="color:black; font-weight: bold">@Model.MAUSAC</a></h4>
+                                <hr />
+                                <div class="widget size mb-50">
+                                    <h6 class="widget-title">Size</h6>
+                                    <div class="widget-desc">
+                                        <ul id="TheSize">
+                                            <li>
+                                                <label for="Rd0">
+                                                    <input type="radio" name="Size" id="Rd0" value="NonCheckSize" />
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Rd1">
+                                                    <input type="radio" name="Size" id="Rd1" value="36" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/36.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
 
-                        <h4>Màu sắc: <a style="color:black; font-weight: bold">@Model.MAUSAC</a></h4>
-                        <hr />
-                        <div class="widget size mb-50">
-                            <h6 class="widget-title">Size</h6>
-                            <div class="widget-desc">
-                                <ul>
-                                    <li><a href="#">36</a></li>
-                                    <li><a href="#">37</a></li>
-                                    <li><a href="#">38</a></li>
-                                    <li><a href="#">39</a></li>
-                                    <li><a href="#">40</a></li>
-                                    <li><a href="#">41</a></li>
-                                    <li><a href="#">42</a></li>
-                                    <li><a href="#">43</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                                            <li>
+                                                <label for="Rd2" style="margin-left:5px;">
+                                                    <input type="radio" name="Size" id="Rd2" value="37" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/37.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Rd3" style="margin-left:5px;">
+                                                    <input type="radio" name="Size" id="Rd3" value="38" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/38.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Rd4" style="margin-left:5px;">
+                                                    <input type="radio" name="Size" id="Rd4" value="39" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/39.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Rd5" style="margin-left:5px;">
 
-                        <!-- Add to Cart Form -->
-                        <form class="cart clearfix mb-50 d-flex" method="post">
-                            <div class="quantity">
-                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &lt; 100 ) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="100" name="quantity" value="1">
-                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                            </div>
-                            <a href="/ShoppingCart/AddtoCart/@Model.MASP">
-                                <img name="addtocart" class="btn-outline-danger" src="~/img/AddToCart.jpg" width="163"/>
-                            </a>
-                        </form>
+                                                    <input type="radio" name="Size" id="Rd5" value="40" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/40.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Rd6" style="margin-left:5px;">
 
-                        <div id="accordion" role="tablist">
-                            <div class="card">
-                                <div class="card-header" role="tab" id="headingOne">
-                                    <h6 class="mb-0">
-                                        <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Thông tin sản phẩm: </a>
-                                    </h6>
-                                    <div class="card-body">
-                                        <p> - @Model.MOTA</p>
+                                                    <input type="radio" name="Size" id="Rd6" value="41" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/41.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Rd7" style="margin-left:5px;">
+
+                                                    <input type="radio" name="Size" id="Rd7" value="42" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/42.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label for="Rd8" style="margin-left:5px;">
+
+                                                    <input type="radio" name="Size" id="Rd8" value="43" />
+                                                    <img src="@Url.Content("~/img/imgRadioSize/43.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                </label>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                                <script>
+                                    var bien = document.getElementById("TheSize");
+
+                                    function click_dong_nao(e) {
+                                        var doi_tuong = e.target;
+                                        alert("Hiển thị: " + doi_tuong.innerHTML);
+                                    }
+                                </script>
+
+                                <!-- Add to Cart Form -->
+                                <input type="hidden" value="@Model.MASP" name="ID_Product" />
+                                <input type="hidden" value="@Model.GIA" name="Gia" />
+
+                                <div class="quantity">
+                                    <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &lt; 100 ) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="100" name="quantity" value="1">
+                                    <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
+                                </div>
+                                <button type="submit" class="add-to-cart-btn"> Thêm vào giỏ hàng </button>
+                            </form>
+
+                            <div id="accordion" role="tablist">
+                                <div class="card">
+                                    <div class="card-header" role="tab" id="headingOne">
+                                        <h6 class="mb-0">
+                                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Thông tin sản phẩm: </a>
+                                        </h6>
+                                        <div class="card-body">
+                                            <p> - @Model.MOTA</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+
                     </div>
                 </div>
             </div>

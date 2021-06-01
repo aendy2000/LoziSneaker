@@ -242,6 +242,10 @@ namespace WebApplication1.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public void Size(string size)
+        {
+            ViewBag.Size = size;
+        }
 
         protected override void Dispose(bool disposing)
         {
