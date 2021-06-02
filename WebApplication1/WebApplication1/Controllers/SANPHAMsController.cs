@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
@@ -91,11 +92,18 @@ namespace WebApplication1.Controllers
                 sANPHAM.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename));
             }
 
-            KiemtraTruongRong(sANPHAM);
-            KiemtraTruongKhoangTrang(sANPHAM);
+            KiemtraTruongNhạp(sANPHAM);
 
             if (ModelState.IsValid)
             {
+                var findid = db.SANPHAMs.FirstOrDefault(m => m.MASP == sANPHAM.MASP);
+                var sp = db.SANPHAMs.Find(sANPHAM.MASP);
+                if (findid !=null) 
+                {
+                    ModelState.AddModelError("","Mã sản phẩm đã tồn tại");
+                }
+                else
+                {
                     db.SANPHAMs.Add(sANPHAM);
                     db.SaveChanges();
 
@@ -113,65 +121,75 @@ namespace WebApplication1.Controllers
 
                     db.CHITIETSPs.Add(addMaSP);
                     db.SaveChanges();
-
                 return RedirectToAction("Index");
+                }
             }
             return View(sANPHAM);
         }
-        private void KiemtraTruongRong(SANPHAM sanpham)
+        private void KiemtraTruongNhạp(SANPHAM sanpham)
         {
-            if (sanpham.TENSP == null)
+            var massp = new Regex("^[a-zA-Z0-9]*$");
+            if (sanpham.MASP== null)
+            {
+                ModelState.AddModelError("MASP","Mã sản phẩm không được bỏ trống !!");
+            }
+            else if (massp.IsMatch(sanpham.MASP) == false)
+            {
+                ModelState.AddModelError("MaSP", "Mã sản phẩm sai định dạng");
+            }
+            else if (sanpham.MASP.Length < 5 || sanpham.MASP.Length > 10)
+            {
+                ModelState.AddModelError("MaSP", "Mã sản phẩm không hợp lệ !!");
+            }
+            else if (massp.IsMatch(sanpham.MASP) == false)
+            {
+                ModelState.AddModelError("MaSP", "Mã sản phẩm sai định dạng");
+            }
+            else if (sanpham.MASP.Trim().Length == 0)
+            {
+                ModelState.AddModelError("MASP", "Mã sản phẩm không hợp lệ !!");
+            }
+            else if (sanpham.TENSP == null)
             {
                 ModelState.AddModelError("TENSP", "Tên sản phẩm không được bỏ trống !!");
             }
-            if (sanpham.THUONGHIEU == null)
+            else if (sanpham.TENSP.Trim().Length == 0)
+            {
+                ModelState.AddModelError("TENSP", "Tên sản phẩm không hợp lệ!!");
+            }
+            else if (sanpham.THUONGHIEU == null)
             {
                 ModelState.AddModelError("THUONGHIEU", "Thương hiệu sản phẩm không được bỏ trống !!");
             }
-            if (sanpham.GIA == null)
+            else if (sanpham.THUONGHIEU.Trim().Length == 0)
+            {
+                ModelState.AddModelError("THUONGHIEU", "THương hiệu sản phẩm không hợp lệ!! ");
+            }
+            else if (sanpham.GIA == null)
             {
                 ModelState.AddModelError("GIA", "Giá sản phẩm không được bỏ trống !!");
             }
-            if (sanpham.NGAYTHEM == null)
+            else if (sanpham.GIA < 1)
             {
-                ModelState.AddModelError("NGAYTHEM", "Ngày thêm sản phẩm không được bỏ trống !!");
+                ModelState.AddModelError("Gia", "Giá không thể dưới 1 VNĐ !!");
             }
-            if (sanpham.MAUSAC == null)
-            {
-                ModelState.AddModelError("MAUSAC", "Màu sản phẩm không được bỏ trống !!");
-            }
-            if (sanpham.HINHANH == null)
+            else if (sanpham.HINHANH == null)
             {
                 ModelState.AddModelError("HINHANH", "Hình ảnh sản phẩm không được bỏ trống !!");
             }
-        }
-        private void KiemtraTruongKhoangTrang(SANPHAM sanpham)
-        {
-            if (sanpham.TENSP == " ")
+            else if (sanpham.MAUSAC == null)
             {
-                ModelState.AddModelError("TENSP", "Tên sản phẩm không hợp lệ !!");
+                ModelState.AddModelError("MAUSAC", "Màu sản phẩm không được bỏ trống !!");
             }
-            if (sanpham.THUONGHIEU == " ")
+            else if (sanpham.MAUSAC.Trim().Length == 0)
             {
-                ModelState.AddModelError("THUONGHIEU", "Thương hiệu sản phẩm không hợp lệ !!");
+                ModelState.AddModelError("MAUSAC", "Màu sản phẩm không được bỏ trống !!");
             }
-            if (sanpham.GIA.ToString() == " ")
-            {
-                ModelState.AddModelError("GIA", "Giá sản phẩm không được bỏ trống !!");
-            }
-            if (sanpham.NGAYTHEM.ToString() == " ")
+            else if (sanpham.NGAYTHEM == null)
             {
                 ModelState.AddModelError("NGAYTHEM", "Ngày thêm sản phẩm không được bỏ trống !!");
             }
 
-            if (sanpham.MAUSAC == " ")
-            {
-                ModelState.AddModelError("MAUSAC", "Màu sản phẩm không được bỏ trống !!");
-            }
-            if (sanpham.HINHANH == " ")
-            {
-                ModelState.AddModelError("HINHANH", "Hình ảnh sản phẩm không được bỏ trống !!");
-            }
         }
 
         // GET: SANPHAMs/Edit/5
@@ -197,6 +215,7 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SANPHAM sANPHAM)
         {
+            KiemtraTruongNhạp(sANPHAM);
             if (ModelState.IsValid)
             {
                 if (sANPHAM.ImageUpload != null)
