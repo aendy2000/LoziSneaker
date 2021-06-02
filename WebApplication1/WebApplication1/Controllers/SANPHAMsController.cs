@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
         private CT25Team13Entities db = new CT25Team13Entities();
 
         // GET: SANPHAMs
-        [Authorize(Roles = "Admin,Nhân Viên")]
+        [Authorize(Roles = "Admin,Nhân viên")]
         public ActionResult Index()
         {
             return View(db.SANPHAMs.ToList());
@@ -260,6 +260,10 @@ namespace WebApplication1.Controllers
             db.SANPHAMs.Remove(XoaSP);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public void Size(string size)
+        {
+            ViewBag.Size = size;
         }
 
         protected override void Dispose(bool disposing)

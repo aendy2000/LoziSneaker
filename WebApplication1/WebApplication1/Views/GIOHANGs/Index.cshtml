@@ -4,47 +4,48 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+<h2>Quản lí giỏ hàng</h2>
+<hr />
+<table class="table" border="1" style="text-align:center;">
+    <tr class="alert-dark" style="text-align:center;">
+        <th style="text-align:center;">
             Khách hàng
         </th>
-        <th>
+        <th style="text-align:center;">
             Giỏ hàng
         </th>
-        <th>
+        <th style="text-align:center;">
             Số lượng
         </th>
-        <th>
+        <th style="text-align:center;">
             Tổng tiền
         </th>
-        <th></th>
+        <th style="text-align:center;">
+            Chi tiết giỏ hàng
+        </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MAGIOHANG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SOLUONG)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TONGTIEN)
-        </td>
-        <td>
-            <a href="/CHITIETGIOHANGs/Index/@item.MAGIOHANG">Xem Chi tiết giỏ hàng
-            </a>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style=" text-align:left; ">
+                @Html.DisplayFor(modelItem => item.AspNetUser.Email)
+            </td>
+            <td style=" text-align:left; ">
+                @Html.DisplayFor(modelItem => item.MAGIOHANG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TONGTIEN)
+            </td>
+            <td>
+                <a href="/CHITIETGIOHANGs/Index/@item.MAGIOHANG"  style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    Xem giỏ hàng <i class="far fa-arrow-alt-circle-right"></i>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>

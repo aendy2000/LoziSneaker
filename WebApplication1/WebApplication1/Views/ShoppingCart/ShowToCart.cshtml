@@ -3,19 +3,19 @@
 @{
     ViewBag.Title = "ShowToCart";
 }
-
 <h2>Giỏ hàng</h2>
 @if (Model != null)
 {
     <!-- ****** Cart Area Start ****** -->
-    <table class="table">
+    <table class="table" border="1" align="center">
         <thead>
             <tr class="alert-dark" style="text-align:center;">
-                <th colspan="2">Sản Phẩm</th>
-                <th>Giá</th>
-                <th>Số Lượng</th>
-                <th>Thành tiền</th>
-                <th>Xóa</th>
+                <th colspan="2" style="text-align:center;">Sản Phẩm</th>
+                <th style="text-align:center;">Size</th>
+                <th style="text-align:center;">Giá</th>
+                <th style="text-align:center;">Số Lượng</th>
+                <th style="text-align:center;">Thành tiền</th>
+                <th style="text-align:center;">Xóa</th>
             </tr>
         </thead>
         <tbody>
@@ -23,26 +23,38 @@
             {
                 double total = Convert.ToDouble(itemm._shopping_product.GIA.Value * itemm._shopping_quantity);
                 <tr>
-                    <td class="cart_product_img d-flex align-items-center">
-                        <a href="@Url.Action("ProductDetails", "SANPHAMs", new { id = itemm._shopping_product.MASP })"><img src="@Url.Content(itemm._shopping_product.HINHANH + " ")" alt="Product"></a>
+                    <td align="center">
+                        <a href="@Url.Action("ProductDetails", "SANPHAMs", new { id = itemm._shopping_product.MASP })" target="_blank">
+                            <img src="@Url.Content(itemm._shopping_product.HINHANH + " ")" style=" font-size:20px; width:100px;" alt="Product">
+                        </a>
                     </td>
-                    <td style="padding-top:50px; font-size:20px;">@itemm._shopping_product.TENSP
+                    <td align="center" style="padding-top:40px; font-size:20px;">
+                        <a href="@Url.Action("ProductDetails", "SANPHAMs", new { id = itemm._shopping_product.MASP })"  target="_blank">
+                            <span style=" font-size:20px; font-weight:bold"> @itemm._shopping_product.TENSP</span>
+                        </a>
                     </td>
-                    <td style="padding-top:50px; font-size:20px;">@itemm._shopping_product.GIA</td>
-                    <td style="padding-top:50px;">
+                    <td align="center" style="padding-top:40px; font-size:20px;">
+                        @itemm._shopping_size
+                    </td>
+                    <td align="center" style="padding-top:40px; font-size:20px;">@itemm._shopping_product.GIA</td>
+                    <td align="center" style="padding-top:30px;">
                         @using (Html.BeginForm("Update_Quantity_Cart", "ShoppingCart"))
                         {
+                            <input type="hidden" value="@itemm._shopping_size" name="Size" />
                             <input type="hidden" value="@itemm._shopping_product.MASP" name="ID_Product" />
-                            <input type="number" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px"class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                            <input type="number" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
                             <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
                         }
 
                     </td>
-                    <td style="padding-top:50px; font-size:20px;" class="total_price"><span>@total</span></td>
-                    <td style="padding-top:50px; font-size:20px;">
-                        <a style="border: 1px solid darkgray;" href="/ShoppingCart/RemoveCart/@itemm._shopping_product.MASP" class="btn btn-outline-danger">
-                            <i class="fas fa-trash-alt"></i> Remove
-                        </a>
+                    <td align="center" style="padding-top:40px; font-size:20px;" class="total_price"><span>@total</span></td>
+                    <td align="center" style="padding-top:40px; font-size:20px;">
+                        @using (Html.BeginForm("RemoveCart", "ShoppingCart"))
+                        {
+                            <input type="hidden" name="ID_Product" value="@itemm._shopping_product.MASP" />
+                            <input type="hidden" name="Size" value="@itemm._shopping_size" />
+                            <button style="width:120px" type="submit" class="btn-outline-danger"> Remove <i class="fas fa-trash-alt"></i></button>
+                        }
                     </td>
                 </tr>
             }
@@ -67,8 +79,8 @@
             <ul class="cart-total-chart">
                 <p style="font-size:30px; font-weight:bold;">Total</p>
                 <p style="font-size:10px; text-align:center; padding-bottom:20px;">____________________________________________________________________________________________________________________________________________________________________________________________________________________________________</p>
-                <li><span>Shipping</span> <span>Free</span></li>
-                <li><span><strong>Total</strong></span> <span><strong>@Model.Total_Money()</strong></span></li>
+                <li><span style="font-size:18px;">Shipping</span> <span style="font-size:18px;">Free</span></li>
+                <li><span><strong style="font-size:20px;">Total</strong></span> <span><strong  style="font-size:20px;">@Model.Total_Money(null)</strong></span></li>
             </ul>
             <a style="padding-top:15px" href="checkout.html" class="btn karl-checkout-btn">Proceed to checkout</a>
         </div>

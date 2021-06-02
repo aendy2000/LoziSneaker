@@ -385,6 +385,17 @@ namespace WebApplication1.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+            Response.AddHeader("Cache-Control", "no-cache, no-store,must-revalidate");
+            Response.AddHeader("Pragma", "no-cache");
+            Response.AddHeader("Expires", "0");
+            Session.Abandon();
+
+            Session.Clear();
+            Response.Cookies.Clear();
+            Session.RemoveAll();
+
+            Session["Login"] = null;
             return RedirectToAction("Index2", "SANPHAMs");
         }
 

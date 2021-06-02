@@ -1,6 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@Html.AntiForgeryToken()
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -71,6 +71,7 @@
                 </nav>
             </div>
         }
+
     }
     <div id="wrapper">
 
@@ -92,20 +93,10 @@
                                     <!-- Cart Area -->
                                     <div class="cart">
 
-                                        @if (Session["Cart"] != null)
-                                        {
-                                            <a style="font-size:20px" href="@Url.Action("ShowToCart", "ShoppingCart")" id="header-cart-btn">
-                                                Giỏ hàng <span class="fa fa-shopping-cart" aria-hidden="true">
-                                                </span> @Html.Action("BagCart", "ShoppingCart")
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a style="font-size:20px" href="@Url.Action("ShowToCart", "ShoppingCart")" id="header-cart-btn">
-                                                Giỏ hàng <span class="fa fa-shopping-cart" aria-hidden="true">
-                                                </span>: 0
-                                            </a>
-                                        }
+                                        <a style="font-size:20px" href="@Url.Action("ShowToCart", "ShoppingCart")" id="header-cart-btn">
+                                            Giỏ hàng <span class="fa fa-shopping-cart" aria-hidden="true">
+                                            </span> @Html.Action("BagCart", "ShoppingCart")
+                                        </a>
 
                                     </div>
                                 </div>
@@ -222,8 +213,7 @@
             </div>
         </footer>
         <!-- ****** Footer Area End ****** -->
-    </div>
-    <!-- /.wrapper end -->
+    </div><!-- /.wrapper end -->
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
     <script src="@Url.Content("~/js/jquery/jquery-2.2.4.min.js")"></script>
     <!-- Popper js -->
