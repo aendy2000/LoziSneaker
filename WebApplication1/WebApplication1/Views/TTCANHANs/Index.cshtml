@@ -6,28 +6,30 @@
 
 <h2>Quản lí thông tin khách hàng</h2>
 
-
-<table class="table">
-    <tr>
+<hr />
+<table class="table" border="1" style="text-align:center;">
+    <tr  class="alert-dark" style="text-align:center;">
         <th>
-            @Html.DisplayNameFor(model => model.EMAIL)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TEN)
+            Họ và tên
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NGAYSINH)
+            Ngày sinh
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DIACHI)
+            Địa chỉ
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GIOITINH)
+            Giới tính
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SDT)
+            Số điện thoại
         </th>
-        <th></th>
+        <th>
+            Sửa
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -52,8 +54,9 @@
         @Html.DisplayFor(modelItem => item.SDT)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+        <a href="@Url.Action("Edit", new { id = item.id })">
+            <i class="fas fa-edit"></i>
+        </a>
     </td>
 </tr>
 }

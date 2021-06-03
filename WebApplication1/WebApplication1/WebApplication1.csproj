@@ -372,9 +372,7 @@
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\SANPHAMs\Index2.cshtml" />
-    <Content Include="Views\SANPHAMs\Create.cshtml" />
     <Content Include="Views\SANPHAMs\Edit.cshtml" />
-    <Content Include="Views\TTCANHANs\Details.cshtml" />
     <Content Include="Views\TTCANHANs\Edit.cshtml" />
     <Content Include="Views\TTCANHANs\Index.cshtml" />
     <Content Include="Views\TTCANHANs\Index2.cshtml" />
@@ -384,6 +382,7 @@
     <Content Include="Views\GIOHANGs\Index.cshtml" />
     <Content Include="Views\ShoppingCart\BagCart.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
+    <Content Include="Views\SANPHAMs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
