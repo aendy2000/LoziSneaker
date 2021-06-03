@@ -1,0 +1,101 @@
+﻿@model WebApplication1.Models.Cart
+
+@{
+    ViewBag.Title = "Checkout";
+}
+<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
+<style>
+    .example button {
+        float: left;
+        background-color: #4E3E55;
+        color: white;
+        border: none;
+        box-shadow: none;
+        font-size: 17px;
+        font-weight: 500;
+        font-weight: 600;
+        border-radius: 3px;
+        padding: 15px 35px;
+        margin: 26px 5px 0 5px;
+        cursor: pointer;
+    }
+
+        .example button:focus {
+            outline: none;
+        }
+
+        .example button:hover {
+            background-color: #33DE23;
+        }
+
+        .example button:active {
+            background-color: #81ccee;
+        }
+</style>
+
+<div class="checkout_area section_padding_100">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-md-6">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-page-heading">
+                        <h5>Thông tin đơn hàng</h5>
+                    </div>
+                    @using (Html.BeginForm("Checkout_view", "ShoppingCart"))
+                    {
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
+                                <input type="text" class="hidden" name="Tong_gia" value="@Model.Total_Money(null)">
+
+                                <label for="first_name">Họ và tên <span>*</span></label>
+                                <input type="text" class="form-control col-md-12 mb-3" name="first_name" required="true">
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="street_address">Địa chỉ <span>*</span></label>
+                                <input type="text" class="form-control col-md-12 mb-3" name="street_address" required="true">
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="phone_number">Số điện thoại <span>*</span></label>
+                                <input type="number" class="form-control col-md-12 mb-3" name="phone_number" required="true">
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="email_address">Email <span>*</span></label>
+                                <input type="email" class="form-control col-md-12 mb-3" name="email_address" required="true">
+                            </div>
+                            <input type="submit" class="btn karl-checkout-btn col-md-12 mb-3" value="Đặt hàng" id="Success_checkout" />
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                <div class="order-details-confirmation">
+
+                    <div class="cart-page-heading">
+                        <h5>Đơn hàng</h5>
+                    </div>
+
+                    <ul class="order-details-form mb-4">
+                        <li><span>Sản Phẩm</span> <span></span><span>SL</span> <span>Thành Tiền</span></li>
+
+                        @foreach (var item in Model.Items)
+                        {
+                            <li><span>@item._shopping_product.TENSP</span> <span>@item._shopping_quantity</span> <span>@(item._shopping_product.GIA * item._shopping_quantity) vnđ</span></li>
+                        }
+                        <li><span>Shipping</span> <span>Free</span></li>
+                        <li><span>Tổng cộng</span> <span>@Model.Total_Money(null) vnđ</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script language="javascript">
+    var button = document.getElementById("Success_checkout"); button.onclick = function () { alert("Đặt hàng thành công"); }
+</script>

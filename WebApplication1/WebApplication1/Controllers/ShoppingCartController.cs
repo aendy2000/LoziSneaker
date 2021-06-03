@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
@@ -10,6 +12,18 @@ namespace WebApplication1.Controllers
 {
     public class ShoppingCartController : Controller
     {
+        public string ranDom(int chieudai)
+        {
+            chieudai = 25; const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < chieudai--)
+            {
+                res.Append(valid[rnd.Next(valid.Length)]);
+            }
+            return res.ToString();
+        }
+
         CT25Team13Entities db = new CT25Team13Entities();
         // GET: ShoppingCart
         public Cart GetCart()
@@ -135,6 +149,63 @@ namespace WebApplication1.Controllers
                 cart.Total_Quantity_in_Cart(User.Identity.GetUserId(), GetCart().Items.Count());
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
+        }
+
+        public ActionResult Checkout()
+        {
+            Cart cart = Session["Cart"] as Cart;
+            return View(cart);
+        }
+
+        public ActionResult Checkout_view(FormCollection form)
+        {
+            string madh = ranDom(25);
+            add_donhang(madh,form["phone_number"], form["first_name"], form["email_address"], form["street_address"], form["Tong_gia"]);
+            Cart cart = Session["cart"] as Cart;
+
+            foreach (var item in cart.Items)
+            {
+                var orderDetail = new CHITIETDH();
+                orderDetail.MADH = madh;
+                orderDetail.MASP = item._shopping_product.MASP;
+                orderDetail.SOLUONG = item._shopping_quantity;
+                orderDetail.GIA = item._shopping_quantity * item._shopping_product.GIA.Value;
+                orderDetail.SIZE = item._shopping_size;
+                db.CHITIETDHs.Add(orderDetail);
+                db.SaveChanges();
+            }
+            cart.ClearCart(User.Identity.GetUserId());
+            return RedirectToAction("Index2","SANPHAMs");
+        }
+
+        public void add_donhang(string madh, string sdt, string hovaten, string email, string diachi, string tongtien)
+        {
+            var order = new DONHANG();
+            if (User.Identity.IsAuthenticated)
+            {
+                order.TKKH = User.Identity.GetUserId();
+                order.MADH = madh;
+                order.NGAYLAPDH = DateTime.Now;
+                order.SDT = sdt;
+                order.HOVATEN = hovaten;
+                order.EMAIL = email;
+                order.DIACHI = diachi;
+                order.TONGTIEN = int.Parse(tongtien);
+            }
+            else
+            {
+                order.MADH = madh;
+                order.NGAYLAPDH = DateTime.Now;
+                order.SDT = sdt;
+                order.HOVATEN = hovaten;
+                order.EMAIL = email;
+                order.DIACHI = diachi;
+                order.TONGTIEN = int.Parse(tongtien);
+            }
+
+            db.DONHANGs.Add(order);
+            db.SaveChanges();
+            GetCart();
         }
     }
 }

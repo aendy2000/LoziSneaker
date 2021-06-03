@@ -81,9 +81,13 @@
                 <p style="font-size:30px; font-weight:bold;">Total</p>
                 <p style="font-size:10px; text-align:center; padding-bottom:20px;">____________________________________________________________________________________________________________________________________________________________________________________________________________________________________</p>
                 <li><span style="font-size:18px;">Shipping</span> <span style="font-size:18px;">Free</span></li>
-                <li><span><strong style="font-size:20px;">Total</strong></span> <span><strong  style="font-size:20px;">@Model.Total_Money(null)</strong></span></li>
+                <li><span><strong style="font-size:20px;">Total</strong></span> <span><strong style="font-size:20px;">@Model.Total_Money(null)</strong></span></li>
             </ul>
-            <a style="padding-top:15px" href="checkout.html" class="btn karl-checkout-btn">Proceed to checkout</a>
+            @using (Html.BeginForm("Checkout","ShoppingCart"))
+            {
+                <input type="hidden" name="modelCart" value="@Model.Items"/>
+                <button tyle="sumit" style="padding-top:15px" href="" class="btn karl-checkout-btn">Proceed to checkout</button>
+            }
         </div>
     </div>
 }

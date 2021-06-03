@@ -14,10 +14,12 @@ namespace WebApplication1.Models
     
     public partial class CHITIETDH
     {
-        public string MADH { get; set; }
         public Nullable<int> SOLUONG { get; set; }
         public string MASP { get; set; }
         public Nullable<int> GIA { get; set; }
+        public string SIZE { get; set; }
+        public int id_ctdh { get; set; }
+        public string MADH { get; set; }
     
         public virtual DONHANG DONHANG { get; set; }
         public virtual SANPHAM SANPHAM { get; set; }
