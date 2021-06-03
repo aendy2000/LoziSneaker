@@ -275,6 +275,20 @@
     <Content Include="Content\Site.css" />
     <Content Include="img\DangThiMinhNgoc.jpg" />
     <Content Include="img\DangVanTuan.jpg" />
+    <Content Include="img\imgProduct\20210110_202339.jpg" />
+    <Content Include="img\imgProduct\25-1076.jpg" />
+    <Content Include="img\imgProduct\adidas-yeezy-350-v2-earth-nau-dat.jpg" />
+    <Content Include="img\imgProduct\Air-Force-1.jpg" />
+    <Content Include="img\imgProduct\Air-Jordan-1.jpg" />
+    <Content Include="img\imgProduct\balenciaga-triple-s-allover.jpg" />
+    <Content Include="img\imgProduct\ConverseAllStart.jpg" />
+    <Content Include="img\imgProduct\Default.jpg" />
+    <Content Include="img\imgProduct\giay-mlb-boston-rep.jpg" />
+    <Content Include="img\imgProduct\MLB-Boston.jpg" />
+    <Content Include="img\imgProduct\Nike-Sacai-Waffle-White-1.jpg" />
+    <Content Include="img\imgProduct\vans-classic-old-skool-black-white.jpg" />
+    <Content Include="img\imgProduct\Vans-slipon.jpg" />
+    <Content Include="img\imgProduct\Yeezy800-White.jpg" />
     <Content Include="img\Logo.png" />
     <Content Include="img\MaKhonTuyen.jpg" />
     <Content Include="img\NguyenTranKhuong.jpg" />
@@ -313,6 +327,7 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -391,8 +406,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\imgIcon\" />
-    <Folder Include="img\imgProduct\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
