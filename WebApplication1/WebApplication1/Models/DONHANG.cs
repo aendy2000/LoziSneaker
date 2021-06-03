@@ -14,12 +14,22 @@ namespace WebApplication1.Models
     
     public partial class DONHANG
     {
-        public string MADH { get; set; }
-        public string TKNV { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DONHANG()
+        {
+            this.CHITIETDHs = new HashSet<CHITIETDH>();
+        }
+    
         public string TKKH { get; set; }
         public Nullable<System.DateTime> NGAYLAPDH { get; set; }
         public Nullable<int> TONGTIEN { get; set; }
+        public string EMAIL { get; set; }
+        public string SDT { get; set; }
+        public string DIACHI { get; set; }
+        public string HOVATEN { get; set; }
+        public string MADH { get; set; }
     
-        public virtual CHITIETDH CHITIETDH { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHITIETDH> CHITIETDHs { get; set; }
     }
 }

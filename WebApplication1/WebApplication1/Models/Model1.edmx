@@ -68,12 +68,14 @@
         </EntityType>
         <EntityType Name="CHITIETDH">
           <Key>
-            <PropertyRef Name="MADH" />
+            <PropertyRef Name="id_ctdh" />
           </Key>
-          <Property Name="MADH" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="MASP" Type="nvarchar" MaxLength="20" />
           <Property Name="GIA" Type="int" />
+          <Property Name="SIZE" Type="nvarchar" MaxLength="20" />
+          <Property Name="id_ctdh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MADH" Type="nvarchar" MaxLength="256" />
         </EntityType>
         <EntityType Name="CHITIETGIOHANG">
           <Key>
@@ -105,11 +107,14 @@
           <Key>
             <PropertyRef Name="MADH" />
           </Key>
-          <Property Name="MADH" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="TKNV" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="TKKH" Type="nvarchar" MaxLength="20" />
+          <Property Name="TKKH" Type="nvarchar" MaxLength="128" />
           <Property Name="NGAYLAPDH" Type="date" />
           <Property Name="TONGTIEN" Type="int" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="256" />
+          <Property Name="SDT" Type="nvarchar" MaxLength="12" />
+          <Property Name="DIACHI" Type="nvarchar(max)" />
+          <Property Name="HOVATEN" Type="nvarchar" MaxLength="256" />
+          <Property Name="MADH" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="GIOHANG">
           <Key>
@@ -155,9 +160,9 @@
           <Property Name="SDT" Type="nvarchar" MaxLength="30" />
           <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <Association Name="FK_CHITIETDH_DONHANG">
-          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
-          <End Role="CHITIETDH" Type="Self.CHITIETDH" Multiplicity="0..1" />
+        <Association Name="FK_CHITIETDH_DH">
+          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="0..1" />
+          <End Role="CHITIETDH" Type="Self.CHITIETDH" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DONHANG">
               <PropertyRef Name="MADH" />
@@ -310,7 +315,7 @@
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TTCANHAN" EntityType="Self.TTCANHAN" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CHITIETDH_DONHANG" Association="Self.FK_CHITIETDH_DONHANG">
+          <AssociationSet Name="FK_CHITIETDH_DH" Association="Self.FK_CHITIETDH_DH">
             <End Role="DONHANG" EntitySet="DONHANG" />
             <End Role="CHITIETDH" EntitySet="CHITIETDH" />
           </AssociationSet>
@@ -423,13 +428,15 @@
         </EntityType>
         <EntityType Name="CHITIETDH">
           <Key>
-            <PropertyRef Name="MADH" />
+            <PropertyRef Name="id_ctdh" />
           </Key>
-          <Property Name="MADH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SOLUONG" Type="Int32" />
           <Property Name="MASP" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="GIA" Type="Int32" />
-          <NavigationProperty Name="DONHANG" Relationship="Self.FK_CHITIETDH_DONHANG" FromRole="CHITIETDH" ToRole="DONHANG" />
+          <Property Name="SIZE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="id_ctdh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MADH" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DONHANG" Relationship="Self.FK_CHITIETDH_DH" FromRole="CHITIETDH" ToRole="DONHANG" />
           <NavigationProperty Name="SANPHAM" Relationship="Self.FK_CHITIETDH_SANPHAM" FromRole="CHITIETDH" ToRole="SANPHAM" />
         </EntityType>
         <EntityType Name="CHITIETGIOHANG">
@@ -465,12 +472,15 @@
           <Key>
             <PropertyRef Name="MADH" />
           </Key>
-          <Property Name="MADH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TKNV" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TKKH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TKKH" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="NGAYLAPDH" Type="DateTime" Precision="0" />
           <Property Name="TONGTIEN" Type="Int32" />
-          <NavigationProperty Name="CHITIETDH" Relationship="Self.FK_CHITIETDH_DONHANG" FromRole="DONHANG" ToRole="CHITIETDH" />
+          <Property Name="EMAIL" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HOVATEN" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MADH" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CHITIETDHs" Relationship="Self.FK_CHITIETDH_DH" FromRole="DONHANG" ToRole="CHITIETDH" />
         </EntityType>
         <EntityType Name="GIOHANG">
           <Key>
@@ -574,9 +584,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CHITIETDH_DONHANG">
-          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="1" />
-          <End Role="CHITIETDH" Type="Self.CHITIETDH" Multiplicity="0..1" />
+        <Association Name="FK_CHITIETDH_DH">
+          <End Role="DONHANG" Type="Self.DONHANG" Multiplicity="0..1" />
+          <End Role="CHITIETDH" Type="Self.CHITIETDH" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DONHANG">
               <PropertyRef Name="MADH" />
@@ -668,7 +678,7 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="TTCANHAN" EntitySet="TTCANHANs" />
           </AssociationSet>
-          <AssociationSet Name="FK_CHITIETDH_DONHANG" Association="Self.FK_CHITIETDH_DONHANG">
+          <AssociationSet Name="FK_CHITIETDH_DH" Association="Self.FK_CHITIETDH_DH">
             <End Role="DONHANG" EntitySet="DONHANGs" />
             <End Role="CHITIETDH" EntitySet="CHITIETDHs" />
           </AssociationSet>
@@ -757,10 +767,12 @@
           <EntitySetMapping Name="CHITIETDHs">
             <EntityTypeMapping TypeName="CT25Team13Model.CHITIETDH">
               <MappingFragment StoreEntitySet="CHITIETDH">
-                <ScalarProperty Name="MADH" ColumnName="MADH" />
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="MASP" ColumnName="MASP" />
                 <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="SIZE" ColumnName="SIZE" />
+                <ScalarProperty Name="id_ctdh" ColumnName="id_ctdh" />
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -795,11 +807,14 @@
           <EntitySetMapping Name="DONHANGs">
             <EntityTypeMapping TypeName="CT25Team13Model.DONHANG">
               <MappingFragment StoreEntitySet="DONHANG">
-                <ScalarProperty Name="MADH" ColumnName="MADH" />
-                <ScalarProperty Name="TKNV" ColumnName="TKNV" />
                 <ScalarProperty Name="TKKH" ColumnName="TKKH" />
                 <ScalarProperty Name="NGAYLAPDH" ColumnName="NGAYLAPDH" />
                 <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="HOVATEN" ColumnName="HOVATEN" />
+                <ScalarProperty Name="MADH" ColumnName="MADH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
