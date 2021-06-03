@@ -177,8 +177,10 @@
     <Compile Include="Controllers\AspNetRolesController.cs" />
     <Compile Include="Controllers\AspNetRoleUserController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
+    <Compile Include="Controllers\CHITIETDHsController.cs" />
     <Compile Include="Controllers\CHITIETGIOHANGsController.cs" />
     <Compile Include="Controllers\CHITIETSPsController.cs" />
+    <Compile Include="Controllers\DONHANGsController.cs" />
     <Compile Include="Controllers\GIOHANGsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -397,7 +399,10 @@
     <Content Include="Views\GIOHANGs\Index.cshtml" />
     <Content Include="Views\ShoppingCart\BagCart.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
-    <Content Include="Views\SANPHAMs\Create.cshtml" />
+    <Content Include="Views\ShoppingCart\Checkout.cshtml" />
+    <Content Include="Views\DONHANGs\Index.cshtml" />
+    <Content Include="Views\CHITIETDHs\Index.cshtml" />
+    <Content Include="Views\CHITIETDHs\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
