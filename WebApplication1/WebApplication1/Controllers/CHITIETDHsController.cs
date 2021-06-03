@@ -21,6 +21,56 @@ namespace WebApplication1.Controllers
             return View(cHITIETDHs.ToList());
         }
 
+        // GET: CHITIETDHs/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var cHITIETDH = db.CHITIETDHs.Find(id);
+            if (cHITIETDH == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cHITIETDH);
+        }
+
+        // GET: CHITIETDHs/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CHITIETDH cHITIETDH = db.CHITIETDHs.Find(id);
+            if (cHITIETDH == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.MADH = new SelectList(db.DONHANGs, "MADH", "TKKH", cHITIETDH.MADH);
+            ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP", "TENSP", cHITIETDH.MASP);
+            return View(cHITIETDH);
+        }
+
+        // POST: CHITIETDHs/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "SOLUONG,MASP,GIA,SIZE,id_ctdh,MADH")] CHITIETDH cHITIETDH)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(cHITIETDH).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.MADH = new SelectList(db.DONHANGs, "MADH", "TKKH", cHITIETDH.MADH);
+            ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP", "TENSP", cHITIETDH.MASP);
+            return View(cHITIETDH);
+        }
+
         // GET: CHITIETDHs/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -44,7 +94,7 @@ namespace WebApplication1.Controllers
             CHITIETDH cHITIETDH = db.CHITIETDHs.Find(id);
             db.CHITIETDHs.Remove(cHITIETDH);
             db.SaveChanges();
-            return RedirectToAction("Index", "DONHANGs");
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

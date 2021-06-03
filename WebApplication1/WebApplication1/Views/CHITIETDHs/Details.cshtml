@@ -1,0 +1,54 @@
+﻿@using WebApplication1.Models
+@model WebApplication1.Models.CHITIETDH
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Thông tin đơn hàng của @Model.DONHANG.HOVATEN</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DONHANG.TKKH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONHANG.TKKH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SANPHAM.TENSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SANPHAM.TENSP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONG)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SIZE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SIZE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GIA)
+        </dd>
+    </dl>
+</div>
+

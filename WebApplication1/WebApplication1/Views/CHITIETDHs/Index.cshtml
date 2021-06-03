@@ -4,8 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>CHI TIẾT ĐƠN HÀNG</h2>
+<h2>Index</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -15,10 +18,10 @@
             @Html.DisplayNameFor(model => model.SANPHAM.TENSP)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SIZE)
+            @Html.DisplayNameFor(model => model.SOLUONG)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SOLUONG)
+            @Html.DisplayNameFor(model => model.SIZE)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GIA)
@@ -36,16 +39,18 @@
                 @Html.DisplayFor(modelItem => item.SANPHAM.TENSP)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SIZE)
+                @Html.DisplayFor(modelItem => item.SOLUONG)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SOLUONG)
+                @Html.DisplayFor(modelItem => item.SIZE)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GIA)
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { item.MADH})
+                @Html.ActionLink("Edit", "Edit", new { id = item.id_ctdh }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id_ctdh }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id_ctdh })
             </td>
         </tr>
     }
