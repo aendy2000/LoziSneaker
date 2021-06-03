@@ -7,11 +7,16 @@
 
 <p>
 
-    <a href="@Url.Action("Create")">Tạo mới </a> ||
-    <a href="@Url.Action("Index", "AspNetUsers")">Quay lại quản lí tài khoản</a>
+    <a style="font-size: 18px; background-color:cornflowerblue" href="@Url.Action("Create")" class="btn btn-outline-light">
+        Tạo mới <i class="fas fa-plus-circle"></i>
+    </a> |
+    <a style="font-size: 18px; background-color:cornflowerblue" href="@Url.Action("Index", "AspNetRoles")" class="btn btn-outline-light">
+        Phân quyền tài khoản
+    </a>
+
 </p>
-<table class="table">
-    <tr>
+<table class="table" border="1" style="text-align:center;">
+    <tr class="alert-dark" style="text-align:center;">
         <th>Role</th>
         <th>User</th>
         <th></th>

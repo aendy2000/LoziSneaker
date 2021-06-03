@@ -5,39 +5,52 @@
 }
 
 <h2>Quản lí tài khoản</h2>
-
+<hr />
 <p>
-    @Html.ActionLink("Thêm tài khoản Nhân Viên", "Register","AccountNV") || 
-    @Html.ActionLink("Phân quyền tài khoản","Index","AspNetRoles")
+    <a style="font-size: 18px; background-color:cornflowerblue" href="@Url.Action("Register", "AccountNV")" class="btn btn-outline-light">
+        Thêm tài khoản Nhân Viên
+    </a> |
+    <a style="font-size: 18px; background-color:cornflowerblue" href="@Url.Action("Index", "AspNetRoles")" class="btn btn-outline-light">
+        Phân quyền tài khoản
+    </a>
 </p>
-<table class="table">
-    <tr>
-        <th>Email</th>
-        <th>User Name</th>
-        <th>Role</th>
-        <th></th>
+<hr />
+
+<table class="table" border="1" style="text-align:center;">
+    <tr class="alert-dark" style="text-align:center;">
+        <th style="text-align:center;">Email</th>
+        <th style="text-align:center;">User Name</th>
+        <th style="text-align:center;">Role</th>
+        <th style="text-align:center;">Sửa | Xem chi tiết | Xóa</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @item.Email
-        </td>
-        <td>
-            @item.UserName
-        </td>
-        <td>
-            @foreach( var role in item.AspNetRoles)
-            {
-               @role.Name
-            }
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Email
+            </td>
+            <td>
+                @item.UserName
+            </td>
+            <td>
+                @foreach (var role in item.AspNetRoles)
+                {
+                    @role.Name
+                }
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.Id })">
+                    <i class="fas fa-edit"></i>
+                </a> |
+                <a href="@Url.Action("Delete", new { id = item.Id })">
+                    <i class="fas fa-info"></i>
+                </a> |
+                <a href="@Url.Action("Delete", new { id = item.Id })">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>

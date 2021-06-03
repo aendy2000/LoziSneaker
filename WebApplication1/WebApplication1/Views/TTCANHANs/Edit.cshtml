@@ -59,15 +59,16 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <a href="@Url.Action("Index")" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    <i class="fas fa-arrow-left"></i> Trở lại
+                </a>
+                &emsp; <a style="color:lightgray;">|</a> &emsp;
+                <input border="1" type="submit" value="Lưu thay đổi" style="background-color:cornflowerblue" class="btn btn-outline-light" />
             </div>
+
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -11,7 +11,6 @@
         width: 0;
         height: 0;
     }
-
         /* IMAGE STYLES */
         [type=radio] + img {
             cursor: pointer;
@@ -22,8 +21,36 @@
             outline: 3.5px solid #b1154a;
             outline-offset: 1px;
         }
-</style>
 
+    .example button {
+        float: left;
+        background-color: #4E3E55;
+        color: white;
+        border: none;
+        box-shadow: none;
+        font-size: 17px;
+        font-weight: 500;
+        font-weight: 600;
+        border-radius: 3px;
+        padding: 15px 35px;
+        margin: 26px 5px 0 5px;
+        cursor: pointer;
+    }
+
+        .example button:focus {
+            outline: none;
+        }
+
+        .example button:hover {
+            background-color: #33DE23;
+        }
+
+        .example button:active {
+            background-color: #81ccee;
+        }
+</style>
+<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <body>
     <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
     <section class="single_product_details_area section_padding_0_100">
@@ -49,7 +76,7 @@
                     <div class="single_product_desc">
                         @using (Html.BeginForm("AddtoCart", "ShoppingCart"))
                         {
-                            <form class="cart clearfix mb-50 d-flex" method="post">
+                            <form class="cart clearfix mb-50 d-flex" method="post" onsubmit="return validateForm()">
                                 <h4 class="title" style="font-size: 34px; font-weight: bold; color: brown;">@Model.TENSP</h4>
                                 <hr />
 
@@ -65,57 +92,116 @@
                                         <ul id="TheSize">
                                             <li>
                                                 <label for="Rd1">
-                                                    <input type="radio" name="Size" id="Rd1" value="36" required/>
-                                                    <img src="@Url.Content("~/img/imgRadioSize/36.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE36.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het36.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd1" value="36" required />
+                                                        <img src="@Url.Content("~/img/imgRadioSize/36.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="36" value="@Model.CHITIETSP.SL_SIZE36" />
+                                                    }
                                                 </label>
                                             </li>
                                             <li>
                                                 <label for="Rd2" style="margin-left:5px;">
-                                                    <input type="radio" name="Size" id="Rd2" value="37" />
-                                                    <img src="@Url.Content("~/img/imgRadioSize/37.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE37.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het37.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd2" value="37" required/>
+                                                        <img src="@Url.Content("~/img/imgRadioSize/37.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="37" value="@Model.CHITIETSP.SL_SIZE37" />
+                                                    }
                                                 </label>
                                             </li>
                                             <li>
                                                 <label for="Rd3" style="margin-left:5px;">
-                                                    <input type="radio" name="Size" id="Rd3" value="38" />
-                                                    <img src="@Url.Content("~/img/imgRadioSize/38.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE38.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het38.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd3" value="38" required/>
+                                                        <img src="@Url.Content("~/img/imgRadioSize/38.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="38" value="@Model.CHITIETSP.SL_SIZE38" />
+                                                    }
                                                 </label>
                                             </li>
                                             <li>
                                                 <label for="Rd4" style="margin-left:5px;">
-                                                    <input type="radio" name="Size" id="Rd4" value="39" />
-                                                    <img src="@Url.Content("~/img/imgRadioSize/39.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE39.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het39.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd4" value="39" required/>
+                                                        <img src="@Url.Content("~/img/imgRadioSize/39.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="39" value="@Model.CHITIETSP.SL_SIZE39" />
+                                                    }
                                                 </label>
                                             </li>
                                             <li>
                                                 <label for="Rd5" style="margin-left:5px;">
-
-                                                    <input type="radio" name="Size" id="Rd5" value="40" />
-                                                    <img src="@Url.Content("~/img/imgRadioSize/40.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE40.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het40.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd5" value="40" required/>
+                                                        <img src="@Url.Content("~/img/imgRadioSize/40.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="40" value="@Model.CHITIETSP.SL_SIZE40" />
+                                                    }
                                                 </label>
                                             </li>
                                             <li>
                                                 <label for="Rd6" style="margin-left:5px;">
-
-                                                    <input type="radio" name="Size" id="Rd6" value="41" />
-                                                    <img src="@Url.Content("~/img/imgRadioSize/41.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE41.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het41.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd6" value="41" required/>
+                                                        <img src="@Url.Content("~/img/imgRadioSize/41.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="41" value="@Model.CHITIETSP.SL_SIZE41" />
+                                                    }
                                                 </label>
                                             </li>
                                             <li>
                                                 <label for="Rd7" style="margin-left:5px;">
-
-                                                    <input type="radio" name="Size" id="Rd7" value="42" />
-                                                    <img src="@Url.Content("~/img/imgRadioSize/42.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE42.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het42.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd7" value="42" required/>
+                                                        <img src="@Url.Content("~/img/imgRadioSize/42.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="42" value="@Model.CHITIETSP.SL_SIZE42" />
+                                                    }
                                                 </label>
                                             </li>
                                             <li>
                                                 <label for="Rd8" style="margin-left:5px;">
-
-                                                    <input type="radio" name="Size" id="Rd8" value="43" />
-                                                    <img src="@Url.Content("~/img/imgRadioSize/43.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    @if (Model.CHITIETSP.SL_SIZE43.Value <= 0)
+                                                    {
+                                                        <img src="@Url.Content("~/img/imgRadioSize/Het43.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="radio" name="Size" id="Rd8" value="43" required/>
+                                                        <img src="@Url.Content("~/img/imgRadioSize/43.jpg")" style="width:38px;height:auto;" alt="Checked Icon" />
+                                                        <input type="text" class="hidden" name="43" value="@Model.CHITIETSP.SL_SIZE43" />
+                                                    }
                                                 </label>
                                             </li>
-
                                         </ul>
                                     </div>
                                 </div>
@@ -125,13 +211,55 @@
                                 <div class="cart clearfix mb-50 d-flex">
                                     <div class="quantity">
                                         <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &lt; 100 ) effect.value++;return false;"><i style="margin-top:4px;" class="fa fa-plus" aria-hidden="true"></i></span>
-                                        <input style="font-size:16px;" type="number" class="qty-text" id="qty" step="1" min="1" max="100" name="quantity" value="1">
+                                        <input style="font-size:16px;" type="number" class="qty-text" id="qty" step="1" min="1" max="100" name="quantity" value="1" required>
                                         <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if (!isNaN(qty) &amp;&amp;  qty &gt; 1 ) effect.value--;return false;"><i style="margin-top:4px;" class="fa fa-minus" aria-hidden="true"></i></span>
                                     </div>
-                                    <button style=" margin-left:30px;" type="submit" class="add-to-cart-btn"><img src="@Url.Content("~/img/AddToCart.jpg")" style="width:148px;" /></button>
+                                    @if (Model.CHITIETSP.SL_SIZE36.Value <= 0
+                                        && Model.CHITIETSP.SL_SIZE37.Value <= 0
+                                        && Model.CHITIETSP.SL_SIZE38.Value <= 0
+                                        && Model.CHITIETSP.SL_SIZE39.Value <= 0
+                                        && Model.CHITIETSP.SL_SIZE40.Value <= 0
+                                        && Model.CHITIETSP.SL_SIZE41.Value <= 0
+                                        && Model.CHITIETSP.SL_SIZE42.Value <= 0
+                                        && Model.CHITIETSP.SL_SIZE43.Value <= 0)
+                                    {
+                                        <img src="@Url.Content("~/img/AddToCart.jpg")" style="width:148px;" />
+                                    }
+                                    else
+                                    {
+                                        <button id="btnAddCart" style=" margin-left:30px;" type="submit" class="add-to-cart-btn"><img src="@Url.Content("~/img/AddToCart.jpg")" style="width:148px;" /></button>
+                                    }
                                 </div>
                             </form>
+                            <script language="javascript">
+                                document.getElementById("btnAddCart").onclick = function () {
+                                    var CheckSize = document.getElementsByName("Size");
+                                    var CheckQuantityInput = document.getElementsByName("quantity");
 
+                                    for (var i = 0; i < CheckSize.length; i++) {
+                                        if (CheckSize[i].checked === true) {
+
+                                            var CheckQuantitySize = document.getElementsByName(CheckSize[i].value);
+
+                                            if (Number(CheckQuantityInput[0].value) < Number(CheckQuantitySize[0].value)) {
+                                                return true;
+                                            }
+                                            else {
+                                                swal({
+                                                    title: 'Số lượng sản phẩm không đủ',
+                                                    text: 'Size ' + CheckSize[i].value + ' chỉ còn: ' + CheckQuantitySize[0].value + ' sản phẩm\n' + 'Bạn vui lòng thêm lại với số lượng từ ' + CheckQuantitySize[0].value + ' trở xuống nhé!',
+                                                    type: 'Error',
+                                                    allowOutsideClick: false,
+                                                    confirmButtonText: 'Cool'
+                                                },
+                                                    function () {
+                                                    });
+                                                return false;
+                                            }
+                                        }
+                                    }
+                                };
+                            </script>
                             <div id="accordion" role="tablist">
                                 <div class="card">
                                     <div class="card-header" role="tab" id="headingOne">
@@ -153,7 +281,3 @@
     </section>
     <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area End >>>>>>>>>>>>>>>>>>>>>>>>> -->
 </body>
-
-<p>
-    @Html.ActionLink("Back to List", "Index2")
-</p>

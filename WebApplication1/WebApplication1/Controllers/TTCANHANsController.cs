@@ -43,20 +43,7 @@ namespace WebApplication1.Controllers
             }
             return View(tTCANHAN);
         }
-            // GET: TTCANHANs/Details/5
-            public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            TTCANHAN tTCANHAN = db.TTCANHANs.Find(id);
-            if (tTCANHAN == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tTCANHAN);
-        }
+
         // GET: TTCANHANs/Edit/5
         public ActionResult Edit(string id)
         {
