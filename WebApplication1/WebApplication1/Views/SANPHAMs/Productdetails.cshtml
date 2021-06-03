@@ -241,7 +241,7 @@
 
                                             var CheckQuantitySize = document.getElementsByName(CheckSize[i].value);
 
-                                            if (Number(CheckQuantityInput[0].value) < Number(CheckQuantitySize[0].value)) {
+                                            if (Number(CheckQuantityInput[0].value) <= Number(CheckQuantitySize[0].value)) {
                                                 return true;
                                             }
                                             else {
@@ -255,6 +255,7 @@
                                                     function () {
                                                     });
                                                 return false;
+                                               return false
                                             }
                                         }
                                     }
