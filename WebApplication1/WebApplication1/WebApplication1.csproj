@@ -384,7 +384,10 @@
     <Content Include="Views\GIOHANGs\Index.cshtml" />
     <Content Include="Views\ShoppingCart\BagCart.cshtml" />
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
-    <Content Include="Views\SANPHAMs\Create.cshtml" />
+    <Content Include="Views\ShoppingCart\Checkout.cshtml" />
+    <Content Include="Views\DONHANGs\Index.cshtml" />
+    <Content Include="Views\CHITIETDHs\Index.cshtml" />
+    <Content Include="Views\CHITIETDHs\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
