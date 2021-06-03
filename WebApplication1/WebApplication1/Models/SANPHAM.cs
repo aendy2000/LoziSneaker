@@ -36,6 +36,7 @@ namespace WebApplication1.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETGIOHANG> CHITIETGIOHANGs { get; set; }
         public virtual CHITIETSP CHITIETSP { get; set; }
+
         [NotMapped]
         public HttpPostedFileBase ImageUpload { get; set; }
     }
