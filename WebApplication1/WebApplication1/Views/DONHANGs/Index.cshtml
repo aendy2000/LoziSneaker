@@ -1,4 +1,5 @@
-﻿@model IEnumerable<WebApplication1.Models.DONHANG>
+﻿@using WebApplication1.Models
+@model IEnumerable<WebApplication1.Models.DONHANG>
 
 @{
     ViewBag.Title = "Index";
@@ -35,37 +36,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MADH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TKKH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HOVATEN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EMAIL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DIACHI)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TONGTIEN)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NGAYLAPDH)
-        </td>
-        <td>
-            <a href="/CHITIETDHs/Index/@item.MADH">Xem</a>
-
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MADH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TKKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOVATEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIACHI)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TONGTIEN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAYLAPDH)
+            </td>
+            <td>
+                @foreach (var thongtin in item.CHITIETDHs)
+                {
+                    <a href="/CHITIETDHs/Details/@thongtin.id_ctdh">Xem</a>
+                }
+            </td>
+        </tr>
+    }
 
 </table>
