@@ -1,54 +1,63 @@
-﻿@using WebApplication1.Models
-@model WebApplication1.Models.CHITIETDH
+﻿@model IEnumerable<WebApplication1.Models.CHITIETDH>
 
-@{
-    ViewBag.Title = "Details";
-}
+<h2>Chi tiết đơn hàng</h2>
+<br />
+<table class="table" border="1" style="text-align:center;">
+    <tr class="alert-dark" style="text-align:center;">
+        <th style="text-align:center;">
+            Tài khoản khách hàng
+        </th>
+        <th style="text-align:center;">
+            Tên sản phẩm
+        </th>
+        <th style="text-align:center;">
+            Số lượng
+        </th>
+        <th style="text-align:center;">
+            Size
+        </th>
+        <th style="text-align:center;">
+            Giá
+        </th>
+        <th style="text-align:center;">
+            Xóa
+        </th>
+    </tr>
 
-<h2>Thông tin đơn hàng của @Model.DONHANG.HOVATEN</h2>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.DONHANG.TKKH)
+            </td>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DONHANG.TKKH)
-        </dt>
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.SANPHAM.TENSP)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.DONHANG.TKKH)
-        </dd>
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.SOLUONG)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SANPHAM.TENSP)
-        </dt>
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.SIZE)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.SANPHAM.TENSP)
-        </dd>
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.GIA)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SOLUONG)
-        </dt>
+            <td style="padding-top:40px">
+                <a href="@Url.Action("Delete", new {id = item.id_ctdh})" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    Xóa đơn hàng <i class="far fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.SOLUONG)
-        </dd>
+</table>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SIZE)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SIZE)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GIA)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GIA)
-        </dd>
-    </dl>
-</div>
-
+<a href="@Url.Action("Index", "DONHANGs")" style="background-color:cornflowerblue" class="btn btn-outline-light">
+    <i class="fas fa-arrow-left"></i> Trở lại đơn hàng
+</a>
+<br />
