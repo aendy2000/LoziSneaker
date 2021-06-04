@@ -15,10 +15,10 @@ namespace WebApplication1.Controllers
         private CT25Team13Entities db = new CT25Team13Entities();
 
         // GET: CHITIETDHs
-        public ActionResult Index()
+        public ActionResult Index(string id)
         {
-            var cHITIETDHs = db.CHITIETDHs.Include(c => c.DONHANG).Include(c => c.SANPHAM);
-            return View(cHITIETDHs.ToList());
+            var cHITIETDH = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+            return View(cHITIETDH.ToList());
         }
 
         // GET: CHITIETDHs/Details/5

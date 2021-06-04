@@ -1,60 +1,55 @@
-﻿@using WebApplication1.Models
-@model IEnumerable<WebApplication1.Models.DONHANG>
+﻿@model IEnumerable<WebApplication1.Models.DONHANG>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>ĐƠN HÀNG</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MADH)
+<h2>Quản lí đơn hàng</h2>
+<br />
+<table class="table" border="1" style="text-align:center;">
+    <tr class="alert-dark" style="text-align:center;">
+        <th style="text-align:center;">
+            Tài khoản khách hàng
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TKKH)
+        <th style="text-align:center;">
+            Họ và tên
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HOVATEN)
+        <th style="text-align:center;">
+            Số điện thoại
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDT)
+        <th style="text-align:center;">
+            Email
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EMAIL)
+        <th style="text-align:center;">
+            Địa chỉ
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DIACHI)
+        <th style="text-align:center;">
+            Tổng tiền
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TONGTIEN)
+        <th style="text-align:center;">
+            Ngày đặt hàng
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NGAYLAPDH)
+        <th style="text-align:center;">
+            Xem thông tin
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MADH)
-            </td>
-            <td>
+            <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.TKKH)
             </td>
-            <td>
+            <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.HOVATEN)
             </td>
-            <td>
+            <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.SDT)
             </td>
-            <td>
+            <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.EMAIL)
             </td>
-            <td>
+            <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.DIACHI)
             </td>
             <td>
@@ -64,12 +59,10 @@
                 @Html.DisplayFor(modelItem => item.NGAYLAPDH)
             </td>
             <td>
-                @foreach (var thongtin in item.CHITIETDHs)
-                {
-                    <a href="/CHITIETDHs/Details/@thongtin.id_ctdh">Xem</a>
-                }
+                <a href="/CHITIETDHs/Index/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    Xem chi tiết đơn hàng <i class="far fa-arrow-alt-circle-right"></i>
+                </a>
             </td>
         </tr>
     }
-
 </table>
