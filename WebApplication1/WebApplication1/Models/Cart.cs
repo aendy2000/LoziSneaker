@@ -195,6 +195,9 @@ namespace WebApplication1.Models
             if (IDDetailsCart != null)
             {
                 var RemoveProInBag = db.CHITIETGIOHANGs.Where(c => c.MAGIOHG == IDDetailsCart).ToList();
+                var updateQuantity = db.GIOHANGs.FirstOrDefault(c => c.MAGIOHANG == IDDetailsCart);
+                updateQuantity.SOLUONG = "0";
+                updateQuantity.TONGTIEN = 0;
                 db.CHITIETGIOHANGs.RemoveRange(RemoveProInBag);
                 db.SaveChanges();
             }
