@@ -152,12 +152,38 @@ namespace WebApplication1.Controllers
         {
             AspNetUser aspNetUser = db.AspNetUsers.Find(id);
             var idKH = db.TTCANHANs.Find(id);
+            var usergh = db.GIOHANGs.Find(id);
+            var count = db.CHITIETGIOHANGs.Where(m => m.MAGIOHG == usergh.MAGIOHANG);
+            var iddh = db.DONHANGs.FirstOrDefault(m => m.TKKH == id);
+            var dh = db.DONHANGs.Where(m => m.TKKH == id);
             if (idKH != null)
             {
-                db.AspNetUsers.Remove(aspNetUser);
-                db.TTCANHANs.Remove(idKH);
-                db.SaveChanges();
-            }else
+                if (iddh != null)
+                {
+                    db.AspNetUsers.Remove(aspNetUser);
+                    db.TTCANHANs.Remove(idKH);
+                    db.CHITIETGIOHANGs.RemoveRange(count);
+                    db.GIOHANGs.Remove(usergh);
+                    db.GIOHANGs.Remove(usergh);
+                    foreach (var dhid in dh)
+                    {
+                        var ctdh = db.CHITIETDHs.Where(m => m.MADH == dhid.MADH);
+                        db.CHITIETDHs.RemoveRange(ctdh);
+                    }
+                    db.DONHANGs.RemoveRange(dh);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    db.AspNetUsers.Remove(aspNetUser);
+                    db.TTCANHANs.Remove(idKH);
+                    db.CHITIETGIOHANGs.RemoveRange(count);
+                    db.GIOHANGs.Remove(usergh);
+                    db.GIOHANGs.Remove(usergh);
+                    db.SaveChanges();
+                }
+            }
+            else
             {
                 db.AspNetUsers.Remove(aspNetUser);
                 db.SaveChanges();
