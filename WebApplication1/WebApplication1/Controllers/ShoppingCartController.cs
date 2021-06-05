@@ -115,9 +115,10 @@ namespace WebApplication1.Controllers
             Cart cart = Session["Cart"] as Cart;
             string id_pro = form["ID_Product"];
             string size = form["Size"];
-            cart.Remove_CartItem(id_pro, size, User.Identity.GetUserId());
-            cart.Total_Money(User.Identity.GetUserId());
-            cart.Total_Quantity_in_Cart(User.Identity.GetUserId(), GetCart().Items.Count());
+            GetCart().Remove_CartItem(id_pro, size, User.Identity.GetUserId());
+            ShowToCart();
+            GetCart().Total_Money(User.Identity.GetUserId());
+            GetCart().Total_Quantity_in_Cart(User.Identity.GetUserId(), GetCart().Items.Count());
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
         public PartialViewResult BagCart()
@@ -141,12 +142,12 @@ namespace WebApplication1.Controllers
         public ActionResult Clear_Cart()
         {
             Cart cart = Session["Cart"] as Cart;
-            GetCart();
             if (cart != null)
             {
-                cart.ClearCart(User.Identity.GetUserId());
-                cart.Total_Money(User.Identity.GetUserId());
-                cart.Total_Quantity_in_Cart(User.Identity.GetUserId(), GetCart().Items.Count());
+                GetCart().ClearCart(User.Identity.GetUserId());
+                ShowToCart();
+                GetCart().Total_Money(User.Identity.GetUserId());
+                GetCart().Total_Quantity_in_Cart(User.Identity.GetUserId(), GetCart().Items.Count());
             }
             return RedirectToAction("ShowToCart", "ShoppingCart");
         }
@@ -175,6 +176,9 @@ namespace WebApplication1.Controllers
                 db.SaveChanges();
             }
             cart.ClearCart(User.Identity.GetUserId());
+            ShowToCart();
+            GetCart().Total_Money(User.Identity.GetUserId());
+            GetCart().Total_Quantity_in_Cart(User.Identity.GetUserId(), GetCart().Items.Count());
             return RedirectToAction("Index2","SANPHAMs");
         }
 

@@ -168,10 +168,17 @@ namespace WebApplication1.Models
         {
             if (IDUser != null)
             {
-                var RemoveProInBag = db.CHITIETGIOHANGs.FirstOrDefault(c => (c.MASP == idPro) && (c.MAGIOHG == IDUser) && (c.Size == size));
-                if (RemoveProInBag.MASP != null)
+                var RemoveProInBag = db.CHITIETGIOHANGs.Where(c => (c.MASP == idPro) && (c.MAGIOHG == IDUser) && (c.Size == size)).ToList();
+                var UpdateCart = db.GIOHANGs.FirstOrDefault(c => c.MAGIOHANG == IDUser);
+
+                if (RemoveProInBag != null)
                 {
-                    db.CHITIETGIOHANGs.Remove(RemoveProInBag);
+                    int UpdateMoney = UpdateCart.TONGTIEN.Value - (RemoveProInBag[0].GIA.Value * RemoveProInBag[0].SOLUONG.Value);
+                    int UpdateQuantity = int.Parse(UpdateCart.SOLUONG) - 1;
+                    string Result = UpdateQuantity + "";
+                    UpdateCart.TONGTIEN = UpdateMoney;
+                    UpdateCart.SOLUONG = Result;
+                    db.CHITIETGIOHANGs.RemoveRange(RemoveProInBag);
                     db.SaveChanges();
                 }
             }
@@ -180,6 +187,7 @@ namespace WebApplication1.Models
                 items.RemoveAll(s => (s._shopping_product.MASP == idPro) && (s._shopping_size == size));
             }
         }
+
         //Tong so luong shopping
         public void Total_Quantity_in_Cart(string IdBag, int Quantity)
         {
@@ -195,9 +203,6 @@ namespace WebApplication1.Models
             if (IDDetailsCart != null)
             {
                 var RemoveProInBag = db.CHITIETGIOHANGs.Where(c => c.MAGIOHG == IDDetailsCart).ToList();
-                var updateQuantity = db.GIOHANGs.FirstOrDefault(c => c.MAGIOHANG == IDDetailsCart);
-                updateQuantity.SOLUONG = "0";
-                updateQuantity.TONGTIEN = 0;
                 db.CHITIETGIOHANGs.RemoveRange(RemoveProInBag);
                 db.SaveChanges();
             }
