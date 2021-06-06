@@ -34,39 +34,24 @@ namespace WebApplication1.Controllers
             db.CHITIETDHs.RemoveRange(DeleteDetailsDonHang);
             db.DONHANGs.Remove(DeleteDonHang);
             db.SaveChanges();
-            return RedirectToAction("Index2", "DONHANGs");
+            return RedirectToAction("Index", "DONHANGs");
         }
 
-        // GET: CHITIETDHs/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var cHITIETDH = db.CHITIETDHs.Find(id);
-            if (cHITIETDH == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cHITIETDH);
-        }
 
         // GET: CHITIETDHs/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index");
             }
-            CHITIETDH cHITIETDH = db.CHITIETDHs.Find(id);
-            if (cHITIETDH == null)
+            var editCHITIETDHs = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+            if (editCHITIETDHs == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
-            ViewBag.MADH = new SelectList(db.DONHANGs, "MADH", "TKKH", cHITIETDH.MADH);
-            ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP", "TENSP", cHITIETDH.MASP);
-            return View(cHITIETDH);
+            ViewBag.MADH = new SelectList(db.DONHANGs, "MADH", editCHITIETDHs.ToList());
+            return View(editCHITIETDHs.ToList());
         }
 
         // POST: CHITIETDHs/Edit/5
@@ -74,43 +59,41 @@ namespace WebApplication1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SOLUONG,MASP,GIA,SIZE,id_ctdh,MADH")] CHITIETDH cHITIETDH)
+        public ActionResult Edit(CHITIETDH editCHITIETDHs)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cHITIETDH).State = EntityState.Modified;
+                db.Entry(editCHITIETDHs).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MADH = new SelectList(db.DONHANGs, "MADH", "TKKH", cHITIETDH.MADH);
-            ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP", "TENSP", cHITIETDH.MASP);
-            return View(cHITIETDH);
+            ViewBag.MADH = new SelectList(db.DONHANGs, "MADH", "TKKH", editCHITIETDHs.MADH);
+            ViewBag.MASP = new SelectList(db.SANPHAMs, "MASP", "TENSP", editCHITIETDHs.MASP);
+            return View(editCHITIETDHs);
         }
 
         // GET: CHITIETDHs/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CHITIETDH cHITIETDH = db.CHITIETDHs.Find(id);
+            var cHITIETDH = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
             if (cHITIETDH == null)
             {
                 return HttpNotFound();
             }
-            return View(cHITIETDH);
+            return View(cHITIETDH.ToList());
         }
 
         // POST: CHITIETDHs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(string id)
         {
-            CHITIETDH cHITIETDH = db.CHITIETDHs.Find(id);
-            db.CHITIETDHs.Remove(cHITIETDH);
+            var DeleteDetailsDonHang = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+            var DeleteDonHang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
+            db.CHITIETDHs.RemoveRange(DeleteDetailsDonHang);
+            db.DONHANGs.Remove(DeleteDonHang);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "DONHANGs");
         }
 
         protected override void Dispose(bool disposing)

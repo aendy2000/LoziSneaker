@@ -20,7 +20,7 @@
             Giá
         </th>
         <th style="text-align:center;">
-            Xóa
+            Sửa thông tin
         </th>
     </tr>
 
@@ -50,8 +50,8 @@
             }
 
             <td style="padding-top:40px">
-                <a href="@Url.Action("Delete", new {id = item.id_ctdh})" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                    Xóa đơn hàng <i class="far fa-trash-alt"></i>
+                <a href="/CHITIETDHs/Edit/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    Sửa đơn hàng <i class="far fa-trash-alt"></i>
                 </a>
             </td>
         </tr>
