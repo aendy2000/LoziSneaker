@@ -19,7 +19,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.SANPHAM.TENSP, "Tên sản phẩm:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.LabelFor(model => model.SANPHAM.TENSP, Model.SANPHAM.TENSP, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DisplayFor(model => model.SANPHAM.TENSP);
             @Html.ValidationMessageFor(model => model.SANPHAM.TENSP, "", new { @class = "text-danger" })
         </div>
     </div>

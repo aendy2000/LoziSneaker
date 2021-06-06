@@ -59,6 +59,7 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CHITIETSP cHITIETSP)
         {
+            kiemtratruongnhap(cHITIETSP);
             if (ModelState.IsValid)
             {
                 dbo.Entry(cHITIETSP).State = EntityState.Modified;
@@ -70,7 +71,18 @@ namespace WebApplication1.Controllers
             return View(cHITIETSP);
 
         }
-
+        public void kiemtratruongnhap(CHITIETSP cHITIETSP)
+        {
+            if (cHITIETSP.SL_TONG < 0 || cHITIETSP.SL_SIZE36 < 0 || cHITIETSP.SL_SIZE37 < 0 || cHITIETSP.SL_SIZE38 < 0 || cHITIETSP.SL_SIZE39 < 0 || 
+                cHITIETSP.SL_SIZE40 <0 || cHITIETSP.SL_SIZE41 <0|| cHITIETSP.SL_SIZE42 < 0 || cHITIETSP.SL_SIZE43 <0)
+            {
+                ModelState.AddModelError("","Tổng số lượng và các size nhập sai định dạng");
+            } 
+            else if (cHITIETSP.SL_TONG != (cHITIETSP.SL_SIZE36 + cHITIETSP.SL_SIZE37 + cHITIETSP.SL_SIZE38 + cHITIETSP.SL_SIZE39 + cHITIETSP.SL_SIZE40 + cHITIETSP.SL_SIZE41 + cHITIETSP.SL_SIZE42 + cHITIETSP.SL_SIZE43))
+            {
+                ModelState.AddModelError("", "Tổng số lượng với các size không trùng khớp");
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
