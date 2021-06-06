@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication1.Models.CHITIETDH>
+
+@{
+    ViewBag.Title = "Index2";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+<hr />
+<table class="table" border="1" style="text-align:center;">
+    <tr class="alert-dark" style="text-align:center;">
+
+        <th colspan="2" style="text-align:center;">
+            Sản phẩm
+        </th>
+        <th style="text-align:center;">
+            Số lượng
+        </th>
+        <th style="text-align:center;">
+            Size
+        </th>
+        <th style="text-align:center;">
+            Giá
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Content(item.SANPHAM.HINHANH)" style="width: 80px;height:auto; margin:auto;" />
+            </td>
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.SANPHAM.TENSP)
+            </td>
+
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.SOLUONG)
+            </td>
+
+            <td style="padding-top:40px">
+                @Html.DisplayFor(modelItem => item.SIZE)
+            </td>
+
+            @for (int i = 0; i < 1; i++)
+            {
+                double total = Convert.ToDouble(item.GIA.Value * item.SOLUONG.Value);
+                <td style="padding-top:40px">@total</td>
+            }
+        </tr>
+    }
+
+</table>
+<a href="@Url.Action("Index2", "DONHANGs")" style="background-color:cornflowerblue" class="btn btn-outline-light">
+    <i class="fas fa-arrow-left"></i> Trở lại đơn hàng
+</a>
+<br />
