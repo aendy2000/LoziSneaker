@@ -401,13 +401,12 @@
     <Content Include="Views\ShoppingCart\ShowToCart.cshtml" />
     <Content Include="Views\ShoppingCart\Checkout.cshtml" />
     <Content Include="Views\DONHANGs\Index.cshtml" />
-    <Content Include="Views\CHITIETDHs\Create.cshtml" />
     <Content Include="Views\CHITIETDHs\Delete.cshtml" />
-    <Content Include="Views\CHITIETDHs\Details.cshtml" />
-    <Content Include="Views\CHITIETDHs\Edit.cshtml" />
     <Content Include="Views\CHITIETDHs\Index.cshtml" />
     <Content Include="Views\DONHANGs\Index2.cshtml" />
     <Content Include="Views\CHITIETDHs\Index2.cshtml" />
+    <Content Include="Views\CHITIETDHs\DeleteDonHangUser.cshtml" />
+    <Content Include="Views\CHITIETDHs\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
