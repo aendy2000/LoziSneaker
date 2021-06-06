@@ -406,6 +406,8 @@
     <Content Include="Views\CHITIETDHs\Details.cshtml" />
     <Content Include="Views\CHITIETDHs\Edit.cshtml" />
     <Content Include="Views\CHITIETDHs\Index.cshtml" />
+    <Content Include="Views\DONHANGs\Index2.cshtml" />
+    <Content Include="Views\CHITIETDHs\Index2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

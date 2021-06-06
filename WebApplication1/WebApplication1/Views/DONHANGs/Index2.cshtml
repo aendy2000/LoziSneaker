@@ -1,16 +1,13 @@
 ﻿@model IEnumerable<WebApplication1.Models.DONHANG>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index2";
 }
 
-<h2>Quản lí đơn hàng</h2>
+<h2>Lịch sử mua hàng</h2>
 <hr />
 <table class="table" border="1" style="text-align:center;">
     <tr class="alert-dark" style="text-align:center;">
-        <th style="text-align:center;">
-            Tài khoản khách hàng
-        </th>
         <th style="text-align:center;">
             Họ và tên
         </th>
@@ -30,16 +27,13 @@
             Ngày đặt hàng
         </th>
         <th style="text-align:center;">
-            Xem thông tin
+            Xem | Xóa đơn hàng
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td style=" text-align:left;">
-                @Html.DisplayFor(modelItem => item.TKKH)
-            </td>
             <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.HOVATEN)
             </td>
@@ -59,8 +53,11 @@
                 @Html.DisplayFor(modelItem => item.NGAYLAPDH)
             </td>
             <td>
-                <a href="/CHITIETDHs/Index/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                    Xem chi tiết đơn hàng <i class="far fa-arrow-alt-circle-right"></i>
+                <a href="/CHITIETDHs/Index2/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    Xem <i class="far fa-arrow-alt-circle-right"></i>
+                </a> |
+                <a href="/CHITIETDHs/DeleteDonHangUser/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    Xóa <i class="far fa-trash"></i>
                 </a>
             </td>
         </tr>

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace WebApplication1.Controllers
 {
@@ -15,9 +17,18 @@ namespace WebApplication1.Controllers
         private CT25Team13Entities db = new CT25Team13Entities();
 
         // GET: DONHANGs
+        [Authorize(Roles = "Nhân viên,Admin")]
         public ActionResult Index()
         {
             var donhang = db.DONHANGs.ToList();
+            return View(donhang);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Index2()
+        {
+            string id = User.Identity.GetUserId();
+            var donhang = db.DONHANGs.Where(c => c.TKKH == id).ToList();
             return View(donhang);
         }
 
