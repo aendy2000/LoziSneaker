@@ -21,6 +21,22 @@ namespace WebApplication1.Controllers
             return View(cHITIETDH.ToList());
         }
 
+        public ActionResult Index2(string id)
+        {
+            var cHITIETDH = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+            return View(cHITIETDH.ToList());
+        }
+
+        public ActionResult DeleteDonHangUser(string id)
+        {
+            var DeleteDetailsDonHang = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+            var DeleteDonHang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
+            db.CHITIETDHs.RemoveRange(DeleteDetailsDonHang);
+            db.DONHANGs.Remove(DeleteDonHang);
+            db.SaveChanges();
+            return RedirectToAction("Index2", "DONHANGs");
+        }
+
         // GET: CHITIETDHs/Details/5
         public ActionResult Details(int? id)
         {
