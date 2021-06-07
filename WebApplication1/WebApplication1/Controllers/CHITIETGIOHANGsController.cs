@@ -43,11 +43,13 @@ namespace WebApplication1.Controllers
         {
             CHITIETGIOHANG cHITIETGIOHANG = db.CHITIETGIOHANGs.Find(id);
             string magh = cHITIETGIOHANG.MAGIOHG;
+            int tonggia = cHITIETGIOHANG.SOLUONG.Value * cHITIETGIOHANG.GIA.Value;
             db.CHITIETGIOHANGs.Remove(cHITIETGIOHANG);
             var giohg = db.GIOHANGs.Where(c => (c.MAGIOHANG == magh)).First();
             int solg = int.Parse(giohg.SOLUONG);
             int solgnew = solg - 1;
             giohg.SOLUONG = solgnew.ToString();
+            giohg.TONGTIEN = (giohg.TONGTIEN.Value - tonggia);
             db.SaveChanges();
             return RedirectToAction("Index", "GIOHANGs");
         }
