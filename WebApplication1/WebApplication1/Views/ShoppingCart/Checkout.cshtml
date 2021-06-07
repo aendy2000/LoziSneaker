@@ -51,15 +51,15 @@
                                 <input type="text" class="hidden" name="Tong_gia" value="@Model.Total_Money(null)">
 
                                 <label for="first_name">Họ và tên <span>*</span></label>
-                                <input type="text" class="form-control col-md-12 mb-3" name="first_name" required="true">
+                                <input type="text" class="form-control col-md-12 mb-3" name="first_name" required="true" pattern="[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]*">
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="street_address">Địa chỉ <span>*</span></label>
-                                <input type="text" class="form-control col-md-12 mb-3" name="street_address" required="true">
+                                <input type="text" class="form-control col-md-12 mb-3" name="street_address" required="true" pattern="[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0-9 ]*">
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="phone_number">Số điện thoại <span>*</span></label>
-                                <input type="number" class="form-control col-md-12 mb-3" name="phone_number" required="true">
+                                <input type="tel" class="form-control col-md-12 mb-3" name="phone_number" pattern="[0-9]*" required="true">
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="email_address">Email <span>*</span></label>
