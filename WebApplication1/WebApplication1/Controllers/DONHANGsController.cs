@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
 using Microsoft.AspNet.Identity;
-
+using System.Text.RegularExpressions;
 
 namespace WebApplication1.Controllers
 {
@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
 
         // GET: DONHANGs
         [Authorize(Roles = "Nhân viên,Admin")]
-        public ActionResult Index()
+        public ActionResult Index(DONHANG dh)
         {
             var donhang = db.DONHANGs.ToList();
             return View(donhang);
