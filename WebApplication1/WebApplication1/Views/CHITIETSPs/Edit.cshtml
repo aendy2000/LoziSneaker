@@ -5,109 +5,176 @@
 }
 
 <h2>Cập nhật số lượng</h2>
+<style>
+    .example button {
+        float: left;
+        background-color: #4E3E55;
+        color: white;
+        border: none;
+        box-shadow: none;
+        font-size: 17px;
+        font-weight: 500;
+        font-weight: 600;
+        border-radius: 3px;
+        padding: 15px 35px;
+        margin: 26px 5px 0 5px;
+        cursor: pointer;
+    }
 
+        .example button:focus {
+            outline: none;
+        }
+
+        .example button:hover {
+            background-color: #33DE23;
+        }
+
+        .example button:active {
+            background-color: #81ccee;
+        }
+</style>
+<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.MASANPHAM)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SANPHAM.TENSP, "Tên sản phẩm:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.LabelFor(model => model.SANPHAM.TENSP, Model.SANPHAM.TENSP, htmlAttributes: new { @class = "control-label col-md-2" })
-            @Html.ValidationMessageFor(model => model.SANPHAM.TENSP, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <hr />
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_TONG, "Tổng số lượng:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_TONG, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_TONG, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <hr />
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE36, "Size 36:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE36, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE36, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MASANPHAM)
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE37, "Size 37:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE37, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE37, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SANPHAM.TENSP, "Tên sản phẩm:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.LabelFor(model => model.SANPHAM.TENSP, Model.SANPHAM.TENSP, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.SANPHAM.TENSP, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_TONG, "Tổng số lượng:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_TONG, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_TONG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE36, "Size 36:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE36, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE36, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE38, "Size 38:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE38, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE38, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE37, "Size 37:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE37, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE37, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE39, "Size 39:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE39, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE39, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE38, "Size 38:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE38, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE38, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE40, "Size 40:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE40, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE40, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE39, "Size 39:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE39, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE39, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE41, "Size 41:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE41, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE41, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE40, "Size 40:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE40, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE40, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE42, "Size 42:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE42, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE42, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE41, "Size 41:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE41, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE41, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.SL_SIZE43, "Size 43:", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.SL_SIZE43, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SL_SIZE43, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE42, "Size 42:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE42, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE42, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SL_SIZE43, "Size 43:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SL_SIZE43, new { htmlAttributes = new { required = true, min = 0, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SL_SIZE43, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="@Url.Action("Index","SANPHAMs")" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    <i class="fas fa-arrow-left"></i> Trở lại danh sách
+                </a>
+                &emsp; <a style="color:lightgray;">|</a>&emsp;
+                <input type="submit" id="btnsub" value="Lưu thay đổi" style="background-color:cornflowerblue" class="btn btn-outline-light" />
+            </div>
         </div>
     </div>
-    <hr/>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <a href="@Url.Action("Index","SANPHAMs")" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                <i class="fas fa-arrow-left"></i> Trở lại danh sách
-            </a>
-            &emsp; <a style="color:lightgray;">|</a>&emsp;
-            <input type="submit" value="Lưu thay đổi" style="background-color:cornflowerblue" class="btn btn-outline-light" />
-        </div>
-    </div>
-</div>
 }
 <br>
+
+<script language="javascript">
+    document.getElementById("btnsub").onclick = function () {
+        var TongSL = document.getElementsByName("SL_TONG");
+        var Size37 = document.getElementsByName("SL_SIZE36");
+        var Size38 = document.getElementsByName("SL_SIZE37");
+        var Size39 = document.getElementsByName("SL_SIZE38");
+        var Size40 = document.getElementsByName("SL_SIZE39");
+        var Size36 = document.getElementsByName("SL_SIZE40");
+        var Size41 = document.getElementsByName("SL_SIZE41");
+        var Size42 = document.getElementsByName("SL_SIZE42");
+        var Size43 = document.getElementsByName("SL_SIZE43");
+
+        if (Number(TongSL[0].value) === (Number(Size36[0].value)
+            + Number(Size37[0].value)
+            + Number(Size38[0].value)
+            + Number(Size39[0].value)
+            + Number(Size40[0].value)
+            + Number(Size41[0].value)
+            + Number(Size42[0].value)
+            + Number(Size43[0].value))) {
+            return true;
+        }
+        else {
+            swal({
+                title: 'Tổng số lượng so với số lượng của các size không trùng khớp',
+                text: 'Vui lòng kiểm tra lại !!',
+                type: 'Error',
+                allowOutsideClick: false,
+                confirmButtonText: 'Cool'
+            },
+                function () {
+                });
+            return false;
+            return false
+        }
+    };
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
