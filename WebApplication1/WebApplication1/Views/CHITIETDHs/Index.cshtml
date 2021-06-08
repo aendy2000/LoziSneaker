@@ -19,9 +19,6 @@
         <th style="text-align:center;">
             Giá
         </th>
-        <th style="text-align:center;">
-            Sửa thông tin
-        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -49,11 +46,6 @@
                 <td style="padding-top:40px">@total</td>
             }
 
-            <td style="padding-top:40px">
-                <a href="/CHITIETDHs/Edit/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                    Sửa đơn hàng <i class="far fa-trash-alt"></i>
-                </a>
-            </td>
         </tr>
     }
 
