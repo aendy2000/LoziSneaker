@@ -64,7 +64,7 @@
             <a href="@Url.Action("Index", new { id = Model.MADH })" style="background-color:cornflowerblue" class="btn btn-outline-light">
                 <i class="fas fa-arrow-left"></i> Trở lại danh sách
             </a> |
-            <input type="submit" value="Delete" style="background-color:cornflowerblue" class="btn btn-outline-light" />
+            <input onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" type="submit" value="Delete" style="background-color:cornflowerblue" class="btn btn-outline-light" />
         </div>
     }
     <br />
