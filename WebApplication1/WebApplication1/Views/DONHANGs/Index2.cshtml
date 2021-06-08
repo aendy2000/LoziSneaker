@@ -56,8 +56,8 @@
                 <a href="/CHITIETDHs/Index2/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
                     Xem <i class="far fa-arrow-alt-circle-right"></i>
                 </a> |
-                <a href="/CHITIETDHs/DeleteDonHangUser/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                    Xóa <i class="far fa-trash"></i>
+                <a  onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" style="background-color:cornflowerblue" href="@Url.Action("DeleteDonHangUser","CHITIETDHs", new { @item.MADH })" class="btn btn-outline-light">
+                    Xóa <i class="far fa-trash-alt"></i>
                 </a>
             </td>
         </tr>

@@ -9,9 +9,6 @@
 <table class="table" border="1" style="text-align:center;">
     <tr class="alert-dark" style="text-align:center;">
         <th style="text-align:center;">
-            Tài khoản khách hàng
-        </th>
-        <th style="text-align:center;">
             Họ và tên
         </th>
         <th style="text-align:center;">
@@ -30,16 +27,13 @@
             Ngày đặt hàng
         </th>
         <th style="text-align:center;">
-            Xem || Xóa đơn hàng
+            Xem | Xóa đơn hàng
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td style=" text-align:left;">
-                @Html.DisplayFor(modelItem => item.TKKH)
-            </td>
             <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.HOVATEN)
             </td>
@@ -61,11 +55,9 @@
             <td>
                 <a href="/CHITIETDHs/Index/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
                     Xem <i class="far fa-arrow-alt-circle-right"></i>
-                </a>
-                <br />
-                <br />
-                <a href="/CHITIETDHs/DeleteDonHangUser/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                    Xóa <i class="far fa-trash"></i>
+                </a> | 
+                <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" href="/CHITIETDHs/DeleteDonHangUser/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                    Xóa <i class="far fa-trash-alt"></i>
                 </a>
             </td>
         </tr>
