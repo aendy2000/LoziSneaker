@@ -53,7 +53,7 @@
                         {
                             <input type="hidden" name="ID_Product" value="@itemm._shopping_product.MASP" />
                             <input type="hidden" name="Size" value="@itemm._shopping_size" />
-                            <button style="width:120px" type="submit" class="btn-outline-danger"> Remove <i class="fas fa-trash-alt"></i></button>
+                            <button onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" style="width:120px" type="submit" class="btn-outline-danger"> Remove <i class="fas fa-trash-alt"></i></button>
                         }
                     </td>
                 </tr>
@@ -68,7 +68,7 @@
             </a>
         </div>
         <div class="update-checkout w-50 text-right">
-            <a style="border: 1px solid darkgray;" href="@Url.Action("Clear_Cart", "ShoppingCart")" class="btn btn-outline-danger">
+            <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" style="border: 1px solid darkgray;" href="@Url.Action("Clear_Cart", "ShoppingCart")" class="btn btn-outline-danger">
                 <i class="fas fa-broom"></i> Làm sạch giỏ hàng
             </a>
         </div>
