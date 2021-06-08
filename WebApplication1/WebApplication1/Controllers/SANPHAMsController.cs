@@ -137,7 +137,7 @@ namespace WebApplication1.Controllers
             {
                 ModelState.AddModelError("MaSP", "Mã sản phẩm sai định dạng");
             }
-            else if (sanpham.MASP.Length < 5 || sanpham.MASP.Length > 10)
+            else if (sanpham.MASP.Length < 5 || sanpham.MASP.Length > 20)
             {
                 ModelState.AddModelError("MaSP", "Mã sản phẩm không hợp lệ !!");
             }
@@ -215,7 +215,6 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SANPHAM sANPHAM)
         {
-            KiemtraTruongNhạp(sANPHAM);
             if (ModelState.IsValid)
             {
                 if (sANPHAM.ImageUpload != null)
@@ -226,6 +225,7 @@ namespace WebApplication1.Controllers
                     sANPHAM.HINHANH = "~/img/imgProduct/" + filename;
                     sANPHAM.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/img/imgProduct/"), filename));
                 }
+                KiemtraTruongNhạp(sANPHAM);
                 db.Entry(sANPHAM).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

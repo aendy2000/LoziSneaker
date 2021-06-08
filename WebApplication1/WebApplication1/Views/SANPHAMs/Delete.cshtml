@@ -5,7 +5,8 @@
 }
 
 <h2>Xóa sản phẩm</h2>
-
+<link rel='stylesheet' href='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.css'>
+<script src='https://cdn.rawgit.com/t4t5/sweetalert/v0.2.0/lib/sweet-alert.min.js'></script>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -99,16 +100,18 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-            <div class="form-actions no-color">
-                <a href="@Url.Action("Index")" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                    <i class="fas fa-arrow-left"></i> Trở lại danh sách
-                </a>
-                &emsp; <a style="color:lightgray;">|</a> &emsp;
-                <input type="submit" value="Xóa Sản Phẩm" style="background-color:cornflowerblue" class="btn btn-outline-light" />
-            </div>
+                <div class="form-actions no-color">
+                    <a href="@Url.Action("Index")" style="background-color:cornflowerblue" class="btn btn-outline-light">
+                        <i class="fas fa-arrow-left"></i> Trở lại danh sách
+                    </a>
+                    &emsp; <a style="color:lightgray;">|</a> &emsp;
+                    <input type="submit" onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" value="Xóa Sản Phẩm" style="background-color:cornflowerblue" class="btn btn-outline-light" />
+                </div>
             }
         </dd>
     </dl>
- 
+
     <br>
 </div>
+
+
