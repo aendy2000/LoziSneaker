@@ -216,6 +216,7 @@ namespace WebApplication1.Controllers
                 order.EMAIL = email;
                 order.DIACHI = diachi;
                 order.TONGTIEN = int.Parse(tongtien);
+                order.TRANGTHAI = "Chờ duyệt";
             }
             else
             {
@@ -226,6 +227,7 @@ namespace WebApplication1.Controllers
                 order.EMAIL = email;
                 order.DIACHI = diachi;
                 order.TONGTIEN = int.Parse(tongtien);
+                order.TRANGTHAI = "Chờ duyệt";
             }
 
             db.DONHANGs.Add(order);

@@ -27,37 +27,73 @@
             Ngày đặt hàng
         </th>
         <th style="text-align:center;">
-            Xem | Xóa đơn hàng
+            Trạng thái
+        </th>
+
+        <th style="text-align:center;">
+            Hủy đơn
+        </th>
+        <th style="text-align:center;">
+            Xem | Xóa
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td style=" text-align:left;">
+            <td style=" text-align:left;padding-top:30px">
                 @Html.DisplayFor(modelItem => item.HOVATEN)
             </td>
-            <td style=" text-align:left;">
+            <td style=" text-align:left;padding-top:30px">
                 @Html.DisplayFor(modelItem => item.SDT)
             </td>
-            <td style=" text-align:left;">
+            <td style=" text-align:left;padding-top:30px">
                 @Html.DisplayFor(modelItem => item.EMAIL)
             </td>
-            <td style=" text-align:left;">
+            <td style="        text-align: left;
+        padding-top: 30px
+">
                 @Html.DisplayFor(modelItem => item.DIACHI)
             </td>
-            <td>
+            <td style="padding-top: 30px">
                 @Html.DisplayFor(modelItem => item.TONGTIEN)
             </td>
+            <td style="padding-top:30px">
+                @item.NGAYLAPDH
+            </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NGAYLAPDH)
+                @if (item.TRANGTHAI.Equals("Đã duyệt"))
+                {
+                    <p style="padding-top: 20px">Đã duyệt</p>
+                }
+                else if (item.TRANGTHAI.Equals("Đã hủy"))
+                {
+                    <p style="padding-top: 20px">Đã hủy</p>
+                }
+                else
+                {
+                    <p style="padding-top: 20px">Chờ duyệt</p>
+                }
+            </td>
+
+            <td>
+                @if (item.TRANGTHAI.Equals("Đã hủy") || item.TRANGTHAI.Equals("Đã duyệt"))
+                {
+                    <p style="text-align:center; padding-top: 10px">Không thể hủy</p>
+                }
+                else
+                {
+                    <a onclick="if (!confirm('Hủy đơn hàng ?')) { return false }" href="/DONHANGs/Huy/@item.MADH" style="background-color:cornflowerblue; margin-top:15px" class="btn btn-outline-light">
+                        Hủy
+                    </a>
+                }
             </td>
             <td>
                 <a href="/CHITIETDHs/Index2/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
-                    Xem <i class="far fa-arrow-alt-circle-right"></i>
-                </a> |
-                <a  onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" style="background-color:cornflowerblue" href="@Url.Action("DeleteDonHangUser","CHITIETDHs", new { @item.MADH })" class="btn btn-outline-light">
-                    Xóa <i class="far fa-trash-alt"></i>
+                    Xem
+                </a><br />
+                <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" href="/CHITIETDHs/DeleteDonHangUser/@item.MADH" style="background-color:cornflowerblue; margin-top:10px;" class="btn btn-outline-light">
+                    Xóa
                 </a>
             </td>
         </tr>

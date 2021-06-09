@@ -28,6 +28,7 @@ namespace WebApplication1.Models
         public string DIACHI { get; set; }
         public string HOVATEN { get; set; }
         public string MADH { get; set; }
+        public string TRANGTHAI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETDH> CHITIETDHs { get; set; }

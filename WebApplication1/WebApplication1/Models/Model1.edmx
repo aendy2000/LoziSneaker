@@ -115,6 +115,7 @@
           <Property Name="DIACHI" Type="nvarchar(max)" />
           <Property Name="HOVATEN" Type="nvarchar" MaxLength="256" />
           <Property Name="MADH" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GIOHANG">
           <Key>
@@ -480,6 +481,7 @@
           <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HOVATEN" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="MADH" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CHITIETDHs" Relationship="Self.FK_CHITIETDH_DH" FromRole="DONHANG" ToRole="CHITIETDH" />
         </EntityType>
         <EntityType Name="GIOHANG">
@@ -815,6 +817,7 @@
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="HOVATEN" ColumnName="HOVATEN" />
                 <ScalarProperty Name="MADH" ColumnName="MADH" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
