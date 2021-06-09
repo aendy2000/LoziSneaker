@@ -39,7 +39,6 @@ namespace WebApplication1.Controllers
             db.SaveChanges();
             return RedirectToAction("Index","DONHANGs");
         }
-        [AllowAnonymous]
         public ActionResult Huy(string id)
         {
             var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
@@ -71,6 +70,40 @@ namespace WebApplication1.Controllers
             }
 
             return RedirectToAction("Index", "DONHANGs");
+        }
+
+        [AllowAnonymous]
+        public ActionResult Huy2(string id)
+        {
+            var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
+            donhang.TRANGTHAI = "Đã hủy";
+            db.SaveChanges();
+
+            var huydonhang = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+            foreach (var item in huydonhang)
+            {
+                string size = item.SIZE;
+                var pro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item.MASP);
+                if (size.Equals("36"))
+                    pro.SL_SIZE36 = pro.SL_SIZE36.Value + item.SOLUONG.Value;
+                else if (size.Equals("37"))
+                    pro.SL_SIZE37 = pro.SL_SIZE37.Value + item.SOLUONG.Value;
+                else if (size.Equals("38"))
+                    pro.SL_SIZE38 = pro.SL_SIZE38.Value + item.SOLUONG.Value;
+                else if (size.Equals("39"))
+                    pro.SL_SIZE39 = pro.SL_SIZE39.Value + item.SOLUONG.Value;
+                else if (size.Equals("40"))
+                    pro.SL_SIZE40 = pro.SL_SIZE40.Value + item.SOLUONG.Value;
+                else if (size.Equals("41"))
+                    pro.SL_SIZE41 = pro.SL_SIZE41.Value + item.SOLUONG.Value;
+                else if (size.Equals("42"))
+                    pro.SL_SIZE42 = pro.SL_SIZE42.Value + item.SOLUONG.Value;
+                else if (size.Equals("43"))
+                    pro.SL_SIZE43 = pro.SL_SIZE43.Value + item.SOLUONG.Value;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index2", "DONHANGs");
         }
 
         protected override void Dispose(bool disposing)
