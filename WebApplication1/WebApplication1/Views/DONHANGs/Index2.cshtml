@@ -12,7 +12,7 @@
             Họ và tên
         </th>
         <th style="text-align:center;">
-            Số điện thoại
+            điện thoại
         </th>
         <th style="text-align:center;">
             Email
@@ -21,10 +21,10 @@
             Địa chỉ
         </th>
         <th style="text-align:center;">
-            Tổng tiền
+            Giá
         </th>
         <th style="text-align:center;">
-            Ngày đặt hàng
+            Ngày mua
         </th>
         <th style="text-align:center;">
             Trạng thái
@@ -34,52 +34,50 @@
             Hủy đơn
         </th>
         <th style="text-align:center;">
-            Xem | Xóa
+            Xem đơn
         </th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td style=" text-align:left;padding-top:30px">
+            <td style=" text-align:left; padding-top: 15px">
                 @Html.DisplayFor(modelItem => item.HOVATEN)
             </td>
-            <td style=" text-align:left;padding-top:30px">
+            <td style=" text-align:left; padding-top: 15px">
                 @Html.DisplayFor(modelItem => item.SDT)
             </td>
-            <td style=" text-align:left;padding-top:30px">
+            <td style=" text-align:left; padding-top: 15px">
                 @Html.DisplayFor(modelItem => item.EMAIL)
             </td>
-            <td style="        text-align: left;
-        padding-top: 30px
-">
+            <td style="text-align:left; padding-top: 15px">
                 @Html.DisplayFor(modelItem => item.DIACHI)
             </td>
-            <td style="padding-top: 30px">
+            <td style=" padding-top: 15px">
                 @Html.DisplayFor(modelItem => item.TONGTIEN)
             </td>
-            <td style="padding-top:30px">
+            <td style="padding-top:15px">
                 @item.NGAYLAPDH
             </td>
             <td>
                 @if (item.TRANGTHAI.Equals("Đã duyệt"))
                 {
-                    <p style="padding-top: 20px">Đã duyệt</p>
+                    <p style="padding-top: 5px">Đã duyệt</p>
                 }
                 else if (item.TRANGTHAI.Equals("Đã hủy"))
                 {
-                    <p style="padding-top: 20px">Đã hủy</p>
+                    <p style="padding-top: 5px">Đã hủy</p>
                 }
                 else
                 {
-                    <p style="padding-top: 20px">Chờ duyệt</p>
+                    <p style="padding-top: 5px">Chờ duyệt</p>
                 }
             </td>
 
             <td>
                 @if (item.TRANGTHAI.Equals("Đã hủy") || item.TRANGTHAI.Equals("Đã duyệt"))
                 {
-                    <p style="text-align:center; padding-top: 10px">Không thể hủy</p>
+                    <p style="text-align:center; padding-top: 5px">Không thể hủy</p>
                 }
                 else
                 {
@@ -91,9 +89,6 @@
             <td>
                 <a href="/CHITIETDHs/Index2/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
                     Xem
-                </a><br />
-                <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" href="/CHITIETDHs/DeleteDonHangUser/@item.MADH" style="background-color:cornflowerblue; margin-top:10px;" class="btn btn-outline-light">
-                    Xóa
                 </a>
             </td>
         </tr>
