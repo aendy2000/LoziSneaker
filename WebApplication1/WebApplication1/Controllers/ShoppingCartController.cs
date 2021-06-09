@@ -177,6 +177,7 @@ namespace WebApplication1.Controllers
                 string SlSize = item._shopping_size;
                 var chitietsp = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item._shopping_product.MASP);
 
+                chitietsp.SL_TONG = chitietsp.SL_TONG.Value - item._shopping_quantity;
                 if (SlSize.Equals("36"))
                     chitietsp.SL_SIZE36 = chitietsp.SL_SIZE36.Value - item._shopping_quantity;
                 else if (SlSize.Equals("37"))

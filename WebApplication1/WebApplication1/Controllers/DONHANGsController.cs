@@ -50,6 +50,8 @@ namespace WebApplication1.Controllers
             {
                 string size = item.SIZE;
                 var pro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item.MASP);
+
+                pro.SL_TONG = pro.SL_TONG.Value + item.SOLUONG.Value;
                 if (size.Equals("36"))
                     pro.SL_SIZE36 = pro.SL_SIZE36.Value + item.SOLUONG.Value;
                 else if (size.Equals("37"))
@@ -84,6 +86,8 @@ namespace WebApplication1.Controllers
             {
                 string size = item.SIZE;
                 var pro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item.MASP);
+
+                pro.SL_TONG = pro.SL_TONG.Value + item.SOLUONG.Value;
                 if (size.Equals("36"))
                     pro.SL_SIZE36 = pro.SL_SIZE36.Value + item.SOLUONG.Value;
                 else if (size.Equals("37"))
