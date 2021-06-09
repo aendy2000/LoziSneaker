@@ -173,6 +173,27 @@ namespace WebApplication1.Controllers
                 orderDetail.GIA = item._shopping_quantity * item._shopping_product.GIA.Value;
                 orderDetail.SIZE = item._shopping_size;
                 db.CHITIETDHs.Add(orderDetail);
+
+                string SlSize = item._shopping_size;
+                var chitietsp = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item._shopping_product.MASP);
+
+                if (SlSize.Equals("36"))
+                    chitietsp.SL_SIZE36 = chitietsp.SL_SIZE36.Value - item._shopping_quantity;
+                else if (SlSize.Equals("37"))
+                    chitietsp.SL_SIZE37 = chitietsp.SL_SIZE37.Value - item._shopping_quantity;
+                else if (SlSize.Equals("38"))
+                    chitietsp.SL_SIZE38 = chitietsp.SL_SIZE38.Value - item._shopping_quantity;
+                else if (SlSize.Equals("39"))
+                    chitietsp.SL_SIZE39 = chitietsp.SL_SIZE39.Value - item._shopping_quantity;
+                else if (SlSize.Equals("40"))
+                    chitietsp.SL_SIZE40 = chitietsp.SL_SIZE40.Value - item._shopping_quantity;
+                else if (SlSize.Equals("41"))
+                    chitietsp.SL_SIZE41 = chitietsp.SL_SIZE41.Value - item._shopping_quantity;
+                else if (SlSize.Equals("42"))
+                    chitietsp.SL_SIZE42 = chitietsp.SL_SIZE42.Value - item._shopping_quantity;
+                else if (SlSize.Equals("43"))
+                    chitietsp.SL_SIZE43 = chitietsp.SL_SIZE43.Value - item._shopping_quantity;
+
                 db.SaveChanges();
             }
             cart.ClearCart(User.Identity.GetUserId());

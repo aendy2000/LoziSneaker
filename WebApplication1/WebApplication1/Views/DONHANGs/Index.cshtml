@@ -9,9 +9,6 @@
 <table class="table" border="1" style="text-align:center;">
     <tr class="alert-dark" style="text-align:center;">
         <th style="text-align:center;">
-            Tài khoản khách hàng
-        </th>
-        <th style="text-align:center;">
             Họ và tên
         </th>
         <th style="text-align:center;">
@@ -37,9 +34,6 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td style=" text-align:left;">
-                @Html.DisplayFor(modelItem => item.TKKH)
-            </td>
             <td style=" text-align:left;">
                 @Html.DisplayFor(modelItem => item.HOVATEN)
             </td>
