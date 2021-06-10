@@ -17,6 +17,7 @@ namespace WebApplication1.Models
     {
         public string EMAIL { get; set; }
         public string TEN { get; set; }
+
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> NGAYSINH { get; set; }
         public string DIACHI { get; set; }

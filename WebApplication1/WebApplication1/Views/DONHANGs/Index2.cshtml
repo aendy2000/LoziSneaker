@@ -57,7 +57,7 @@
                 @Html.DisplayFor(modelItem => item.TONGTIEN)
             </td>
             <td style="padding-top:15px">
-                @item.NGAYLAPDH
+                @Html.DisplayFor(modelItem => @item.NGAYLAPDH)
             </td>
             <td>
                 @if (item.TRANGTHAI.Equals("Đã duyệt"))

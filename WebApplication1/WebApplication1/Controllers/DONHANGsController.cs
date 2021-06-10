@@ -24,57 +24,62 @@ namespace WebApplication1.Controllers
             return View(donhang);
         }
 
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult Index2()
         {
             string id = User.Identity.GetUserId();
             var donhang = db.DONHANGs.Where(c => c.TKKH == id).ToList();
             return View(donhang);
         }
-
+        [Authorize(Roles = "Nhân viên,Admin,Customer")]
         public ActionResult Duyet(string id)
         {
             var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
             donhang.TRANGTHAI = "Đã duyệt";
             db.SaveChanges();
-            return RedirectToAction("Index","DONHANGs");
+            return RedirectToAction("Index", "DONHANGs");
         }
+        [Authorize(Roles = "Nhân viên,Admin,Customer")]
         public ActionResult Huy(string id)
         {
-            var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
-            donhang.TRANGTHAI = "Đã hủy";
-            db.SaveChanges();
-
-            var huydonhang = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
-            foreach(var item in huydonhang)
+            if (id != null)
             {
-                string size = item.SIZE;
-                var pro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item.MASP);
 
-                pro.SL_TONG = pro.SL_TONG.Value + item.SOLUONG.Value;
-                if (size.Equals("36"))
-                    pro.SL_SIZE36 = pro.SL_SIZE36.Value + item.SOLUONG.Value;
-                else if (size.Equals("37"))
-                    pro.SL_SIZE37 = pro.SL_SIZE37.Value + item.SOLUONG.Value;
-                else if (size.Equals("38"))
-                    pro.SL_SIZE38 = pro.SL_SIZE38.Value + item.SOLUONG.Value;
-                else if (size.Equals("39"))
-                    pro.SL_SIZE39 = pro.SL_SIZE39.Value + item.SOLUONG.Value;
-                else if (size.Equals("40"))
-                    pro.SL_SIZE40 = pro.SL_SIZE40.Value + item.SOLUONG.Value;
-                else if (size.Equals("41"))
-                    pro.SL_SIZE41 = pro.SL_SIZE41.Value + item.SOLUONG.Value;
-                else if (size.Equals("42"))
-                    pro.SL_SIZE42 = pro.SL_SIZE42.Value + item.SOLUONG.Value;
-                else if (size.Equals("43"))
-                    pro.SL_SIZE43 = pro.SL_SIZE43.Value + item.SOLUONG.Value;
+                var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
+                donhang.TRANGTHAI = "Đã hủy";
                 db.SaveChanges();
+
+                var huydonhang = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+                foreach (var item in huydonhang)
+                {
+                    string size = item.SIZE;
+                    var pro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item.MASP);
+
+                    pro.SL_TONG = pro.SL_TONG.Value + item.SOLUONG.Value;
+                    if (size.Equals("36"))
+                        pro.SL_SIZE36 = pro.SL_SIZE36.Value + item.SOLUONG.Value;
+                    else if (size.Equals("37"))
+                        pro.SL_SIZE37 = pro.SL_SIZE37.Value + item.SOLUONG.Value;
+                    else if (size.Equals("38"))
+                        pro.SL_SIZE38 = pro.SL_SIZE38.Value + item.SOLUONG.Value;
+                    else if (size.Equals("39"))
+                        pro.SL_SIZE39 = pro.SL_SIZE39.Value + item.SOLUONG.Value;
+                    else if (size.Equals("40"))
+                        pro.SL_SIZE40 = pro.SL_SIZE40.Value + item.SOLUONG.Value;
+                    else if (size.Equals("41"))
+                        pro.SL_SIZE41 = pro.SL_SIZE41.Value + item.SOLUONG.Value;
+                    else if (size.Equals("42"))
+                        pro.SL_SIZE42 = pro.SL_SIZE42.Value + item.SOLUONG.Value;
+                    else if (size.Equals("43"))
+                        pro.SL_SIZE43 = pro.SL_SIZE43.Value + item.SOLUONG.Value;
+                    db.SaveChanges();
+                }
             }
 
             return RedirectToAction("Index", "DONHANGs");
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Customer")]
         public ActionResult Huy2(string id)
         {
             var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
