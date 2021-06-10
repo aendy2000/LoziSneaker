@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
         public ActionResult Create(string roleId)
         {
             ViewBag.Role = db.AspNetRoles.Find(roleId);
-            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "UserName");
+            ViewBag.User = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
         [HttpPost]
