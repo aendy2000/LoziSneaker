@@ -11,6 +11,7 @@ namespace WebApplication1.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
     public partial class SANPHAM
@@ -27,6 +28,8 @@ namespace WebApplication1.Models
         public string THUONGHIEU { get; set; }
         public Nullable<int> GIA { get; set; }
         public string MOTA { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> NGAYTHEM { get; set; }
         public string HINHANH { get; set; }
         public string MAUSAC { get; set; }
