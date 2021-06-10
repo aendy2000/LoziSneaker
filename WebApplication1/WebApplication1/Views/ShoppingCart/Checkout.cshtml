@@ -71,7 +71,6 @@
                     }
                     else
                     {
-                        <input type="text" class="hidden" name="CheckDonHangRong" value="@Model.Total_Money(null)"/>
                         <input type="submit" class="btn karl-checkout-btn col-md-12 mb-3" value="Đặt hàng" id="Success_checkout" />
                     }
                 </div>
@@ -107,14 +106,10 @@
 <script language="javascript">
     var button = document.getElementById("Success_checkout"); 
     button.onclick = function () {
-        var checkdonhang = document.getElementsByName("CheckDonHangRong");
+        var checkdonhang = document.getElementsByName("Tong_gia");
         if (Number(checkdonhang[0].value) == 0) {
             alert("Không có sản phẩm nào để tiến hành đặt hàng\nVui lòng kiểm tra lại !");
             return false;
-        }
-        else {
-            alert("Đặt hàng thành công");
-            return true;
         }
     }
 </script>
