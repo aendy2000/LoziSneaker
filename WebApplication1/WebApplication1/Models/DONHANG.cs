@@ -22,6 +22,7 @@ namespace WebApplication1.Models
         }
     
         public string TKKH { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> NGAYLAPDH { get; set; }

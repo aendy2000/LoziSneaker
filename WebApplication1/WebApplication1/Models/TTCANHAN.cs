@@ -18,7 +18,6 @@ namespace WebApplication1.Models
         public string EMAIL { get; set; }
         public string TEN { get; set; }
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> NGAYSINH { get; set; }
         public string DIACHI { get; set; }
         public string GIOITINH { get; set; }
