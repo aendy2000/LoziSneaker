@@ -46,27 +46,35 @@
                     </div>
                     @using (Html.BeginForm("Checkout_view", "ShoppingCart"))
                     {
-                        <div class="row">
-                            <div class="col-md-12 mb-3">
-                                <input type="text" class="hidden" name="Tong_gia" value="@Model.Total_Money(null)">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <input type="text" class="hidden" name="Tong_gia" value="@Model.Total_Money(null)">
 
-                                <label for="first_name">Họ và tên <span>*</span></label>
-                                <input type="text" class="form-control col-md-12 mb-3" name="first_name" required="true" pattern="[ aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]*">
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="street_address">Địa chỉ <span>*</span></label>
-                                <input type="text" class="form-control col-md-12 mb-3" name="street_address" required="true" pattern="[ aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0-9 ]*">
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="phone_number">Số điện thoại <span>*</span></label>
-                                <input type="tel" class="form-control col-md-12 mb-3" name="phone_number" pattern="[0-9]*" required="true">
-                            </div>
-                            <div class="col-md-12 mb-3">
-                                <label for="email_address">Email <span>*</span></label>
-                                <input type="email" class="form-control col-md-12 mb-3" name="email_address" required="true">
-                            </div>
-                            <input type="submit" class="btn karl-checkout-btn col-md-12 mb-3" value="Đặt hàng" id="Success_checkout" />
-                        </div>
+                        <label for="first_name">Họ và tên <span>*</span></label>
+                        <input type="text" class="form-control col-md-12 mb-3" name="first_name" required="true" pattern="[ aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ]*">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="street_address">Địa chỉ <span>*</span></label>
+                        <input type="text" class="form-control col-md-12 mb-3" name="street_address" required="true" pattern="[ aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆfFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTuUùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ0-9 ]*">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="phone_number">Số điện thoại <span>*</span></label>
+                        <input type="tel" class="form-control col-md-12 mb-3" name="phone_number" pattern="[0-9]*" required="true">
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="email_address">Email <span>*</span></label>
+                        <input type="email" class="form-control col-md-12 mb-3" name="email_address" required="true">
+                    </div>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Nhân viên"))
+                    {
+                        <input type="button" class="btn karl-checkout-btn col-md-12 mb-3" value="Đặt hàng" />
+                    }
+                    else
+                    {
+                        <input type="text" class="hidden" name="CheckDonHangRong" value="@Model.Total_Money(null)"/>
+                        <input type="submit" class="btn karl-checkout-btn col-md-12 mb-3" value="Đặt hàng" id="Success_checkout" />
+                    }
+                </div>
                     }
                 </div>
             </div>
@@ -98,5 +106,15 @@
 
 <script language="javascript">
     var button = document.getElementById("Success_checkout"); 
-    button.onclick = function () { alert("Đặt hàng thành công"); }
+    button.onclick = function () {
+        var checkdonhang = document.getElementsByName("CheckDonHangRong");
+        if (Number(checkdonhang[0].value) == 0) {
+            alert("Không có sản phẩm nào để tiến hành đặt hàng\nVui lòng kiểm tra lại !");
+            return false;
+        }
+        else {
+            alert("Đặt hàng thành công");
+            return true;
+        }
+    }
 </script>
