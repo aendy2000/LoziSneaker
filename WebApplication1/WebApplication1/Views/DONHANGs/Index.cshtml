@@ -41,38 +41,36 @@
     @foreach (var item in Model)
     {
 <tr>
-    <td style=" text-align:left;padding-top:30px">
+    <td style=" text-align:left;padding-top:15px">
         @Html.DisplayFor(modelItem => item.HOVATEN)
     </td>
-    <td style=" text-align:left;padding-top:30px">
+    <td style=" text-align:left;padding-top:15px">
         @Html.DisplayFor(modelItem => item.SDT)
     </td>
-    <td style=" text-align:left;padding-top:30px">
+    <td style=" text-align:left;padding-top:15px">
         @Html.DisplayFor(modelItem => item.EMAIL)
     </td>
-    <td style="        text-align: left;
-        padding-top: 30px
-">
+    <td style=" text-align: left; padding-top: 15px">
         @Html.DisplayFor(modelItem => item.DIACHI)
     </td>
-    <td style="padding-top: 30px">
+    <td style="padding-top: 15px">
         @Html.DisplayFor(modelItem => item.TONGTIEN)
     </td>
-    <td style="padding-top:30px">
+    <td style="padding-top:15px">
         @Html.DisplayFor(modelItem => @item.NGAYLAPDH)
     </td>
     <td>
         @if (item.TRANGTHAI.Equals("Đã duyệt"))
         {
-            <p style="padding-top: 20px">Đã duyệt</p>
+            <p style="padding-top: 5px">Đã duyệt</p>
         }
         else if (item.TRANGTHAI.Equals("Đã hủy"))
         {
-            <p style="padding-top: 20px">Đã hủy</p>
+            <p style="padding-top: 5px">Đã hủy</p>
         }
         else
         {
-    <a onclick="if (!confirm('Duyệt đơn hàng ?')) { return false }" href="/DONHANGs/Duyet/@item.MADH" style="background-color:cornflowerblue; margin-top:15px" class="btn btn-outline-light">
+    <a onclick="if (!confirm('Duyệt đơn hàng ?')) { return false }" href="/DONHANGs/Duyet/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
         Duyệt
     </a>
         }
@@ -81,21 +79,21 @@
     <td>
         @if (item.TRANGTHAI.Equals("Đã hủy"))
         {
-            <p style="text-align:center; padding-top: 20px">Đã hủy</p>
+            <p style="text-align:center; padding-top: 5px">Đã hủy</p>
         }
         else
         {
-            <a onclick="if (!confirm('Hủy đơn hàng ?')) { return false }" href="/DONHANGs/Huy/@item.MADH" style="background-color:cornflowerblue; margin-top:15px" class="btn btn-outline-light">
-                Hủy
+            <a onclick="if (!confirm('Hủy đơn hàng ?')) { return false }" href="/DONHANGs/Huy/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+                Hủy đơn
             </a>
         }
     </td>
-    <td>
-        <a href="/CHITIETDHs/Index/@item.MADH" style="background-color:cornflowerblue" class="btn btn-outline-light">
-            Xem
-        </a><br />
-        <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" href="/CHITIETDHs/DeleteDonHangUser/@item.MADH" style="background-color:cornflowerblue; margin-top:10px;" class="btn btn-outline-light">
-            Xóa
+    <td style="font-size:26px">
+        <a  href="/CHITIETDHs/Index/@item.MADH">
+            <i style="padding-top:2px" class="fas fa-eye"></i>
+        </a> | 
+        <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }"  href="/CHITIETDHs/DeleteDonHangUser/@item.MADH">
+            <i class="fas fa-trash-alt"></i>
         </a>
     </td>
 </tr>

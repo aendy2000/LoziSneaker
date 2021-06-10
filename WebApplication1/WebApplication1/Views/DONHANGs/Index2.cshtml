@@ -53,10 +53,10 @@
             <td style="text-align:left; padding-top: 15px">
                 @Html.DisplayFor(modelItem => item.DIACHI)
             </td>
-            <td style=" padding-top: 15px">
+            <td style="text-align: left; padding-top: 15px">
                 @Html.DisplayFor(modelItem => item.TONGTIEN)
             </td>
-            <td style="padding-top:15px">
+            <td style="text-align: left; padding-top: 15px">
                 @Html.DisplayFor(modelItem => @item.NGAYLAPDH)
             </td>
             <td>
@@ -81,14 +81,14 @@
                 }
                 else
                 {
-                    <a onclick="if (!confirm('Hủy đơn hàng ?')) { return false }" href="/DONHANGs/Huy2/@item.MADH" style="background-color:cornflowerblue; margin-top:8px" class="btn btn-outline-light">
-                        Hủy
+                    <a onclick="if (!confirm('Hủy đơn hàng ?')) { return false }" href="/DONHANGs/Huy2/@item.MADH" style="background-color:cornflowerblue; margin-top:3px" class="btn btn-outline-light">
+                        Hủy đơn
                     </a>
                 }
             </td>
-            <td style="padding-top: 15px;">
-                <a href="/CHITIETDHs/Index2/@item.MADH" style="background-color:cornflowerblue; " class="btn btn-outline-light">
-                    Xem
+            <td style="padding-top: 10px; font-size:30px">
+                <a href="/CHITIETDHs/Index2/@item.MADH">
+                    <i class="fas fa-eye"></i>
                 </a>
             </td>
         </tr>
