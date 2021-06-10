@@ -64,12 +64,9 @@
         </div>
     </div>
     <hr />
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NGAYTHEM, new { htmlAttributes = new { @hidden = "hidden" } })
+            @Html.TextBoxFor(model => model.NGAYTHEM, new { @class = "form-control", @value = Model.NGAYTHEM.Value, @hidden = "hidden"})
             @Html.ValidationMessageFor(model => model.NGAYTHEM, "", new { @class = "text-danger" })
-        </div>
-    </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.HINHANH, "Hình ảnh:", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
