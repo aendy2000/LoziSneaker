@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -110,12 +111,13 @@ namespace WebApplication1.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model, string UserName, string PhoneNumer)
+        public async Task<ActionResult> Register(RegisterViewModel model, string UserName, string sdt)
         {
+            kiemtratruongsdt(sdt);
             if (ModelState.IsValid)
             {
               
-                var user = new ApplicationUser { UserName = UserName, Email = model.Email,PhoneNumber = PhoneNumer };
+                var user = new ApplicationUser { UserName = UserName, Email = model.Email,PhoneNumber = sdt };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 
                 var role = db.AspNetRoles.SqlQuery("select * from AspNetRoles where Name = @p0", "Nhân viên").First();// db.AspNetRoles.Find("9e2d4613-691e-4e9e-8480-c564b8005bdc");
@@ -141,7 +143,21 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
-   
+        public void kiemtratruongsdt(string sdt)
+        {
+            var dt = new Regex("^[0-9]*$");
+            if(sdt == null)
+            {
+                ModelState.AddModelError("", "Số điện thoại field is required.");
+            }
+             else if (sdt.Length < 10 || sdt.Length >10)
+            {
+                ModelState.AddModelError("","Số điện thoại không đúng định dạng");
+            } else if(dt.IsMatch(sdt) == false)
+            {
+                ModelState.AddModelError("", "Số điện thoại không đúng định dạng");
+            }
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
