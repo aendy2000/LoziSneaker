@@ -422,6 +422,7 @@
     <Content Include="Views\CHITIETDHs\Index2.cshtml" />
     <Content Include="Views\CHITIETDHs\DeleteDonHangUser.cshtml" />
     <Content Include="Views\SANPHAMs\Create.cshtml" />
+    <Content Include="Views\ShoppingCart\SubmitCheckout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

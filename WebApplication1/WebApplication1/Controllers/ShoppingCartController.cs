@@ -14,7 +14,7 @@ namespace WebApplication1.Controllers
     {
         public string ranDom(int chieudai)
         {
-            chieudai = 7; 
+            chieudai = 7;
             const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             StringBuilder res = new StringBuilder();
             Random rnd = new Random();
@@ -162,7 +162,7 @@ namespace WebApplication1.Controllers
         public ActionResult Checkout_view(FormCollection form)
         {
             string madh = ranDom(7);
-            add_donhang(madh,form["phone_number"], form["first_name"], form["email_address"], form["street_address"], form["Tong_gia"]);
+            add_donhang(madh, form["phone_number"], form["first_name"], form["email_address"], form["street_address"], form["Tong_gia"]);
             Cart cart = Session["cart"] as Cart;
 
             foreach (var item in cart.Items)
@@ -202,7 +202,7 @@ namespace WebApplication1.Controllers
             ShowToCart();
             GetCart().Total_Money(User.Identity.GetUserId());
             GetCart().Total_Quantity_in_Cart(User.Identity.GetUserId(), GetCart().Items.Count());
-            return RedirectToAction("Index2","SANPHAMs");
+            return RedirectToAction("SubmitCheckout", "ShoppingCart");
         }
 
         public void add_donhang(string madh, string sdt, string hovaten, string email, string diachi, string tongtien)
@@ -235,6 +235,10 @@ namespace WebApplication1.Controllers
             db.DONHANGs.Add(order);
             db.SaveChanges();
             GetCart();
+        }
+        public ActionResult SubmitCheckout()
+        {
+            return View();
         }
     }
 }
