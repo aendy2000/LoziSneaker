@@ -42,8 +42,47 @@
                         {
                             <input type="hidden" value="@itemm._shopping_size" name="Size" />
                             <input type="hidden" value="@itemm._shopping_product.MASP" name="ID_Product" />
-                            <input type="number" required max="100" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
-                            <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            if (@itemm._shopping_size.Equals("36"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE36" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+                            else if (@itemm._shopping_size.Equals("37"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE37" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+                            else if (@itemm._shopping_size.Equals("38"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE38" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+                            else if (@itemm._shopping_size.Equals("39"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE39" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+                            else if (@itemm._shopping_size.Equals("40"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE40" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+                            else if (@itemm._shopping_size.Equals("41"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE41" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+                            else if (@itemm._shopping_size.Equals("42"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE42" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+                            else if (@itemm._shopping_size.Equals("43"))
+                            {
+                                <input type="number" required max="@itemm._shopping_product.CHITIETSP.SL_SIZE43" min="1" style="text-align:center; font-size:16px; height:20px;width:100px; height:22px" class="form-control-range" value="@itemm._shopping_quantity" name="Quantity" />
+                                <button type="submit" style="width:100px;" class="btn-outline-dark">Cập nhật</button>
+                            }
+
                         }
 
                     </td>
