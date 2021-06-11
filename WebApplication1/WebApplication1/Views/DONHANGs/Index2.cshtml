@@ -68,6 +68,18 @@
                 {
                     <p style="padding-top: 5px">Đã hủy</p>
                 }
+                else if (item.TRANGTHAI.Equals("Đang giao"))
+                {
+                    <p style="padding-top: 5px">Đang giao</p>
+                }
+                else if (item.TRANGTHAI.Equals("Hoàn thành"))
+                {
+                    <p style="padding-top: 5px">Hoàn thành</p>
+                }
+                else if (item.TRANGTHAI.Equals("Thất bại"))
+                {
+                    <p style="padding-top: 5px">Giao hàng thất bại</p>
+                }
                 else
                 {
                     <p style="padding-top: 5px">Chờ duyệt</p>
@@ -75,7 +87,7 @@
             </td>
 
             <td>
-                @if (item.TRANGTHAI.Equals("Đã hủy") || item.TRANGTHAI.Equals("Đã duyệt"))
+                @if (item.TRANGTHAI.Equals("Đã hủy") || item.TRANGTHAI.Equals("Đã duyệt") || item.TRANGTHAI.Equals("Đang giao") || item.TRANGTHAI.Equals("Hoàn thành") || item.TRANGTHAI.Equals("Thất bại") )
                 {
                     <p style="text-align:center; padding-top: 5px">Không thể hủy</p>
                 }

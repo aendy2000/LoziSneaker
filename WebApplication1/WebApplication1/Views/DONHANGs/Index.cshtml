@@ -9,6 +9,9 @@
 <table class="table" border="1" style="text-align:center;">
     <tr class="alert-dark" style="text-align:center;">
         <th style="text-align:center;">
+            Đơn hàng
+        </th>
+        <th style="text-align:center;">
             Họ và tên
         </th>
         <th style="text-align:center;">
@@ -42,6 +45,9 @@
     {
 <tr>
     <td style=" text-align:left;padding-top:15px">
+        @Html.DisplayFor(modelItem => item.MADH)
+    </td>
+    <td style=" text-align:left;padding-top:15px">
         @Html.DisplayFor(modelItem => item.HOVATEN)
     </td>
     <td style=" text-align:left;padding-top:15px">
@@ -62,17 +68,33 @@
     <td>
         @if (item.TRANGTHAI.Equals("Đã duyệt"))
         {
-            <p style="padding-top: 5px">Đã duyệt</p>
+            <a onclick="if (!confirm('Giao hàng ?')) { return false }" href="/DONHANGs/Giaohang/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+                Giao hàng
+            </a>
         }
         else if (item.TRANGTHAI.Equals("Đã hủy"))
         {
             <p style="padding-top: 5px">Đã hủy</p>
         }
+        else if (item.TRANGTHAI.Equals("Đang giao"))
+        {
+            <a onclick="if (!confirm('Đơn hàng đã giao thành công ?')) { return false }" href="/DONHANGs/Hoanthanh/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+                Hoàn thành
+            </a>
+        }
+        else if (item.TRANGTHAI.Equals("Hoàn thành"))
+        {
+            <p style="padding-top: 5px">Hoàn thành</p>
+        }
+        else if (item.TRANGTHAI.Equals("Thất bại"))
+        {
+            <p style="padding-top: 5px">Thất bại</p>
+        }
         else
         {
-    <a onclick="if (!confirm('Duyệt đơn hàng ?')) { return false }" href="/DONHANGs/Duyet/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
-        Duyệt
-    </a>
+            <a onclick="if (!confirm('Duyệt đơn hàng ?')) { return false }" href="/DONHANGs/Duyet/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+                Duyệt
+            </a>
         }
     </td>
 
@@ -80,6 +102,20 @@
         @if (item.TRANGTHAI.Equals("Đã hủy"))
         {
             <p style="text-align:center; padding-top: 5px">Đã hủy</p>
+        }
+        else if (item.TRANGTHAI.Equals("Đang giao"))
+        {
+            <a onclick="if (!confirm('Giao hàng thất bại ?')) { return false }" href="/DONHANGs/Hoantac/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+                Hoàn tác
+            </a>
+        }
+        else if (item.TRANGTHAI.Equals("Hoàn thành"))
+        {
+            <p style="padding-top: 5px">Hoàn thành</p>
+        }
+        else if (item.TRANGTHAI.Equals("Thất bại"))
+        {
+            <p style="padding-top: 5px">Thất bại</p>
         }
         else
         {
@@ -89,10 +125,10 @@
         }
     </td>
     <td style="font-size:26px">
-        <a  href="/CHITIETDHs/Index/@item.MADH">
+        <a href="/CHITIETDHs/Index/@item.MADH">
             <i style="padding-top:2px" class="fas fa-eye"></i>
-        </a> | 
-        <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }"  href="/CHITIETDHs/DeleteDonHangUser/@item.MADH">
+        </a> |
+        <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" href="/CHITIETDHs/DeleteDonHangUser/@item.MADH">
             <i class="fas fa-trash-alt"></i>
         </a>
     </td>

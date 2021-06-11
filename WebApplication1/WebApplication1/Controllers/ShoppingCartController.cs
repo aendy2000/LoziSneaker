@@ -14,7 +14,8 @@ namespace WebApplication1.Controllers
     {
         public string ranDom(int chieudai)
         {
-            chieudai = 25; const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            chieudai = 7; 
+            const string valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
             StringBuilder res = new StringBuilder();
             Random rnd = new Random();
             while (0 < chieudai--)
@@ -160,7 +161,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult Checkout_view(FormCollection form)
         {
-            string madh = ranDom(25);
+            string madh = ranDom(7);
             add_donhang(madh,form["phone_number"], form["first_name"], form["email_address"], form["street_address"], form["Tong_gia"]);
             Cart cart = Session["cart"] as Cart;
 

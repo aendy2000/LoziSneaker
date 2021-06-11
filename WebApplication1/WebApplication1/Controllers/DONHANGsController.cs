@@ -115,6 +115,60 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index2", "DONHANGs");
         }
 
+        [Authorize(Roles = "Nhân viên,Admin,Customer")]
+        public ActionResult Giaohang(string id)
+        {
+            var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
+            donhang.TRANGTHAI = "Đang giao";
+            db.SaveChanges();
+            return RedirectToAction("Index", "DONHANGs");
+        }
+
+        [Authorize(Roles = "Nhân viên,Admin,Customer")]
+        public ActionResult Hoanthanh(string id)
+        {
+            var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
+            donhang.TRANGTHAI = "Hoàn thành";
+            db.SaveChanges();
+            return RedirectToAction("Index", "DONHANGs");
+        }
+
+        [Authorize(Roles = "Nhân viên,Admin,Customer")]
+        public ActionResult Hoantac(string id)
+        {
+            var donhang = db.DONHANGs.FirstOrDefault(c => c.MADH == id);
+            donhang.TRANGTHAI = "Thất bại";
+            db.SaveChanges();
+
+            var hoantacdonhang = db.CHITIETDHs.Where(c => c.MADH == id).ToList();
+            foreach (var item in hoantacdonhang)
+            {
+                string size = item.SIZE;
+                var pro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item.MASP);
+
+                pro.SL_TONG = pro.SL_TONG.Value + item.SOLUONG.Value;
+                if (size.Equals("36"))
+                    pro.SL_SIZE36 = pro.SL_SIZE36.Value + item.SOLUONG.Value;
+                else if (size.Equals("37"))
+                    pro.SL_SIZE37 = pro.SL_SIZE37.Value + item.SOLUONG.Value;
+                else if (size.Equals("38"))
+                    pro.SL_SIZE38 = pro.SL_SIZE38.Value + item.SOLUONG.Value;
+                else if (size.Equals("39"))
+                    pro.SL_SIZE39 = pro.SL_SIZE39.Value + item.SOLUONG.Value;
+                else if (size.Equals("40"))
+                    pro.SL_SIZE40 = pro.SL_SIZE40.Value + item.SOLUONG.Value;
+                else if (size.Equals("41"))
+                    pro.SL_SIZE41 = pro.SL_SIZE41.Value + item.SOLUONG.Value;
+                else if (size.Equals("42"))
+                    pro.SL_SIZE42 = pro.SL_SIZE42.Value + item.SOLUONG.Value;
+                else if (size.Equals("43"))
+                    pro.SL_SIZE43 = pro.SL_SIZE43.Value + item.SOLUONG.Value;
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "DONHANGs");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

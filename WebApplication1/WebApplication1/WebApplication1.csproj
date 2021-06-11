@@ -273,6 +273,7 @@
     <Content Include="fonts\themify.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\AddToCart.jpg" />
     <Content Include="img\DangThiMinhNgoc.jpg" />
     <Content Include="img\DangVanTuan.jpg" />
     <Content Include="img\imgProduct\25-1076.jpg" />
@@ -288,6 +289,22 @@
     <Content Include="img\imgProduct\vans-classic-old-skool-black-white.jpg" />
     <Content Include="img\imgProduct\Vans-slipon.jpg" />
     <Content Include="img\imgProduct\Yeezy800-White.jpg" />
+    <Content Include="img\imgRadioSize\36.jpg" />
+    <Content Include="img\imgRadioSize\37.jpg" />
+    <Content Include="img\imgRadioSize\38.jpg" />
+    <Content Include="img\imgRadioSize\39.jpg" />
+    <Content Include="img\imgRadioSize\40.jpg" />
+    <Content Include="img\imgRadioSize\41.jpg" />
+    <Content Include="img\imgRadioSize\42.jpg" />
+    <Content Include="img\imgRadioSize\43.jpg" />
+    <Content Include="img\imgRadioSize\Het36.jpg" />
+    <Content Include="img\imgRadioSize\Het37.jpg" />
+    <Content Include="img\imgRadioSize\Het38.jpg" />
+    <Content Include="img\imgRadioSize\Het39.jpg" />
+    <Content Include="img\imgRadioSize\Het40.jpg" />
+    <Content Include="img\imgRadioSize\Het41.jpg" />
+    <Content Include="img\imgRadioSize\Het42.jpg" />
+    <Content Include="img\imgRadioSize\Het43.jpg" />
     <Content Include="img\Logo.png" />
     <Content Include="img\MaKhonTuyen.jpg" />
     <Content Include="img\NguyenTranKhuong.jpg" />
@@ -404,6 +421,7 @@
     <Content Include="Views\DONHANGs\Index2.cshtml" />
     <Content Include="Views\CHITIETDHs\Index2.cshtml" />
     <Content Include="Views\CHITIETDHs\DeleteDonHangUser.cshtml" />
+    <Content Include="Views\SANPHAMs\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
