@@ -80,9 +80,86 @@ namespace WebApplication1.Models
                     if (size == item._shopping_size)
                     {
                         var checkPro = db.CHITIETGIOHANGs.Where(c => (c.MASP == _IDpro) && (c.MAGIOHG == IDUser)).First();
-                        item._shopping_quantity += _quantity;
-                        checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
-                        db.SaveChanges();
+                        var quantityPro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item._shopping_product.MASP);
+                        if (item._shopping_size == "36")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE36.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+
+                        }
+                        else if (item._shopping_size == "37")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE37.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+
+                        }
+                        else if (item._shopping_size == "38")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE38.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+
+                        }
+                        else if (item._shopping_size == "39")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE39.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+
+                        }
+                        else if (item._shopping_size == "40")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE40.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+
+                        }
+                        else if (item._shopping_size == "41")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE41.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+
+                        }
+                        else if (item._shopping_size == "42")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE42.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+
+                        }
+                        else if (item._shopping_size == "43")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE43.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                                checkPro.SOLUONG = checkPro.SOLUONG.Value + _quantity;
+                                db.SaveChanges();
+                            }
+                        }
                     }
                     else
                     {
@@ -116,7 +193,70 @@ namespace WebApplication1.Models
                 {
                     if (size == item._shopping_size)
                     {
-                        item._shopping_quantity += _quantity;
+                        var quantityPro = db.CHITIETSPs.FirstOrDefault(c => c.MASANPHAM == item._shopping_product.MASP);
+                        if (item._shopping_size == "36")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE36.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+
+                        }
+                        else if (item._shopping_size == "37")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE37.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+
+                        }
+                        else if (item._shopping_size == "38")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE38.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+
+                        }
+                        else if (item._shopping_size == "39")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE39.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+
+                        }
+                        else if (item._shopping_size == "40")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE40.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+
+                        }
+                        else if (item._shopping_size == "41")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE41.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+
+                        }
+                        else if (item._shopping_size == "42")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE42.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+
+                        }
+                        else if (item._shopping_size == "43")
+                        {
+                            if (item._shopping_quantity < quantityPro.SL_SIZE43.Value)
+                            {
+                                item._shopping_quantity += _quantity;
+                            }
+                        }
                     }
                     else
                     {

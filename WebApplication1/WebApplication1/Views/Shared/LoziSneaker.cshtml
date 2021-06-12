@@ -128,7 +128,6 @@
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
                                             <li class="nav-item active"><a class="nav-link" href="@Url.Content("~/SANPHAMs/Index2")">Home</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/About")">About</a></li>
                                             <li class="nav-item"><a class="nav-link" href="@Url.Content("~/Home/Contact")">Contact</a></li>
                                         </ul>
                                     </div>
@@ -163,7 +162,7 @@
                         <div class="single_footer_area">
                             <div class="footer-logo">
 
-                                <img src="@Url.Content("~/img/Logo.png")" alt="">
+                                <a href="@Url.Action("Index2","SANPHAMs")"><img src="@Url.Content("~/img/Logo.png")" alt=""></a>
                             </div>
                             <div class="copywrite_text d-flex align-items-center">
                                 <p>
@@ -179,7 +178,7 @@
                     <div class="col-12 col-sm-6 col-md-3 col-lg-2">
                         <div class="single_footer_area">
                             <ul class="footer_widget_menu">
-                                <li><a href="@Url.Content("~/Home/About")">About</a></li>
+                                <li><a href="#">About</a></li>
                                 <li><a href="#">Blog</a></li>
                                 <li><a href="#">Faq</a></li>
                                 <li><a href="#">Returns</a></li>
