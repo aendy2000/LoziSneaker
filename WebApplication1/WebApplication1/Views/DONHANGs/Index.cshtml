@@ -68,7 +68,7 @@
     <td>
         @if (item.TRANGTHAI.Equals("Đã duyệt"))
         {
-            <a onclick="if (!confirm('Giao hàng ?')) { return false }" href="/DONHANGs/Giaohang/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+            <a onclick="if (!confirm('Giao hàng ?')) { return false }" href="@Url.Action("Giaohang","DONHANGs", new { id = @item.MADH })" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
                 Giao hàng
             </a>
         }
@@ -78,7 +78,7 @@
         }
         else if (item.TRANGTHAI.Equals("Đang giao"))
         {
-            <a onclick="if (!confirm('Đơn hàng đã giao thành công ?')) { return false }" href="/DONHANGs/Hoanthanh/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+            <a onclick="if (!confirm('Đơn hàng đã giao thành công ?')) { return false }" href="@Url.Action("Hoanthanh","DONHANGs", new { id = @item.MADH })" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
                 Hoàn thành
             </a>
         }
@@ -92,7 +92,7 @@
         }
         else
         {
-            <a onclick="if (!confirm('Duyệt đơn hàng ?')) { return false }" href="/DONHANGs/Duyet/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+            <a onclick="if (!confirm('Duyệt đơn hàng ?')) { return false }" href="@Url.Action("Duyet","DONHANGs", new { id = @item.MADH })" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
                 Duyệt
             </a>
         }
@@ -105,7 +105,7 @@
         }
         else if (item.TRANGTHAI.Equals("Đang giao"))
         {
-            <a onclick="if (!confirm('Giao hàng thất bại ?')) { return false }" href="/DONHANGs/Hoantac/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+            <a onclick="if (!confirm('Giao hàng thất bại ?')) { return false }" href="@Url.Action("Hoantac","DONHANGs", new { id = @item.MADH })" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
                 Hoàn tác
             </a>
         }
@@ -119,16 +119,16 @@
         }
         else
         {
-            <a onclick="if (!confirm('Hủy đơn hàng ?')) { return false }" href="/DONHANGs/Huy/@item.MADH" style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
+            <a onclick="if (!confirm('Hủy đơn hàng ?')) { return false }" href="@Url.Action("Huy","DONHANGs", new { id = @item.MADH })"  style="background-color:cornflowerblue; margin-top:0,5px" class="btn btn-outline-light">
                 Hủy đơn
             </a>
         }
     </td>
     <td style="font-size:23px">
-        <a href="/CHITIETDHs/Index/@item.MADH">
+        <a href="@Url.Action("Index","CHITIETDHs", new { id = @item.MADH })">
             <i style="padding-top:2px" class="fas fa-eye"></i>
         </a> |
-        <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }" href="/CHITIETDHs/DeleteDonHangUser/@item.MADH">
+        <a onclick="if (!confirm('Bạn có chắc chắn muốn xóa ?')) { return false }"  href="@Url.Action("DeleteDonHangUser","CHITIETDHs", new { id = @item.MADH })">
             <i class="fas fa-trash-alt"></i>
         </a>
     </td>

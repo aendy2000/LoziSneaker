@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.TONGTIEN)
             </td>
             <td>
-                <a href="/CHITIETGIOHANGs/Index/@item.MAGIOHANG"  style="background-color:cornflowerblue" class="btn btn-outline-light">
+                <a href="@Url.Action("Index","CHITIETGIOHANGs", new { id = @item.MAGIOHANG })" style="background-color:cornflowerblue" class="btn btn-outline-light">
                     Xem giỏ hàng <i class="far fa-arrow-alt-circle-right"></i>
                 </a>
             </td>
